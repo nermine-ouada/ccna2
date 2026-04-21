@@ -2,12 +2,19 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import ProgressBar from "@/components/ProgressBar";
 import QuestionCard from "@/components/QuestionCard";
-import { allQuestions } from "@/lib/questions";
+import { allQuestions, ccna1Questions, ccna2Questions } from "@/lib/questions";
 
 export default function QuizPage() {
-  const questions = useMemo(() => allQuestions, []);
+  const searchParams = useSearchParams();
+  const selectedCourse = searchParams.get("course");
+  const questions = useMemo(() => {
+    if (selectedCourse === "CCNA 1") return ccna1Questions;
+    if (selectedCourse === "CCNA 2") return ccna2Questions;
+    return allQuestions;
+  }, [selectedCourse]);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string[]>([]);
   const [revealed, setRevealed] = useState(false);
@@ -32,6 +39,15 @@ export default function QuizPage() {
   const current = orderedQuestions[index];
   const isMulti = current.correctAnswers.length > 1;
   const effectiveRevealed = revealed || showAnswers;
+  const isOrderingQuestion =
+    /correspondre|séquence|sequence|ordre|classer|rank/i.test(current.question) &&
+    current.options.length > 1 &&
+    current.correctAnswers.length === current.options.length;
+  const selectionTypeLabel = isOrderingQuestion
+    ? "Ordering"
+    : isMulti
+      ? "Multiple choice"
+      : "Single choice";
 
   const toggleOption = (option: string) => {
     if (effectiveRevealed) return;
@@ -46,9 +62,9 @@ export default function QuizPage() {
 
   const submitAnswer = () => {
     if (revealed) return;
-    const sortedSelected = [...selected].sort();
-    const sortedCorrect = [...current.correctAnswers].sort();
-    const isCorrect = JSON.stringify(sortedSelected) === JSON.stringify(sortedCorrect);
+    const isCorrect = isOrderingQuestion
+      ? JSON.stringify(selected) === JSON.stringify(current.correctAnswers)
+      : JSON.stringify([...selected].sort()) === JSON.stringify([...current.correctAnswers].sort());
     if (isCorrect) setScore((prev) => prev + 1);
     setRevealed(true);
   };
@@ -62,7 +78,9 @@ export default function QuizPage() {
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Quiz Mode</h1>
+        <h1 className="text-2xl font-bold">
+          Quiz Mode{selectedCourse ? ` - ${selectedCourse}` : ""}
+        </h1>
         <Link href="/" className="text-sm text-blue-700 hover:underline">
           Back Home
         </Link>
@@ -94,12 +112,14 @@ export default function QuizPage() {
       </div>
 
       <QuestionCard question={current}>
+        <p className="mb-2 text-sm text-slate-600">{selectionTypeLabel}</p>
         <div className="space-y-3">
           {current.options.map((option) => {
             const checked = selected.includes(option);
             const isCorrect = current.correctAnswers.includes(option);
             const isWrongSelection = effectiveRevealed && checked && !isCorrect;
             const isCorrectReveal = effectiveRevealed && isCorrect;
+            const selectedOrder = selected.indexOf(option) + 1;
 
             const optionStyle = isCorrectReveal
               ? "border-emerald-300 bg-emerald-50 text-emerald-900"
@@ -117,7 +137,40 @@ export default function QuizPage() {
                   effectiveRevealed ? "" : "hover:bg-slate-50"
                 }`}
               >
-                {option}
+                <span className="flex items-center gap-3">
+                  {isOrderingQuestion ? (
+                    <span
+                      className={`inline-flex h-6 min-w-6 items-center justify-center rounded-full border px-2 text-xs font-semibold ${
+                        checked
+                          ? "border-slate-800 bg-slate-800 text-white"
+                          : "border-slate-300 text-slate-500"
+                      }`}
+                    >
+                      {checked ? selectedOrder : "#"}
+                    </span>
+                  ) : isMulti ? (
+                    <span
+                      className={`inline-flex h-5 w-5 items-center justify-center rounded border text-xs ${
+                        checked
+                          ? "border-slate-900 bg-slate-900 text-white"
+                          : "border-slate-300 text-transparent"
+                      }`}
+                    >
+                      ✓
+                    </span>
+                  ) : (
+                    <span
+                      className={`inline-flex h-5 w-5 items-center justify-center rounded-full border text-[10px] ${
+                        checked
+                          ? "border-slate-900 bg-slate-900 text-white"
+                          : "border-slate-300 text-transparent"
+                      }`}
+                    >
+                      ●
+                    </span>
+                  )}
+                  <span>{option}</span>
+                </span>
               </button>
             );
           })}

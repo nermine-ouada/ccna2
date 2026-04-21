@@ -2,13 +2,20 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import AnswerList from "@/components/AnswerList";
 import ProgressBar from "@/components/ProgressBar";
 import QuestionCard from "@/components/QuestionCard";
-import { allQuestions } from "@/lib/questions";
+import { allQuestions, ccna1Questions, ccna2Questions } from "@/lib/questions";
 
 export default function FlashcardsPage() {
-  const questions = useMemo(() => allQuestions, []);
+  const searchParams = useSearchParams();
+  const selectedCourse = searchParams.get("course");
+  const questions = useMemo(() => {
+    if (selectedCourse === "CCNA 1") return ccna1Questions;
+    if (selectedCourse === "CCNA 2") return ccna2Questions;
+    return allQuestions;
+  }, [selectedCourse]);
   const [index, setIndex] = useState(0);
   const [showAnswers, setShowAnswers] = useState(false);
   const [randomMode, setRandomMode] = useState(false);
@@ -32,7 +39,9 @@ export default function FlashcardsPage() {
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Flashcards</h1>
+        <h1 className="text-2xl font-bold">
+          Flashcards{selectedCourse ? ` - ${selectedCourse}` : ""}
+        </h1>
         <Link href="/" className="text-sm text-blue-700 hover:underline">
           Back Home
         </Link>

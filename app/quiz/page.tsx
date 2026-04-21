@@ -1,15 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import ProgressBar from "@/components/ProgressBar";
 import QuestionCard from "@/components/QuestionCard";
 import { allQuestions, ccna1Questions, ccna2Questions } from "@/lib/questions";
 
 export default function QuizPage() {
-  const searchParams = useSearchParams();
-  const selectedCourse = searchParams.get("course");
+  const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setSelectedCourse(params.get("course"));
+  }, []);
   const questions = useMemo(() => {
     if (selectedCourse === "CCNA 1") return ccna1Questions;
     if (selectedCourse === "CCNA 2") return ccna2Questions;
@@ -22,10 +24,6 @@ export default function QuizPage() {
   const [randomMode, setRandomMode] = useState(false);
   const [score, setScore] = useState(0);
 
-  if (!questions.length) {
-    return <p>No questions available. Run `npm run parse` first.</p>;
-  }
-
   const orderedQuestions = useMemo(() => {
     if (!randomMode) return questions;
     const shuffled = [...questions];
@@ -35,6 +33,10 @@ export default function QuizPage() {
     }
     return shuffled;
   }, [questions, randomMode]);
+
+  if (!questions.length) {
+    return <p>No questions available. Run `npm run parse` first.</p>;
+  }
 
   const current = orderedQuestions[index];
   const isMulti = current.correctAnswers.length > 1;

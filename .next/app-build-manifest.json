@@ -1,25 +1,47 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+    "/_not-found/page": [
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-5d0c434f4506d830.js",
+      "static/chunks/117-da33f89511cbd4ac.js",
+      "static/chunks/main-app-69afe3771403705b.js",
+      "static/chunks/app/_not-found/page-5c13080123d91220.js"
     ],
     "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-5d0c434f4506d830.js",
+      "static/chunks/117-da33f89511cbd4ac.js",
+      "static/chunks/main-app-69afe3771403705b.js",
+      "static/css/c10e25646b28083b.css",
+      "static/chunks/app/layout-40f63ac967dff70e.js"
     ],
-    "/quiz/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/quiz/page.js"
+    "/page": [
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-5d0c434f4506d830.js",
+      "static/chunks/117-da33f89511cbd4ac.js",
+      "static/chunks/main-app-69afe3771403705b.js",
+      "static/chunks/648-7e4a598c49e46c7d.js",
+      "static/chunks/app/page-ac16d87e13d08485.js"
     ],
     "/flashcards/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/flashcards/page.js"
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-5d0c434f4506d830.js",
+      "static/chunks/117-da33f89511cbd4ac.js",
+      "static/chunks/main-app-69afe3771403705b.js",
+      "static/chunks/648-7e4a598c49e46c7d.js",
+      "static/chunks/145-c6babef920f3d9e0.js",
+      "static/chunks/562-d382bee783b883ff.js",
+      "static/chunks/app/flashcards/page-4d49bbb6771f0694.js"
+    ],
+    "/quiz/page": [
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-5d0c434f4506d830.js",
+      "static/chunks/117-da33f89511cbd4ac.js",
+      "static/chunks/main-app-69afe3771403705b.js",
+      "static/chunks/648-7e4a598c49e46c7d.js",
+      "static/chunks/145-c6babef920f3d9e0.js",
+      "static/chunks/562-d382bee783b883ff.js",
+      "static/chunks/app/quiz/page-52289ed70bcb543d.js"
     ]
   }
 }

@@ -20,6 +20,15 @@ export default function HomePage() {
           Quiz Mode
         </Link>
       </div>
+
+      <a
+        href="https://github.com/nermine-ouada/ccna2"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-sm text-slate-600 underline-offset-4 transition hover:text-slate-900 hover:underline"
+      >
+        GitHub Repository by nermine-ouada
+      </a>
     </div>
   );
 }

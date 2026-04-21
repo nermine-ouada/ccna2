@@ -1,47 +1,25 @@
 {
   "pages": {
-    "/_not-found/page": [
-      "static/chunks/webpack-c81f7fd28659d64f.js",
-      "static/chunks/fd9d1056-8a61572848a53694.js",
-      "static/chunks/117-986301f2b0eb33fb.js",
-      "static/chunks/main-app-69afe3771403705b.js",
-      "static/chunks/app/_not-found/page-3e21253a2c85e10f.js"
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
     ],
     "/layout": [
-      "static/chunks/webpack-c81f7fd28659d64f.js",
-      "static/chunks/fd9d1056-8a61572848a53694.js",
-      "static/chunks/117-986301f2b0eb33fb.js",
-      "static/chunks/main-app-69afe3771403705b.js",
-      "static/css/185bac82027b681f.css",
-      "static/chunks/app/layout-40f63ac967dff70e.js"
-    ],
-    "/flashcards/page": [
-      "static/chunks/webpack-c81f7fd28659d64f.js",
-      "static/chunks/fd9d1056-8a61572848a53694.js",
-      "static/chunks/117-986301f2b0eb33fb.js",
-      "static/chunks/main-app-69afe3771403705b.js",
-      "static/chunks/972-0844a550f9c75131.js",
-      "static/chunks/726-828f1694abe737c0.js",
-      "static/chunks/391-f87e913663b6560e.js",
-      "static/chunks/app/flashcards/page-dbf56ff77a92e2f2.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
     ],
     "/quiz/page": [
-      "static/chunks/webpack-c81f7fd28659d64f.js",
-      "static/chunks/fd9d1056-8a61572848a53694.js",
-      "static/chunks/117-986301f2b0eb33fb.js",
-      "static/chunks/main-app-69afe3771403705b.js",
-      "static/chunks/972-0844a550f9c75131.js",
-      "static/chunks/726-828f1694abe737c0.js",
-      "static/chunks/391-f87e913663b6560e.js",
-      "static/chunks/app/quiz/page-01d7bb1107724c5f.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/quiz/page.js"
     ],
-    "/page": [
-      "static/chunks/webpack-c81f7fd28659d64f.js",
-      "static/chunks/fd9d1056-8a61572848a53694.js",
-      "static/chunks/117-986301f2b0eb33fb.js",
-      "static/chunks/main-app-69afe3771403705b.js",
-      "static/chunks/972-0844a550f9c75131.js",
-      "static/chunks/app/page-cc177d1c11f6636a.js"
+    "/flashcards/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/flashcards/page.js"
     ]
   }
 }

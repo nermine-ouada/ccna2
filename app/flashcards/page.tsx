@@ -7,11 +7,21 @@ import ProgressBar from "@/components/ProgressBar";
 import QuestionCard from "@/components/QuestionCard";
 import { allQuestions, ccna1Questions, ccna2Questions } from "@/lib/questions";
 
+function shuffleArray<T>(items: T[]): T[] {
+  const shuffled = [...items];
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
 export default function FlashcardsPage() {
-  const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
+  const [selectedCourse, setSelectedCourse] = useState<"CCNA 1" | "CCNA 2">("CCNA 2");
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setSelectedCourse(params.get("course"));
+    const course = params.get("course");
+    setSelectedCourse(course === "CCNA 1" ? "CCNA 1" : "CCNA 2");
   }, []);
   const questions = useMemo(() => {
     if (selectedCourse === "CCNA 1") return ccna1Questions;
@@ -20,23 +30,23 @@ export default function FlashcardsPage() {
   }, [selectedCourse]);
   const [index, setIndex] = useState(0);
   const [showAnswers, setShowAnswers] = useState(false);
+  const [showAllOptions, setShowAllOptions] = useState(true);
   const [randomMode, setRandomMode] = useState(false);
 
   const orderedQuestions = useMemo(() => {
     if (!randomMode) return questions;
-    const shuffled = [...questions];
-    for (let i = shuffled.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
+    return shuffleArray(questions);
   }, [questions, randomMode]);
+  const current = orderedQuestions[index];
+  const visibleOptions = useMemo(() => {
+    if (!current) return [];
+    if (!showAllOptions) return current.correctAnswers;
+    return shuffleArray(current.options);
+  }, [current, showAllOptions]);
 
-  if (!questions.length) {
+  if (!current) {
     return <p>No questions available. Run `npm run parse` first.</p>;
   }
-
-  const current = orderedQuestions[index];
 
   return (
     <div className="space-y-5">
@@ -67,14 +77,24 @@ export default function FlashcardsPage() {
         >
           {randomMode ? "In Order" : "Random"}
         </button>
+        {showAnswers ? (
+          <button
+            onClick={() => setShowAllOptions((prev) => !prev)}
+            className="rounded-lg border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 hover:bg-slate-50"
+          >
+            {showAllOptions ? "Hide false answers" : "Show all options"}
+          </button>
+        ) : null}
       </div>
 
       <QuestionCard question={current}>
         {showAnswers ? (
           <div className="space-y-4">
-            <p className="font-semibold text-emerald-800">Correct answer(s):</p>
+            <p className="font-semibold text-emerald-800">
+              {showAllOptions ? "Options (correct highlighted):" : "Correct answer(s):"}
+            </p>
             <AnswerList
-              options={current.correctAnswers}
+              options={visibleOptions}
               correctAnswers={current.correctAnswers}
               revealed
             />

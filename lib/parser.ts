@@ -3,6 +3,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { Question } from "./types";
+import { stripStepPrefix } from "./text";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -19,6 +20,26 @@ function cleanText(input: string): string {
   return input.replace(/\s+/g, " ").trim();
 }
 
+function normalizeForMatch(input: string): string {
+  return cleanText(input)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+function inferCorrectAnswersFromExplanation(options: string[], explanation?: string): string[] {
+  if (!explanation || options.length === 0) return [];
+
+  const normalizedExplanation = normalizeForMatch(explanation);
+  const inferred = options.filter((option) => {
+    const normalizedOption = normalizeForMatch(option);
+    if (normalizedOption.length < 12) return false;
+    return normalizedExplanation.includes(normalizedOption);
+  });
+
+  return [...new Set(inferred)];
+}
+
 async function parseQuestionsFromHtml(
   htmlPath: string,
   course: "CCNA 1" | "CCNA 2",
@@ -30,17 +51,30 @@ async function parseQuestionsFromHtml(
   const questions: Question[] = [];
   let generatedId = idStart;
 
-  $("p > strong, p > b").each((_, el) => {
-    const initialText = cleanText($(el).text());
+  $("p, strong, b").each((_, el) => {
+    const node = $(el);
+    const tagName = (el.tagName || "").toLowerCase();
+
+    let initialText = "";
+    if (tagName === "p") {
+      const firstBold = node.find("strong, b").first();
+      initialText = firstBold.length ? cleanText(firstBold.text()) : cleanText(node.text());
+    } else {
+      initialText = cleanText(node.text());
+    }
     if (!initialText) return;
 
-    const pNode = $(el).closest("p");
-    const idMatch = initialText.match(/^(\d+)\.\s*/);
+    const idMatch = initialText.match(/^(\d+)\s*[.)]?\s*/);
     if (!idMatch) return;
     const sourceId = Number(idMatch[1]);
-    let questionText = initialText.replace(/^\d+\.\s*/, "");
+    if (!Number.isFinite(sourceId)) return;
+    let questionText = initialText.replace(/^\d+\s*[.)]?\s*/, "");
+    if (!questionText) return;
 
-    let next = pNode.next();
+    const pNode = node.closest("p");
+    const startNode = tagName === "p" ? node : pNode.length ? pNode : node;
+
+    let next = startNode.next();
     const optionItems: string[] = [];
     const correctAnswers: string[] = [];
     const tableAnswerRows: string[] = [];
@@ -48,14 +82,17 @@ async function parseQuestionsFromHtml(
     let explanation: string | undefined;
 
     while (next.length) {
-      if (next.is("p") && next.find("strong, b").length > 0) {
-        const boldText = cleanText(next.find("strong, b").first().text());
-        const numberedMatch = boldText.match(/^(\d+)\.\s*/);
+      if (next.is("p")) {
+        const nextBold = next.find("strong, b").first();
+        const candidateText = nextBold.length
+          ? cleanText(nextBold.text())
+          : cleanText(next.text());
+        const numberedMatch = candidateText.match(/^(\d+)\s*[.)]?\s*/);
         if (numberedMatch) break;
 
         // Continue the same question when an extra unnumbered bold line follows.
-        if (boldText) {
-          questionText = cleanText(`${questionText} ${boldText}`);
+        if (nextBold.length && candidateText) {
+          questionText = cleanText(`${questionText} ${candidateText}`);
         }
         next = next.next();
         continue;
@@ -70,7 +107,7 @@ async function parseQuestionsFromHtml(
 
       if (next.is("ul")) {
         next.find("li").each((__, li) => {
-          const text = cleanText($(li).text());
+          const text = stripStepPrefix(cleanText($(li).text()));
           if (!text) return;
           optionItems.push(text);
           if ($(li).hasClass("correct_answer")) {
@@ -89,7 +126,7 @@ async function parseQuestionsFromHtml(
             .get()
             .filter(Boolean);
           if (cells.length) {
-            const rowText = cells.join(" - ");
+            const rowText = stripStepPrefix(cells.join(" - "));
             optionItems.push(rowText);
             tableAnswerRows.push(rowText);
           }
@@ -109,6 +146,13 @@ async function parseQuestionsFromHtml(
     if (correctAnswers.length === 0 && tableAnswerRows.length > 0) {
       correctAnswers.push(...tableAnswerRows);
     }
+    if (correctAnswers.length === 0) {
+      correctAnswers.push(...inferCorrectAnswersFromExplanation(optionItems, explanation));
+    }
+
+    if (!questionText) {
+      return;
+    }
 
     questions.push({
       id: generatedId,
@@ -126,6 +170,33 @@ async function parseQuestionsFromHtml(
   return questions;
 }
 
+function dedupeBySourceId(questions: Question[]): Question[] {
+  const bySourceId = new Map<number, Question>();
+  for (const question of questions) {
+    if (!question.sourceId) continue;
+    const current = bySourceId.get(question.sourceId);
+    if (!current) {
+      bySourceId.set(question.sourceId, question);
+      continue;
+    }
+
+    const currentScore =
+      (current.correctAnswers?.length ?? 0) * 4 +
+      (current.options?.length ?? 0) +
+      (current.explanation ? 1 : 0);
+    const nextScore =
+      (question.correctAnswers?.length ?? 0) * 4 +
+      (question.options?.length ?? 0) +
+      (question.explanation ? 1 : 0);
+
+    if (nextScore > currentScore) {
+      bySourceId.set(question.sourceId, question);
+    }
+  }
+
+  return [...bySourceId.values()].sort((a, b) => (a.sourceId ?? 0) - (b.sourceId ?? 0));
+}
+
 async function main() {
   const parsed: Question[] = [];
   const parsedByCourse: Record<"CCNA 1" | "CCNA 2", Question[]> = {
@@ -138,11 +209,15 @@ async function main() {
     const sourcePath = path.join(ROOT_DIR, source.file);
     try {
       await fs.access(sourcePath);
-      const batch = await parseQuestionsFromHtml(sourcePath, source.course, nextId);
+      const batchRaw = await parseQuestionsFromHtml(sourcePath, source.course, nextId);
+      const batch = dedupeBySourceId(batchRaw).map((question, i) => ({
+        ...question,
+        id: nextId + i
+      }));
       parsed.push(...batch);
       parsedByCourse[source.course].push(...batch);
       nextId += batch.length;
-      console.log(`Parsed ${batch.length} from ${source.file}`);
+      console.log(`Parsed ${batch.length} unique from ${source.file} (raw: ${batchRaw.length})`);
     } catch {
       console.log(`Skipped missing file: ${source.file}`);
     }

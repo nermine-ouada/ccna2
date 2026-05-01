@@ -6,11 +6,21 @@ import ProgressBar from "@/components/ProgressBar";
 import QuestionCard from "@/components/QuestionCard";
 import { allQuestions, ccna1Questions, ccna2Questions } from "@/lib/questions";
 
+function shuffleArray<T>(items: T[]): T[] {
+  const shuffled = [...items];
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
 export default function QuizPage() {
-  const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
+  const [selectedCourse, setSelectedCourse] = useState<"CCNA 1" | "CCNA 2">("CCNA 2");
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setSelectedCourse(params.get("course"));
+    const course = params.get("course");
+    setSelectedCourse(course === "CCNA 1" ? "CCNA 1" : "CCNA 2");
   }, []);
   const questions = useMemo(() => {
     if (selectedCourse === "CCNA 1") return ccna1Questions;
@@ -26,20 +36,20 @@ export default function QuizPage() {
 
   const orderedQuestions = useMemo(() => {
     if (!randomMode) return questions;
-    const shuffled = [...questions];
-    for (let i = shuffled.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
+    return shuffleArray(questions);
   }, [questions, randomMode]);
+  const current = orderedQuestions[index];
+  const orderedOptions = useMemo(
+    () => (current ? shuffleArray(current.options) : []),
+    [current]
+  );
 
-  if (!questions.length) {
+  if (!current) {
     return <p>No questions available. Run `npm run parse` first.</p>;
   }
 
-  const current = orderedQuestions[index];
   const isMulti = current.correctAnswers.length > 1;
+  const hasKnownAnswer = current.correctAnswers.length > 0;
   const effectiveRevealed = revealed || showAnswers;
   const isOrderingQuestion =
     /correspondre|séquence|sequence|ordre|classer|rank/i.test(current.question) &&
@@ -64,6 +74,7 @@ export default function QuizPage() {
 
   const submitAnswer = () => {
     if (revealed) return;
+    if (!hasKnownAnswer) return;
     const isCorrect = isOrderingQuestion
       ? JSON.stringify(selected) === JSON.stringify(current.correctAnswers)
       : JSON.stringify([...selected].sort()) === JSON.stringify([...current.correctAnswers].sort());
@@ -115,8 +126,13 @@ export default function QuizPage() {
 
       <QuestionCard question={current}>
         <p className="mb-2 text-sm text-slate-600">{selectionTypeLabel}</p>
+        {!hasKnownAnswer ? (
+          <div className="mb-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
+            No verified answer found for this question yet.
+          </div>
+        ) : null}
         <div className="space-y-3">
-          {current.options.map((option) => {
+          {orderedOptions.map((option) => {
             const checked = selected.includes(option);
             const isCorrect = current.correctAnswers.includes(option);
             const isWrongSelection = effectiveRevealed && checked && !isCorrect;
@@ -180,13 +196,22 @@ export default function QuizPage() {
 
         <div className="mt-5 space-y-4">
           {!effectiveRevealed ? (
-            <button
-              onClick={submitAnswer}
-              disabled={selected.length === 0}
-              className="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white disabled:opacity-40"
-            >
-              Submit
-            </button>
+            <div className="flex gap-3">
+              <button
+                onClick={submitAnswer}
+                disabled={selected.length === 0 || !hasKnownAnswer}
+                className="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white disabled:opacity-40"
+              >
+                Submit
+              </button>
+              <button
+                onClick={goNext}
+                disabled={index === orderedQuestions.length - 1}
+                className="rounded-lg border border-slate-300 bg-white px-4 py-2 disabled:opacity-40"
+              >
+                Skip
+              </button>
+            </div>
           ) : (
             <>
               {current.explanation ? (

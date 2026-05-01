@@ -35,11 +35,26 @@
     "correctAnswers": [
       "Des protocoles développés par des entreprises qui contrôlent leur définition et leur fonctionnement"
     ],
-    "explanation": "Explique: Les protocoles propriétaires ont leur définition et leur fonctionnement contrôlés par une entreprise ou un fournisseur. Certains d’entre eux peuvent être utilisés par différentes organisations avec l’autorisation du propriétaire. La suite de protocoles TCP/IP est une norme ouverte et non un protocole propriétaire.",
-    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2024-10-14_061913.jpg"
+    "explanation": "Explique: Les protocoles propriétaires ont leur définition et leur fonctionnement contrôlés par une entreprise ou un fournisseur. Certains d’entre eux peuvent être utilisés par différentes organisations avec l’autorisation du propriétaire. La suite de protocoles TCP/IP est une norme ouverte et non un protocole propriétaire."
   },
   {
     "id": 3,
+    "course": "CCNA 1",
+    "sourceId": 3,
+    "question": "Reliez chaque description au terme correspondant. (Les options ne sont pas toutes utilisées.)",
+    "options": [
+      "Dimensionnement des messages - Processus consistant à décomposer un message long en parties distinctes avant de les envoyer sur le réseau",
+      "Encapsulation des messages - Processus consistant à placer un format de message à l’intérieur d’un autre",
+      "Codage des messages - Processus permettant de convertir des informations dans un format acceptable pour la transmission"
+    ],
+    "correctAnswers": [
+      "Dimensionnement des messages - Processus consistant à décomposer un message long en parties distinctes avant de les envoyer sur le réseau",
+      "Encapsulation des messages - Processus consistant à placer un format de message à l’intérieur d’un autre",
+      "Codage des messages - Processus permettant de convertir des informations dans un format acceptable pour la transmission"
+    ]
+  },
+  {
+    "id": 4,
     "course": "CCNA 1",
     "sourceId": 4,
     "question": "Un administrateur réseau ajoute un nouveau réseau local à une filiale. Le nouveau réseau local doit prendre en charge 4 périphériques connectés. Quel est le plus petit masque réseau que l’administrateur réseau peut utiliser pour le nouveau réseau?",
@@ -54,7 +69,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": 5,
     "course": "CCNA 1",
     "sourceId": 5,
     "question": "À quoi sert le glissement de fenêtre TCP ?",
@@ -70,7 +85,7 @@
     "explanation": "Explication: Le mécanisme de glissement de fenêtre TCP permet à un périphérique de destination de demander à une source de ralentir la transmission. Pour ce faire, il réduit la valeur contenue dans le champ de taille de fenêtre du segment. Ce sont les accusés de réception qui servent à demander la retransmission à partir d’un point particulier. Ce sont les numéros d’ordre qui servent à s’assurer que les segments arrivent dans le bon ordre. Enfin, c’est un bit de contrôle FIN qui sert à mettre fin à une session de communication."
   },
   {
-    "id": 5,
+    "id": 6,
     "course": "CCNA 1",
     "sourceId": 6,
     "question": "Des données sont envoyées depuis un ordinateur source vers un serveur de destination. Quelles sont les trois affirmations qui décrivent la fonction TCP ou UDP dans cette situation ? (Choisissez trois réponses.)",
@@ -90,7 +105,7 @@
     "explanation": "Explique: Les numéros de port de couche 4 identifient l’application ou le service qui gérera les données. Le numéro de port source est ajouté par l’appareil expéditeur et sera le numéro de port de destination lorsque les informations demandées seront renvoyées. Les segments de couche 4 sont encapsulés dans des paquets IP. UDP, et non TCP, est utilisé lorsqu’une faible surcharge est nécessaire. Une adresse IP source, et non un numéro de port source TCP, identifie l’hôte expéditeur sur le réseau. Les numéros de port de destination sont des ports spécifiques qu’une application serveur ou un service surveille pour les demandes."
   },
   {
-    "id": 6,
+    "id": 7,
     "course": "CCNA 1",
     "sourceId": 7,
     "question": "Un serveur reçoit un paquet client. Le numéro de port de destination du paquet est 69. Quelle application de service le client demande-t-il?",
@@ -105,7 +120,7 @@
     ]
   },
   {
-    "id": 7,
+    "id": 8,
     "course": "CCNA 1",
     "sourceId": 8,
     "question": "Quelle caractéristique décrit un cheval de Troie?",
@@ -120,7 +135,7 @@
     ]
   },
   {
-    "id": 8,
+    "id": 9,
     "course": "CCNA 1",
     "sourceId": 9,
     "question": "Quels sont les deux problèmes qui peuvent être causés par un grand nombre de requêtes ARP et de messages de réponse? (Choisissez deux réponses.)",
@@ -138,7 +153,7 @@
     "explanation": "Explique: Les requêtes ARP sont envoyées sous forme de diffusion : (1) Tous les nœuds les recevront et ils seront traités par logiciel, interrompant le CPU. (2) Le commutateur transmet (inonde) les diffusions de couche 2 vers tous les ports. Un commutateur ne modifie pas sa table MAC en fonction des messages de demande ou de réponse ARP. Le commutateur remplit la table MAC en utilisant l’adresse MAC source de toutes les trames. La charge utile ARP est très petite et ne surcharge pas le commutateur."
   },
   {
-    "id": 9,
+    "id": 10,
     "course": "CCNA 1",
     "sourceId": 10,
     "question": "Quelle commande peut être utilisée sur un PC Windows pour afficher la configuration IP de cet ordinateur ?",
@@ -153,7 +168,7 @@
     ]
   },
   {
-    "id": 10,
+    "id": 11,
     "course": "CCNA 1",
     "sourceId": 11,
     "question": "Comment la commande service password-encryption améliore-t-elle la sécurité des mots de passe sur des routeurs et des commutateurs Cisco ?",
@@ -169,7 +184,7 @@
     "explanation": "Expliquer : La commande service password-encryption crypte les mots de passe en clair dans le fichier de configuration afin qu’ils ne puissent pas être consultés par des utilisateurs non autorisés."
   },
   {
-    "id": 11,
+    "id": 12,
     "course": "CCNA 1",
     "sourceId": 12,
     "question": "Quel mécanisme est utilisé par un routeur pour empêcher un paquet IPv4 reçu de voyager sans fin sur un réseau ?",
@@ -184,7 +199,7 @@
     ]
   },
   {
-    "id": 12,
+    "id": 13,
     "course": "CCNA 1",
     "sourceId": 13,
     "question": "Quel service est fourni par HTTPS?",
@@ -199,7 +214,7 @@
     ]
   },
   {
-    "id": 13,
+    "id": 14,
     "course": "CCNA 1",
     "sourceId": 14,
     "question": "Quelles sont les deux déclarations qui décrivent les caractéristiques d’une table de routage IPv4 sur un routeur ? (Choisissez deux réponses.)",
@@ -217,7 +232,7 @@
     ]
   },
   {
-    "id": 14,
+    "id": 15,
     "course": "CCNA 1",
     "sourceId": 15,
     "question": "Quelle valeur, qui se trouve dans un champ d’en-tête IPv4, est diminuée par chaque routeur qui reçoit un paquet ?",
@@ -233,24 +248,20 @@
     "explanation": "Explique: Lorsqu’un routeur reçoit un paquet, le routeur décrémentera le champ Time-to-Live (TTL) de un. Lorsque le champ atteint zéro, le routeur destinataire rejettera le paquet et enverra un message ICMP Time Exceeded à l’expéditeur."
   },
   {
-    "id": 15,
+    "id": 16,
     "course": "CCNA 1",
     "sourceId": 16,
-    "question": "",
+    "question": "Quelle caractéristique décrit le vol d’identité ?",
     "options": [
-      "R2: S0/0/1",
-      "R1: S0/0/0",
-      "R1: G0/0",
-      "R2: S0/0/0"
+      "l’utilisation d’identifiants volés pour accéder à des données privées",
+      "logiciel sur un routeur qui filtre le trafic en fonction des adresses IP ou des applications",
+      "logiciel qui identifie les menaces à propagation rapide",
+      "un protocole de tunneling qui fournit aux utilisateurs distants un accès sécurisé au réseau d’une organisation"
     ],
-    "correctAnswers": [
-      "R1: G0/0"
-    ],
-    "explanation": "Explication : La passerelle par défaut de l’hôte H1 est l’interface du routeur qui est connectée au réseau local dont H1 est membre. Dans ce cas, c’est l’interface G0/0 de R1. H1 doit être configuré avec l’adresse IP de cette interface dans ses paramètres d’adressage. R1 fournira des services de routage aux paquets de H1 qui doivent être transférés vers des réseaux distants.",
-    "image": "https://ccnareponses.com/wp-content/uploads/2025/06/6122384.jpg"
+    "correctAnswers": []
   },
   {
-    "id": 16,
+    "id": 17,
     "course": "CCNA 1",
     "sourceId": 17,
     "question": "La commande de configuration globale ip default-gateway 172.16.100.1 est appliquée sur un commutateur. Quel est l’effet de cette commande?",
@@ -266,7 +277,7 @@
     "explanation": "Explique: Une adresse de passerelle par défaut est généralement configurée sur tous les appareils pour leur permettre de communiquer au-delà de leur réseau local. Dans un commutateur, cela est réalisé à l’aide de la commande ip default-gateway < adresse IP>."
   },
   {
-    "id": 17,
+    "id": 18,
     "course": "CCNA 1",
     "sourceId": 18,
     "question": "Un nouvel administrateur de réseau a été invité à saisir un message de bannière sur un appareil Cisco. Quel est le moyen le plus rapide pour un administrateur de réseau de vérifier si la bannière est correctement configurée ?",
@@ -283,7 +294,7 @@
     "explanation": "Explique: À l’invite de mode privilégié telle que Router#, tapez exit , appuyez sur Enter et le message de la bannière s’affiche. La mise sous tension d’un périphérique réseau ayant reçu la commande banner motd affichera également le message de la bannière, mais ce n’est pas un façon efficace de tester la configuration."
   },
   {
-    "id": 18,
+    "id": 19,
     "course": "CCNA 1",
     "sourceId": 19,
     "question": "Quelle méthode est utilisée pour gérer l’accès avec gestion des conflits sur un réseau sans fil ?",
@@ -299,7 +310,7 @@
     "explanation": "Explication: La méthode CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance) est utilisée avec la technologie sans fil pour gérer les conflits de supports. La méthode CSMA/CD (Carrier Sense Multiple Access with Collision Detection) est utilisée avec la technologie Ethernet pour gérer les conflits de supports. Le classement des priorités et le passage de jeton ne sont pas utilisés pour le contrôle d’accès au support."
   },
   {
-    "id": 19,
+    "id": 20,
     "course": "CCNA 1",
     "sourceId": 20,
     "question": "Parmi les caractéristiques suivantes, lesquelles sont des caractéristiques du processus CSMA/CD ? (Choisissez trois réponses.)",
@@ -319,7 +330,7 @@
     "explanation": "Explique: Le processus Carrier Sense Multiple Access/Collision Detection (CSMA/CD) est un mécanisme de contrôle d’accès multimédia basé sur la contention utilisé sur les réseaux d’accès multimédia partagés, tels qu’Ethernet. Lorsqu’un appareil a besoin de transmettre des données, il écoute et attend que le support soit disponible (silencieux), puis il enverra des données. Si deux appareils transmettent en même temps, une collision se produira. Les deux appareils détecteront la collision sur le réseau. Lorsqu’un appareil détecte une collision, il arrête le processus de transmission des données, attend un temps aléatoire, puis réessaye."
   },
   {
-    "id": 20,
+    "id": 21,
     "course": "CCNA 1",
     "sourceId": 21,
     "question": "Quel champ de trame est créé par un nœud source et utilisé par un nœud de destination pour s’assurer qu’un signal de données transmis n’a pas été modifié par interférence, distorsion ou perte de signal?",
@@ -335,7 +346,7 @@
     ]
   },
   {
-    "id": 21,
+    "id": 22,
     "course": "CCNA 1",
     "sourceId": 22,
     "question": "Quelle technologie sans fil a des besoins en termes de consommation d’énergie et de débit des données qui la rendent populaire dans les applications domotiques ?",
@@ -350,7 +361,7 @@
     ]
   },
   {
-    "id": 22,
+    "id": 23,
     "course": "CCNA 1",
     "sourceId": 23,
     "question": "Examinez l’illustration. Quel est le problème avec le raccordement affiché ?",
@@ -367,7 +378,7 @@
     "image": "https://ccnareponses.com/wp-content/uploads/2021/12/i274300v1n1_209630-300x221-1-1.png"
   },
   {
-    "id": 23,
+    "id": 24,
     "course": "CCNA 1",
     "sourceId": 24,
     "question": "Un administrateur réseau conçoit la structure d’un nouveau réseau sans fil. Quels points problématiques doivent être pris en compte lors de la conception d’un réseau sans fil ? (Choisissez trois réponses.)",
@@ -386,25 +397,30 @@
     ]
   },
   {
-    "id": 24,
+    "id": 25,
     "course": "CCNA 1",
     "sourceId": 25,
-    "question": "Examinez l’illustration. Une société utilise le bloc d’adresses de 128.107.0.0/16 pour son réseau. Quel masque de sous-réseau peut fournir un maximum de sous-réseaux de taille égale tout en fournissant suffisamment d’adresses d’hôte pour chaque sous-réseau dans l’illustration ?",
+    "question": "Quelles sont les deux informations affichées dans la sortie de la commande show ip interface brief ? (Choisissez deux réponses.)",
     "options": [
+      "Adresses IP",
+      "description des interfaces",
+      "Adresses MAC",
+      "adresses de saut suivant",
+      "Statuts de la couche 1",
+      "Paramètres de vitesse et de duplex",
+      "255.255.255.128",
       "255.255.255.240",
-      "255.255.255.224",
-      "255.255.255.0",
-      "255.255.255.192",
-      "255.255.255.128"
+      "255.255.255.248",
+      "255.255.255.224"
     ],
     "correctAnswers": [
-      "255.255.255.128"
+      "adresses de saut suivant",
+      "Paramètres de vitesse et de duplex"
     ],
-    "explanation": "Explique: Le plus grand sous-réseau de la topologie contient 100 hôtes, le masque de sous-réseau doit donc contenir au moins 7 bits d’hôte (27-2=126). 255.255.255.0 a 8 bits d’hôtes, mais cela ne répond pas à l’exigence de fournir le nombre maximal de sous-réseaux.",
-    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-11-11_235555.jpg"
+    "explanation": "Explique: La commande show ip interface brief affiche l’adresse IP de chaque interface, ainsi que l’état opérationnel des interfaces au niveau de la couche 1 et de la couche 2. Afin de voir l’interface descriptions et paramètres de vitesse et de duplex, utilisez la commande show running-config interface. Les adresses de saut suivant sont affichées dans la table de routage avec la commande show ip route, et l’adresse MAC d’une interface peut être vue avec la commande show interfaces."
   },
   {
-    "id": 25,
+    "id": 26,
     "course": "CCNA 1",
     "sourceId": 26,
     "question": "Un administrateur réseau souhaite avoir le même masque de sous-réseau pour tous les réseaux d’un petit site. Le site a les réseaux et numéros de périphérique suivants : L’administrateur réseau juge que 192.168.10.0/24 doit être le réseau utilisé sur ce site. Quel masque de sous-réseau permettrait d’utiliser de manière optimale les adresses disponibles pour les quatre sous-réseaux ?",
@@ -425,7 +441,7 @@
     ]
   },
   {
-    "id": 26,
+    "id": 27,
     "course": "CCNA 1",
     "sourceId": 27,
     "question": "Examinez l’illustration. Associez les réseaux aux adresses IP et aux préfixes capables de répondre aux exigences d’adressage d’hôte utilisable pour chaque réseau. (Les options ne doivent pas être toutes utilisées.)",
@@ -435,7 +451,7 @@
     "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-11-11_235633.jpg"
   },
   {
-    "id": 27,
+    "id": 28,
     "course": "CCNA 1",
     "sourceId": 28,
     "question": "Quelles sont les deux fonctions d’exécution sur la sous-couche MAC de la couche de liaison de données OSI pour faciliter la communication Ethernet? (Choisissez deux réponses.) Cas 1: Cas 2: Cas 3: Cas 4: Cas 5:",
@@ -480,7 +496,7 @@
     ]
   },
   {
-    "id": 28,
+    "id": 29,
     "course": "CCNA 1",
     "sourceId": 29,
     "question": "Les utilisateurs se plaignent de délais allongés lors de l’authentification et de l’accès aux ressources réseau à certains moments de la semaine. Quel type d’information les ingénieurs réseau doivent-ils vérifier pour savoir si cette situation s’inscrit dans un comportement normal du réseau ?",
@@ -495,7 +511,7 @@
     ]
   },
   {
-    "id": 29,
+    "id": 30,
     "course": "CCNA 1",
     "sourceId": 30,
     "question": "Un groupe de PC Windows se trouvant sur un nouveau sous-réseau a été ajouté à un réseau Ethernet. Lors de tests de connectivité, un technicien découvre que ces ordinateurs peuvent accéder aux ressources du réseau local, mais pas à celles d’Internet. Pour résoudre le problème, le technicien souhaite d’abord vérifier les configurations des adresses IP et du DNS sur les ordinateurs, et la connectivité au routeur local. Quels sont les trois utilitaires et commandes d’interface de ligne de commande Windows qui fourniront les informations nécessaires ? (Choisissez trois réponses.)",
@@ -515,7 +531,7 @@
     ]
   },
   {
-    "id": 30,
+    "id": 31,
     "course": "CCNA 1",
     "sourceId": 31,
     "question": "Quel type de serveur s’appuie sur des types d’enregistrements tels que A, NS, AAAA et MX pour fournir des services?",
@@ -531,7 +547,7 @@
     "explanation": "Explique: Un serveur DNS stocke les enregistrements utilisés pour résoudre les adresses IP en noms d’hôtes. Certains types d’enregistrement DNS sont les suivants : A – une adresse IPv4 de périphérique final NS – un serveur de noms faisant autorité AAAA – une adresse IPv6 de périphérique final MX – un enregistrement d’échange de courrier"
   },
   {
-    "id": 31,
+    "id": 32,
     "course": "CCNA 1",
     "sourceId": 32,
     "question": "Un technicien réussit à envoyer une requête ping pour l’adresse IP du serveur d’une entreprise distante, mais pas pour l’adresse URL de ce même serveur web. Quelle commande doit-il exécuter pour diagnostiquer ce problème ?",
@@ -547,7 +563,7 @@
     "explanation": "Explique: Traceroute (tracert) est un utilitaire qui génère une liste de sauts qui ont été atteints avec succès le long du chemin de la source à la destination. Cette liste peut fournir des informations importantes de vérification et de dépannage. L’utilitaire ipconfig est utilisé pour afficher les paramètres de configuration IP sur un PC Windows. L’utilitaire Netstat est utilisé pour identifier les connexions TCP actives ouvertes et en cours d’exécution sur un hôte en réseau. Nslookup est un utilitaire qui permet à l’utilisateur d’interroger manuellement les serveurs de noms pour résoudre un nom d’hôte donné. Cet utilitaire peut également être utilisé pour résoudre les problèmes de résolution de noms et pour vérifier l’état actuel des serveurs de noms."
   },
   {
-    "id": 32,
+    "id": 33,
     "course": "CCNA 1",
     "sourceId": 33,
     "question": "Associez les caractéristiques aux méthodes de transmission correspondantes. (Les options ne doivent pas être toutes utilisées.)",
@@ -557,7 +573,7 @@
     "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-11-11_235847.jpg"
   },
   {
-    "id": 33,
+    "id": 34,
     "course": "CCNA 1",
     "sourceId": 34,
     "question": "Quelles propositions relatives aux adresses IP et MAC dans le cadre de la transmission des données si NAT n’est pas impliquée sont exactes ? (Choisissez deux réponses.)",
@@ -574,7 +590,7 @@
     ]
   },
   {
-    "id": 34,
+    "id": 35,
     "course": "CCNA 1",
     "sourceId": 35,
     "question": "Associez les fonctionnalités aux catégories (Les propositions ne doivent pas être toutes utilisées.)",
@@ -583,7 +599,7 @@
     "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-11-12_000004.jpg"
   },
   {
-    "id": 35,
+    "id": 36,
     "course": "CCNA 1",
     "sourceId": 36,
     "question": "Quel avantage présente l’utilisation du cloud computing dans les réseaux ?",
@@ -598,7 +614,7 @@
     ]
   },
   {
-    "id": 36,
+    "id": 37,
     "course": "CCNA 1",
     "sourceId": 37,
     "question": "Quelles sont les fonctions d’ARP ? (Choisissez deux réponses.)",
@@ -615,7 +631,7 @@
     ]
   },
   {
-    "id": 37,
+    "id": 38,
     "course": "CCNA 1",
     "sourceId": 38,
     "question": "Quelles couches du modèle OSI équivalent à la couche application du modèle TCP/IP ? (Choisissez trois propositions.)",
@@ -635,7 +651,7 @@
     "explanation": "Explique: Le modèle TCP/IP se compose de quatre couches : application, transport, Internet et accès réseau. Le modèle OSI se compose de sept couches : application, présentation, session, transport, réseau, liaison de données et physique. Les trois couches supérieures du modèle OSI : application, présentation et session correspondent à la couche d’application du modèle TCP/IP."
   },
   {
-    "id": 38,
+    "id": 39,
     "course": "CCNA 1",
     "sourceId": 39,
     "question": "Reportez-vous à l’illustration. Si PC1 envoie un paquet à PC2 et que le routage a été configuré entre les deux routeurs, que fait R1 de l’en-tête de trame Ethernet intégré par PC1 ?",
@@ -652,7 +668,7 @@
     "image": "https://ccnareponses.com/wp-content/uploads/2021/12/i271152v1n1_271152-1.png"
   },
   {
-    "id": 39,
+    "id": 40,
     "course": "CCNA 1",
     "sourceId": 40,
     "question": "Quel service est fourni par Internet Messenger ?",
@@ -667,7 +683,7 @@
     ]
   },
   {
-    "id": 40,
+    "id": 41,
     "course": "CCNA 1",
     "sourceId": 41,
     "question": "Quelles commandes peuvent être utilisées sur un hôte Windows pour afficher la table de routage ? (Choisissez deux réponses.)",
@@ -685,7 +701,7 @@
     "explanation": "Explique: Sur un hôte Windows, les commandes route print ou netstat -r peuvent être utilisées pour afficher la table de routage de l’hôte. Les deux commandes génèrent la même sortie. Sur un routeur, la commande show ip route est utilisée pour afficher la table de routage. La commande netstat –s est utilisée pour afficher les statistiques par protocole. La commande tracert est utilisée pour afficher le chemin parcouru par un paquet jusqu’à sa destination."
   },
   {
-    "id": 41,
+    "id": 42,
     "course": "CCNA 1",
     "sourceId": 42,
     "question": "Associez les descriptions aux adresses IP correspondantes. (Les options ne sont pas toutes utilisées.)",
@@ -700,11 +716,10 @@
       "Adresse expérimentale - 240.2.6.255",
       "À une adresse publique - 198.133.219.2",
       "Adresse link-local - 127.0.0.1"
-    ],
-    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2024-10-13_160654.jpg"
+    ]
   },
   {
-    "id": 42,
+    "id": 43,
     "course": "CCNA 1",
     "sourceId": 43,
     "question": "Quel scénario décrit une fonction fournie par la couche transport ?",
@@ -720,7 +735,7 @@
     "explanation": "Explique: Les numéros de port source et de destination sont utilisés pour identifier l’application et la fenêtre correctes au sein de cette application."
   },
   {
-    "id": 43,
+    "id": 44,
     "course": "CCNA 1",
     "sourceId": 44,
     "question": "Que signifie le terme «atténuation» dans la communication de données?",
@@ -736,7 +751,7 @@
     "explanation": "Explique: Les données sont transmises sur les câbles en cuivre sous forme d’impulsions électriques. Un détecteur dans l’interface réseau d’un périphérique de destination doit recevoir un signal pouvant être décodé correctement pour correspondre au signal envoyé. Toutefois, plus le signal voyage longtemps, plus il se détériore. C’est ce qu’on appelle l’atténuation du signal."
   },
   {
-    "id": 44,
+    "id": 45,
     "course": "CCNA 1",
     "sourceId": 45,
     "question": "Que se passe-t-il si l’adresse de la passerelle par défaut n’est pas correctement configurée sur un hôte ?",
@@ -753,7 +768,7 @@
     "explanation": "Explique: Lorsqu’un hôte doit envoyer un message à un autre hôte du même réseau, il transfère directement le message. Cependant, lorsqu’un hôte doit envoyer un message à un réseau distant, il doit utiliser le routeur, également connu sous le nom de « passerelle par défaut ». En effet, l’adresse de la trame liaison de données de l’hôte de destination à distance ne peut pas être utilisée directement. Au lieu de cela, le paquet IP doit être envoyé au routeur (passerelle par défaut). Le routeur transfèrera ensuite le paquet vers sa destination. Par conséquent, si la passerelle par défaut n’est pas configurée correctement, l’hôte peut communiquer avec d’autres hôtes sur le même réseau, mais pas avec les hôtes des réseaux distants."
   },
   {
-    "id": 45,
+    "id": 46,
     "course": "CCNA 1",
     "sourceId": 46,
     "question": "Les utilisateurs signalent que l’accès réseau est lent. Après avoir questionné les employés, l’administrateur réseau a découvert que l’un d’eux a téléchargé un programme de numérisation tiers pour l’imprimante. Quel type de malware peut ralentir les performances du réseau ?",
@@ -769,7 +784,7 @@
     "explanation": "Explique: Un spécialiste de la cybersécurité doit se familiariser avec les caractéristiques des différents types de logiciels malveillants et d’attaques qui menacent une organisation."
   },
   {
-    "id": 46,
+    "id": 47,
     "course": "CCNA 1",
     "sourceId": 47,
     "question": "Quelle est la conséquence de la configuration d’un routeur avec la commande de configuration globale ipv6 unicast-routing ?​",
@@ -784,7 +799,7 @@
     ]
   },
   {
-    "id": 47,
+    "id": 48,
     "course": "CCNA 1",
     "sourceId": 48,
     "question": "Reportez-vous à l’illustration.Hôte B sur le sous-réseau Enseignants transmet un paquet à l’hôte D sur le sous-réseau Students. Quelles adresses de couche 2 et de couche 3 sont contenues dans les PDU qui sont transmises de l’hôte B au routeur?",
@@ -793,7 +808,7 @@
     "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-11-12_000249.jpg"
   },
   {
-    "id": 48,
+    "id": 49,
     "course": "CCNA 1",
     "sourceId": 49,
     "question": "Un employé d’une grande entreprise se connecte à distance à l’entreprise en utilisant le nom d’utilisateur et le mot de passe appropriés. L’employé assiste à une vidéoconférence importante avec un client concernant une grande vente. Il est important que la qualité vidéo soit excellente pendant la réunion. L’employé ne sait pas qu’après une connexion efficace, la connexion au fournisseur d’accès Internet (FAI) de l’entreprise a échoué. La connexion secondaire, cependant, s’est activée en quelques secondes. La perturbation n’a pas été remarquée par l’employé ou les autres employés. Quelles sont les trois caractéristiques du réseau décrites dans ce scénario? (Choisissez trois réponses.)",
@@ -812,7 +827,7 @@
     ]
   },
   {
-    "id": 49,
+    "id": 50,
     "course": "CCNA 1",
     "sourceId": 50,
     "question": "Une société possède un serveur de fichiers qui partage un dossier appelé Public. La stratégie de sécurité du réseau stipule que toute personne qui se connecte au serveur se voit attribuer des droits en lecture seule au dossier Public, tandis que les droits de modification ne sont attribués qu’au groupe d’administrateurs réseau. Quel composant est repris dans la structure de services réseau AAA ?",
@@ -828,7 +843,7 @@
     "explanation": "Explique: Une fois qu’un utilisateur est authentifié avec succès (connecté au serveur), l’autorisation est le processus consistant à déterminer à quelles ressources réseau l’utilisateur peut accéder et quelles opérations (telles que lire ou modifier) ​​l’utilisateur peut effectuer."
   },
   {
-    "id": 50,
+    "id": 51,
     "course": "CCNA 1",
     "sourceId": 51,
     "question": "Examinez l’illustration. Un administrateur tente de configurer le commutateur mais reçoit le message d’erreur affiché sur l’illustration. Quel est le problème ?",
@@ -845,7 +860,7 @@
     "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-11-12_000332.jpg"
   },
   {
-    "id": 51,
+    "id": 52,
     "course": "CCNA 1",
     "sourceId": 52,
     "question": "Les protocoles utilisés dans la communication réseau pour transmettre des messages sur un réseau définissent trois conditions de transmission précises. Lesquelles ? (Choisissez trois propositions.)",
@@ -864,7 +879,7 @@
     ]
   },
   {
-    "id": 52,
+    "id": 53,
     "course": "CCNA 1",
     "sourceId": 53,
     "question": "Quelles sont les deux causes courantes de dégradation du signal lors de l’utilisation du câblage UTP? (Choisissez deux réponses.)",
@@ -882,7 +897,7 @@
     "explanation": "Explique: Lorsqu’il est mal terminé, chaque câble est une source potentielle de dégradation des performances de la couche physique."
   },
   {
-    "id": 53,
+    "id": 54,
     "course": "CCNA 1",
     "sourceId": 54,
     "question": "Quels sont les deux protocoles qui interviennent sur la couche supérieure de la pile de protocoles TCP/IP? (Choisissez deux réponses.)",
@@ -900,7 +915,7 @@
     ]
   },
   {
-    "id": 54,
+    "id": 55,
     "course": "CCNA 1",
     "sourceId": 55,
     "question": "Quelles sont deux caractéristiques du protocole IP ? (Choisissez deux propositions.)",
@@ -918,7 +933,7 @@
     "explanation": "Explique: Le protocole Internet (IP) est un protocole sans connexion et au mieux. Cela signifie qu’IP ne nécessite aucune connexion de bout en bout et ne garantit pas la livraison des paquets. IP est également indépendant du support, ce qui signifie qu’il fonctionne indépendamment du support réseau transportant les paquets."
   },
   {
-    "id": 55,
+    "id": 56,
     "course": "CCNA 1",
     "sourceId": 56,
     "question": "Quel sous-réseau comprend l’adresse 192.168.1.96 en tant qu’adresse d’hôte utilisable ?",
@@ -934,7 +949,7 @@
     "explanation": "Explique: Pour le sous-réseau 192.168.1.64/26, il y a 6 bits pour les adresses d’hôte, ce qui donne 64 adresses possibles. Cependant, les premier et dernier sous-réseaux sont les adresses de réseau et de diffusion pour ce sous-réseau. Par conséquent, la plage d’adresses d’hôtes pour ce sous-réseau est de 192.168.1.65 à 192.168.1.126. Les autres sous-réseaux ne contiennent pas l’adresse 192.168.1.96 comme adresse hôte valide."
   },
   {
-    "id": 56,
+    "id": 57,
     "course": "CCNA 1",
     "sourceId": 57,
     "question": "Parmi les propositions suivantes, deux expliquent comment évaluer les modèles de flux de trafic et les types de trafic réseau à l’aide d’un analyseur de protocole. Lesquelles ? (Choisissez deux propositions.)",
@@ -952,7 +967,7 @@
     "explanation": "Explique: Les modèles de flux de trafic doivent être collectés pendant les heures de pointe pour obtenir une bonne représentation des différents types de trafic. La capture doit également être effectuée sur différents segments de réseau, car une partie du trafic sera locale vers un segment particulier."
   },
   {
-    "id": 57,
+    "id": 58,
     "course": "CCNA 1",
     "sourceId": 58,
     "question": "Examinez l’illustration. D’après le résultat de la commande, quelles affirmations sur la connectivité réseau sont correctes ? (Choisissez deux propositions.)",
@@ -971,7 +986,7 @@
     "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-11-12_000440.jpg"
   },
   {
-    "id": 58,
+    "id": 59,
     "course": "CCNA 1",
     "sourceId": 59,
     "question": "Quel serait l’ID d’interface d’une interface compatible IPv6 avec une adresse MAC de 1C-6F-65-C2-BD-F8 lorsque l’ID d’interface est généré à l’aide du processus EUI-64 ?",
@@ -987,7 +1002,7 @@
     "explanation": "Explique: Pour dériver l’ID d’interface EUI-64 en utilisant l’adresse MAC 1C-6F-65-C2-BD-F8, trois étapes sont suivies. Modifiez le septième bit de l’adresse MAC d’un 0 binaire à un 1 binaire qui change l’hexadécimal C en un hexadécimal E. Insérez les chiffres hexadécimaux FFFE au milieu de l’adresse. Réécrivez l’adresse au format IPv6. Les trois étapes, une fois terminées, donnent l’ID d’interface de 1E6F:65FF:FEC2:BDF8."
   },
   {
-    "id": 59,
+    "id": 60,
     "course": "CCNA 1",
     "sourceId": 60,
     "question": "Un périphérique IPv6 envoie un paquet de données avec l’adresse de destination FF02::2. Quelle est la cible de ce paquet ?",
@@ -1002,7 +1017,7 @@
     ]
   },
   {
-    "id": 60,
+    "id": 61,
     "course": "CCNA 1",
     "sourceId": 61,
     "question": "Un client utilise la méthode SLAAC pour obtenir une adresse IPv6 pour son interface. Une fois qu’une adresse a été générée et appliquée à l’interface, que doit faire le client avant de pouvoir commencer à utiliser cette adresse IPv6 ?",
@@ -1017,7 +1032,7 @@
     ]
   },
   {
-    "id": 61,
+    "id": 62,
     "course": "CCNA 1",
     "sourceId": 62,
     "question": "Un employé mécontent utilise des outils de réseau sans fil gratuits pour déterminer des informations sur les réseaux sans fil de l’entreprise. Cette personne entend utiliser ces informations pour pirater le réseau sans fil. De quel type d’attaque s’agit-il?",
@@ -1033,7 +1048,7 @@
     "explanation": "Explication: Une attaque de reconnaissance est la découverte et la documentation non autorisées de divers réseaux informatiques, systèmes de réseau, ressources, applications, services ou vulnérabilités."
   },
   {
-    "id": 62,
+    "id": 63,
     "course": "CCNA 1",
     "sourceId": 63,
     "question": "Quelles informations la commande show startup-config affiche-t-elle ?",
@@ -1057,7 +1072,25 @@
     "explanation": "Explique: La commande show startup-config affiche la configuration enregistrée située dans la NVRAM. La commande show running-config affiche le contenu du fichier de configuration en cours d’exécution situé dans la RAM.​"
   },
   {
-    "id": 63,
+    "id": 64,
+    "course": "CCNA 1",
+    "sourceId": 64,
+    "question": "Examinez l’illustration. Quelles deux adresses réseau peuvent être attribuées au réseau accueillant 10 hôtes ? Dans votre réponse, vous devez gaspiller le moins d’adresses possible, ne pas réutiliser des adresses déjà attribuées et rester dans la plage d’adresses 10.18.10.0/24. (Choisissez deux propositions.)",
+    "options": [
+      "10.18.10.224/28",
+      "10.18.10.224/27",
+      "10.18.10.208/28",
+      "10.18.10.200/28",
+      "10.18.10.240/27",
+      "10.18.10.200/27"
+    ],
+    "correctAnswers": [
+      "10.18.10.224/28",
+      "10.18.10.208/28"
+    ]
+  },
+  {
+    "id": 65,
     "course": "CCNA 1",
     "sourceId": 65,
     "question": "Un administrateur réseau souhaite avoir le même masque de sous-réseau pour trois sous-réseaux sur un petit site. Le site a les réseaux et numéros de périphérique suivants : Quel masque de sous-réseau faudrait-il utiliser pour ces trois sous-réseaux ?",
@@ -1073,7 +1106,7 @@
     "explanation": "Explique: Si le même masque doit être utilisé, le réseau avec le plus d’hôtes doit être examiné pour le nombre d’hôtes. Comme il s’agit de 10 hôtes, 4 bits d’hôte sont nécessaires. Le masque de sous-réseau /28 ou 255.255.255.240 serait approprié pour ces réseaux. ​"
   },
   {
-    "id": 64,
+    "id": 66,
     "course": "CCNA 1",
     "sourceId": 66,
     "question": "Quelles sont les trois normes couramment suivies pour la construction et l’installation de câblage? (Choisissez trois réponses.)",
@@ -1092,7 +1125,7 @@
     ]
   },
   {
-    "id": 65,
+    "id": 67,
     "course": "CCNA 1",
     "sourceId": 67,
     "question": "Quel connecteur est utilisé avec le câblage à paires torsadées dans un réseau local Ethernet?",
@@ -1100,7 +1133,7 @@
     "correctAnswers": []
   },
   {
-    "id": 66,
+    "id": 68,
     "course": "CCNA 1",
     "sourceId": 68,
     "question": "Quelle technique utilise-t-on avec un câble à paires torsadées non blindées pour isoler les signaux des interférences issues d’une diaphonie ?",
@@ -1123,7 +1156,24 @@
     "explanation": "Explique: Pour éviter les effets de la diaphonie, les fils des câbles UTP sont torsadés en paires. La torsion des fils ensemble provoque l’annulation des champs magnétiques de chaque fil."
   },
   {
-    "id": 67,
+    "id": 69,
+    "course": "CCNA 1",
+    "sourceId": 69,
+    "question": "Un administrateur réseau remarque qu’un câblage Ethernet nouvellement installé transporte des signaux de données déformés et altérés. Le nouveau câblage a été installé dans le plafond près des éclairages fluorescents et de l’équipement électrique. Quels facteurs peuvent interférer avec le câblage en cuivre et provoquer une distorsion des signaux et une corruption des données ? (Choisissez deux réponses.)",
+    "options": [
+      "EMI",
+      "Interférences",
+      "RFI​",
+      "Longueur étendue du câblage",
+      "Atténuation du signal"
+    ],
+    "correctAnswers": [
+      "EMI",
+      "RFI​"
+    ]
+  },
+  {
+    "id": 70,
     "course": "CCNA 1",
     "sourceId": 70,
     "question": "Quel service est fourni par DNS ?",
@@ -1138,7 +1188,7 @@
     ]
   },
   {
-    "id": 68,
+    "id": 71,
     "course": "CCNA 1",
     "sourceId": 71,
     "question": "Examinez l’illustration. Les commutateurs présentent leur configuration par défaut. L’hôte A doit communiquer avec l’hôte D, mais l’hôte A ne peut avoir l’adresse MAC pour sa passerelle par défaut. Quels hôtes de réseau recevront la requête ARP envoyée par l’hôte A ?",
@@ -1163,7 +1213,24 @@
     "explanation": "Explique: Étant donné que l’hôte A n’a pas l’adresse MAC de la passerelle par défaut dans sa table ARP, l’hôte A envoie une diffusion ARP. La diffusion ARP serait envoyée à chaque périphérique du réseau local. Les hôtes B, C et le routeur R1 recevraient la diffusion. Le routeur R1 ne transmettrait pas le message."
   },
   {
-    "id": 69,
+    "id": 72,
+    "course": "CCNA 1",
+    "sourceId": 72,
+    "question": "Quelles sont les fonctions fournies par la couche réseau ? (Choisissez deux réponses.)",
+    "options": [
+      "Fournir des connexions de bout en bout dédiées",
+      "Diriger les paquets de données vers les hôtes de destination sur d’autres réseaux",
+      "Placer des données sur le support réseau",
+      "Fournir des périphériques finaux dotés d’un identificateur de réseau unique",
+      "Transport de données entre des processus s’exécutant sur les hôtes source et de destination"
+    ],
+    "correctAnswers": [
+      "Diriger les paquets de données vers les hôtes de destination sur d’autres réseaux",
+      "Fournir des périphériques finaux dotés d’un identificateur de réseau unique"
+    ]
+  },
+  {
+    "id": 73,
     "course": "CCNA 1",
     "sourceId": 73,
     "question": "Quelles propositions sont correctes dans le cadre de la comparaison des en-têtes de paquet IPv4 et IPv6 ? (Choisissez deux réponses.)",
@@ -1180,7 +1247,7 @@
     ]
   },
   {
-    "id": 70,
+    "id": 74,
     "course": "CCNA 1",
     "sourceId": 74,
     "question": "Quelle caractéristique décrit un virus?",
@@ -1195,7 +1262,7 @@
     ]
   },
   {
-    "id": 71,
+    "id": 75,
     "course": "CCNA 1",
     "sourceId": 75,
     "question": "Trois employés de banque utilisent le réseau d’entreprise. Le premier employé utilise un navigateur Web pour afficher une page Web de la société afin de lire des annonces. Le deuxième employé accède à la base de données d’entreprise pour effectuer des transactions financières. Le troisième employé participe à une importante conférence audio en direct avec d’autres responsables de l’entreprise basés dans les filiales. Si la qualité de service est implémentée sur ce réseau, quelles seront les priorités, des plus importantes au moins importantes, des différents types de données ?",
@@ -1216,7 +1283,22 @@
     "explanation": "Explique: Les mécanismes de qualité de service permettent d’établir des stratégies de gestion des files d’attente qui imposent des priorités pour différentes catégories de données d’application. Ainsi, cette mise en file d’attente permet aux données vocales d’avoir la priorité sur les données de transaction, qui ont la priorité sur les données Web."
   },
   {
-    "id": 72,
+    "id": 76,
+    "course": "CCNA 1",
+    "sourceId": 76,
+    "question": "Un administrateur réseau ajoute un nouveau réseau local à une filiale. Le nouveau réseau local doit prendre en charge 200 périphériques connectés. Quel est le plus petit masque réseau que l’administrateur réseau peut utiliser pour le nouveau réseau?",
+    "options": [
+      "255.255.255.192",
+      "255.255.255.0",
+      "255.255.255.224",
+      "255.255.255.240"
+    ],
+    "correctAnswers": [
+      "255.255.255.0"
+    ]
+  },
+  {
+    "id": 77,
     "course": "CCNA 1",
     "sourceId": 77,
     "question": "Qu’est-ce qu’une fonction de la couche de liaison de données?",
@@ -1231,7 +1313,7 @@
     ]
   },
   {
-    "id": 73,
+    "id": 78,
     "course": "CCNA 1",
     "sourceId": 78,
     "question": "Un hôte tente d’envoyer un paquet à un périphérique sur un segment du réseau local distant, mais il n’y a actuellement aucun mappage dans son cache ARP. Comment le périphérique obtient-il une adresse MAC de destination ?",
@@ -1247,22 +1329,7 @@
     ]
   },
   {
-    "id": 74,
-    "course": "CCNA 1",
-    "sourceId": 89,
-    "question": "Quelle méthode de commutation supprime les trames qui ne passent pas avec succès le contrôle FCS ?",
-    "options": [
-      "commutation « cut-through »",
-      "commutation sans frontières",
-      "mise en mémoire tampon des ports d’entrée",
-      "commutation par « stockage et retransmission »"
-    ],
-    "correctAnswers": [
-      "commutation par « stockage et retransmission »"
-    ]
-  },
-  {
-    "id": 75,
+    "id": 79,
     "course": "CCNA 1",
     "sourceId": 80,
     "question": "Faites correspondre le champ d’en-tête avec la couche appropriée du modèle OSI. (Toutes les options ne doivent pas être utilisées.)",
@@ -1270,7 +1337,7 @@
     "correctAnswers": []
   },
   {
-    "id": 76,
+    "id": 80,
     "course": "CCNA 1",
     "sourceId": 81,
     "question": "Quel est l’avantage pour les petites entreprises d’adopter IMAP au lieu de POP ?",
@@ -1286,7 +1353,15 @@
     "explanation": "Explique: IMAP et POP sont des protocoles utilisés pour récupérer les e-mails. L’avantage d’utiliser IMAP au lieu de POP est que lorsque l’utilisateur se connecte à un serveur compatible IMAP, des copies des messages sont téléchargées vers l’application cliente. IMAP stocke ensuite les messages électroniques sur le serveur jusqu’à ce que l’utilisateur supprime manuellement ces messages."
   },
   {
-    "id": 77,
+    "id": 81,
+    "course": "CCNA 1",
+    "sourceId": 82,
+    "question": "Associez les affirmations suivantes aux modèles de réseau correspondants. (Les options ne sont pas toutes utilisées.)",
+    "options": [],
+    "correctAnswers": []
+  },
+  {
+    "id": 82,
     "course": "CCNA 1",
     "sourceId": 83,
     "question": "Examinez l’illustration. Si Hôte1 doit transférer un fichier au serveur, quelles couches du modèle TCP/IP faut-il utiliser ?",
@@ -1309,7 +1384,22 @@
     "explanation": "Explique: Le modèle TCP/IP contient les couches application, transport, Internet et accès réseau. Un transfert de fichier utilise le protocole de couche application FTP. Les données se déplaceraient de la couche d’application à travers toutes les couches du modèle et à travers le réseau vers le serveur de fichiers."
   },
   {
-    "id": 78,
+    "id": 83,
+    "course": "CCNA 1",
+    "sourceId": 84,
+    "question": "Un utilisateur se plaint qu’une page Web externe prend plus de temps que la normale pour se charger. La page Web finit par se charger sur la machine utilisateur. Quel outil le technicien doit-il utiliser avec les privilèges d’administrateur pour localiser le problème dans le réseau?",
+    "options": [
+      "nslookup",
+      "ping",
+      "tracert",
+      "ipconfig /displaydns"
+    ],
+    "correctAnswers": [
+      "tracert"
+    ]
+  },
+  {
+    "id": 84,
     "course": "CCNA 1",
     "sourceId": 85,
     "question": "Quelle plage d’adresses link-local peut être attribuée à une interface IPv6 ?",
@@ -1325,11 +1415,26 @@
     "correctAnswers": [
       "FE80::/10"
     ],
-    "explanation": "Explique: Les adresses lien-local sont comprises entre FE80::/10 et FEBF::/10. La spécification IPv6 d’origine définissait les adresses locales du site et utilisait la plage de préfixes FEC0::/10, mais ces adresses ont été dépréciées par l’IETF en faveur d’adresses locales uniques. FDEE::/7 est une adresse locale unique car elle est comprise entre FC00::/7 et FDFF::/7. Les adresses de multidiffusion IPv6 ont le préfixe FF00::/8.",
-    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2024-10-13_155746.jpg"
+    "explanation": "Explique: Les adresses lien-local sont comprises entre FE80::/10 et FEBF::/10. La spécification IPv6 d’origine définissait les adresses locales du site et utilisait la plage de préfixes FEC0::/10, mais ces adresses ont été dépréciées par l’IETF en faveur d’adresses locales uniques. FDEE::/7 est une adresse locale unique car elle est comprise entre FC00::/7 et FDFF::/7. Les adresses de multidiffusion IPv6 ont le préfixe FF00::/8."
   },
   {
-    "id": 79,
+    "id": 85,
+    "course": "CCNA 1",
+    "sourceId": 86,
+    "question": "Associez les descriptions aux composants d’adressage IPv6 correspondants. (Les options ne doivent pas être toutes utilisées.)",
+    "options": [
+      "Cette partie de l’adresse est l’équivalent de la partie hôte d’une adresse IPv4. - ID d’interface",
+      "Cette partie réseau de l’adresse est attribuée par le fournisseur d’accès Internet. - réfixe de routage global",
+      "Cette partie de l’adresse est utilisée par une entreprise pour identifier les sous-réseaux. - ID de sous-réseau"
+    ],
+    "correctAnswers": [
+      "Cette partie de l’adresse est l’équivalent de la partie hôte d’une adresse IPv4. - ID d’interface",
+      "Cette partie réseau de l’adresse est attribuée par le fournisseur d’accès Internet. - réfixe de routage global",
+      "Cette partie de l’adresse est utilisée par une entreprise pour identifier les sous-réseaux. - ID de sous-réseau"
+    ]
+  },
+  {
+    "id": 86,
     "course": "CCNA 1",
     "sourceId": 87,
     "question": "Un serveur reçoit un paquet client. Le numéro de port de destination du paquet est 22. Quelle application de service le client demande-t-il?",
@@ -1344,7 +1449,7 @@
     ]
   },
   {
-    "id": 80,
+    "id": 87,
     "course": "CCNA 1",
     "sourceId": 88,
     "question": "Quelles sont les deux fonctions d’exécution sur la sous-couche LLC de la couche de liaison de données OSI pour faciliter la communication Ethernet? (Choisissez deux réponses.)",
@@ -1361,7 +1466,7 @@
     ]
   },
   {
-    "id": 81,
+    "id": 88,
     "course": "CCNA 1",
     "sourceId": 89,
     "question": "Citez deux caractéristiques communes aux protocoles TCP et UDP. (Choisissez deux propositions.)",
@@ -1385,7 +1490,26 @@
     "explanation": "Explique: TCP et UDP utilisent tous deux les numéros de port source et de destination pour distinguer les différents flux de données et pour transmettre les bons segments de données aux bonnes applications. La vérification des erreurs de l’en-tête et des données est effectuée par les deux protocoles en utilisant un calcul de somme de contrôle pour déterminer l’intégrité des données reçues. TCP est orienté connexion et utilise une poignée de main à trois pour établir une connexion initiale. TCP utilise également la fenêtre pour réguler la quantité de trafic envoyé avant de recevoir un accusé de réception. UDP est sans connexion et est le meilleur protocole pour transporter des signaux VoIP numérisés."
   },
   {
-    "id": 82,
+    "id": 89,
+    "course": "CCNA 1",
+    "sourceId": 90,
+    "question": "Quels sont les deux déclarations qui décrivent avec précision un avantage ou un inconvénient lors du déploiement de la NAT pour IPv4 dans un réseau ? (Choisissez deux réponses.)",
+    "options": [
+      "NAT introduit des problèmes pour certaines applications nécessitant une connectivité de bout en bout.",
+      "NAT fournit une solution pour ralentir l’épuisement des adresses IPv4.",
+      "Le NAT aura un impact négatif sur les performances des commutateurs.",
+      "NAT améliore le traitement des paquets.",
+      "NAT permet aux tables de routage d’inclure plus d’informations.",
+      "NAT ajoute une capacité d’authentification à IPv4."
+    ],
+    "correctAnswers": [
+      "NAT introduit des problèmes pour certaines applications nécessitant une connectivité de bout en bout.",
+      "NAT fournit une solution pour ralentir l’épuisement des adresses IPv4."
+    ],
+    "explanation": "Explique: La traduction d’adresses réseau (NAT) est une technologie qui est implémentée dans les réseaux IPv4. Une application de NAT consiste à utiliser des adresses IP privées à l’intérieur d’un réseau et à utiliser NAT pour partager quelques adresses IP publiques pour de nombreux hôtes internes. De cette façon, il fournit une solution pour ralentir l’épuisement des adresses IPv4. Cependant, étant donné que NAT masque les adresses IP réelles utilisées par les périphériques finaux, cela peut entraîner des problèmes pour certaines applications nécessitant une connectivité de bout en bout."
+  },
+  {
+    "id": 90,
     "course": "CCNA 1",
     "sourceId": 91,
     "question": "Un utilisateur tente sans succès d’accéder à l’adresse http://www.cisco.com/. Quelles sont les deux valeurs de configuration à définir sur l’hôte pour autoriser cet accès ? (Choisissez deux propositions.)",
@@ -1402,7 +1526,7 @@
     ]
   },
   {
-    "id": 83,
+    "id": 91,
     "course": "CCNA 1",
     "sourceId": 92,
     "question": "Quel service est fourni par DHCP?",
@@ -1417,7 +1541,7 @@
     ]
   },
   {
-    "id": 84,
+    "id": 92,
     "course": "CCNA 1",
     "sourceId": 93,
     "question": "Le bloc d’adresses IPv6 2001:db8:0:ca00::/56 est attribué à une organisation. Combien de sous-réseaux peuvent être créés sans utiliser de bits dans l’espace d’ID d’interface ?",
@@ -1432,7 +1556,7 @@
     ]
   },
   {
-    "id": 85,
+    "id": 93,
     "course": "CCNA 1",
     "sourceId": 94,
     "question": "Un technicien utilise plusieurs applications sur un ordinateur connecté à Internet. Comment l’ordinateur peut-il suivre le flux de données entre plusieurs sessions d’application et faire en sorte que chaque application reçoit les flux de paquets qu’elle doit recevoir ?",
@@ -1458,7 +1582,52 @@
     "explanation": "Explique: Un cheval de Troie est un logiciel qui fait quelque chose de dangereux, mais qui est caché dans un code logiciel légitime. Une attaque par déni de service (DoS) entraîne l’interruption des services réseau pour les utilisateurs, les périphériques réseau ou les applications. Une attaque par force brute consiste généralement à essayer d’accéder à un périphérique réseau. Un débordement de mémoire tampon se produit lorsqu’un programme tente de stocker plus de données dans un emplacement mémoire qu’il ne peut en contenir."
   },
   {
-    "id": 86,
+    "id": 94,
+    "course": "CCNA 1",
+    "sourceId": 95,
+    "question": "Pourquoi un commutateur de couche 2 nécessite-t-il une adresse IP ?",
+    "options": [
+      "Pour permettre au commutateur d’être géré à distance",
+      "Pour permettre au commutateur d’envoyer des trames de diffusion vers des PC connectés",
+      "Pour permettre au commutateur de fonctionner en tant que passerelle par défaut",
+      "Pour permettre au commutateur de recevoir des trames provenant de PC connectés",
+      "dépassement de mémoire tampon",
+      "DoS",
+      "attaques en force",
+      "cheval de Troie"
+    ],
+    "correctAnswers": [
+      "Pour permettre au commutateur d’être géré à distance",
+      "cheval de Troie"
+    ],
+    "explanation": "Explique: Un cheval de Troie est un logiciel qui fait quelque chose de dangereux, mais qui est caché dans un code logiciel légitime. Une attaque par déni de service (DoS) entraîne l’interruption des services réseau pour les utilisateurs, les périphériques réseau ou les applications. Une attaque par force brute consiste généralement à essayer d’accéder à un périphérique réseau. Un débordement de mémoire tampon se produit lorsqu’un programme tente de stocker plus de données dans un emplacement mémoire qu’il ne peut en contenir."
+  },
+  {
+    "id": 95,
+    "course": "CCNA 1",
+    "sourceId": 96,
+    "question": "De quel type de menace à la sécurité parle-t-on lorsqu’un tableur exécuté en tant que logiciel complémentaire désactive le pare-feu logiciel local ?",
+    "options": [
+      "dépassement de mémoire tampon",
+      "DoS",
+      "attaques en force",
+      "cheval de Troie"
+    ],
+    "correctAnswers": [
+      "cheval de Troie"
+    ],
+    "explanation": "Explique: Un cheval de Troie est un logiciel qui fait quelque chose de dangereux, mais qui est caché dans un code logiciel légitime. Une attaque par déni de service (DoS) entraîne l’interruption des services réseau pour les utilisateurs, les périphériques réseau ou les applications. Une attaque par force brute consiste généralement à essayer d’accéder à un périphérique réseau. Un débordement de mémoire tampon se produit lorsqu’un programme tente de stocker plus de données dans un emplacement mémoire qu’il ne peut en contenir."
+  },
+  {
+    "id": 96,
+    "course": "CCNA 1",
+    "sourceId": 97,
+    "question": "Associez les éléments ci-dessous aux types de topologie correspondants. (Les options ne sont pas toutes utilisées.)",
+    "options": [],
+    "correctAnswers": []
+  },
+  {
+    "id": 97,
     "course": "CCNA 1",
     "sourceId": 98,
     "question": "Quelle est l’une des principales caractéristiques de la couche de liaison de données?",
@@ -1473,7 +1642,7 @@
     ]
   },
   {
-    "id": 87,
+    "id": 98,
     "course": "CCNA 1",
     "sourceId": 99,
     "question": "Quel est le caractère d’un NIC qui le mettrait au niveau de la couche de liaison de données du modèle OSI ?",
@@ -1490,7 +1659,7 @@
     "explanation": "Explication: La couche de liaison de données décrit l’accès aux supports et l’adressage physique. L’encodage d’une adresse MAC sur une NIC la situe sur cette couche. Les ports et les câbles sont placés sur la couche physique du modèle OSI . Les adresses IP sont placées sur la couche réseau. La pile de protocoles TCP/IP décrit un modèle différent."
   },
   {
-    "id": 88,
+    "id": 99,
     "course": "CCNA 1",
     "sourceId": 100,
     "question": "Deux requêtes ping ont été exécutées depuis un hôte sur un réseau local. La première requête ping a été exécutée sur l’adresse IP de la passerelle par défaut de l’hôte et elle a échoué. La deuxième requête ping a été exécutée sur l’adresse IP d’un hôte situé en dehors du réseau local et elle a abouti. Quelle est la cause probable de l’échec de la requête ping ?",
@@ -1505,7 +1674,7 @@
     ]
   },
   {
-    "id": 89,
+    "id": 100,
     "course": "CCNA 1",
     "sourceId": 101,
     "question": "Reportez-vous à l’illustration. L’administrateur réseau a attribué au réseau local de LBMISS une plage d’adresses de 192.168.10.0. Cette plage d’adresses a été sous-réseau à l’aide d’un préfixe /29. Afin d’accueillir un nouveau bâtiment, le technicien a décidé d’utiliser le cinquième sous-réseau pour configurer le nouveau réseau (le sous-réseau zéro est le premier sous-réseau). Par les stratégies d’entreprise, l’interface du routeur reçoit toujours la première adresse d’hôte utilisable et le serveur de groupe de travail reçoit la dernière adresse d’hôte utilisable. Quelle configuration doit être entrée dans les propriétés du serveur de groupe de travail pour permettre la connectivité à Internet?",
@@ -1522,7 +1691,7 @@
     "explanation": "Explique: L’utilisation d’un préfixe /29 pour le sous-réseau 192.168.10.0 entraîne des sous-réseaux qui s’incrémentent de 8 : 192.168.10.0 (1) 192.168.10.8 (2) 192.168.10.16 (3) 192.168.10.24 (4) 192.168.10.32 (5)"
   },
   {
-    "id": 90,
+    "id": 101,
     "course": "CCNA 1",
     "sourceId": 102,
     "question": "Un technicien en réseau étudie l’utilisation du câblage à fibre optique dans un nouveau centre technologique. Quels deux problèmes devraient être pris en compte avant de mettre en œuvre des supports à fibres optiques? (Choisissez deux réponses.)",
@@ -1540,7 +1709,7 @@
     "explanation": "Explication : Les supports en fibre optique sont plus chers que le câblage en cuivre utilisé sur la même distance. Les câbles à fibre optique utilisent de la lumière au lieu d’un signal électrique, donc EMI et RFI ne sont pas des problèmes. Cependant, la fibre optique nécessite des compétences différentes pour se terminer et épisser."
   },
   {
-    "id": 91,
+    "id": 102,
     "course": "CCNA 1",
     "sourceId": 103,
     "question": "Que se passe-t-il lorsque la commande transport input ssh est entrée sur les lignes vty du switch?",
@@ -1563,11 +1732,45 @@
     "correctAnswers": [
       "La communication entre le commutateur et les utilisateurs distants est cryptée."
     ],
-    "explanation": "Explique: Lorsqu’un hôte envoie des informations à un réseau distant, l’en-tête de trame de couche 2 contiendra une adresse MAC source et de destination. L’adresse source sera le périphérique hôte d’origine. L’adresse de destination sera l’interface du routeur qui se connecte au même réseau. Dans le cas de l’hôte A envoyant des informations à l’hôte B, l’adresse source est AA:AA:AA:AA:AA:AA et l’adresse de destination est l’adresse MAC attribuée à l’interface Ethernet R2, BB:BB:BB:BB : BB:BB.",
-    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/Q104.2024-10-13_095012.jpg"
+    "explanation": "Explique: Lorsqu’un hôte envoie des informations à un réseau distant, l’en-tête de trame de couche 2 contiendra une adresse MAC source et de destination. L’adresse source sera le périphérique hôte d’origine. L’adresse de destination sera l’interface du routeur qui se connecte au même réseau. Dans le cas de l’hôte A envoyant des informations à l’hôte B, l’adresse source est AA:AA:AA:AA:AA:AA et l’adresse de destination est l’adresse MAC attribuée à l’interface Ethernet R2, BB:BB:BB:BB : BB:BB."
   },
   {
-    "id": 92,
+    "id": 103,
+    "course": "CCNA 1",
+    "sourceId": 104,
+    "question": "Examinez l’illustration. Si l’hôte A envoie un paquet IP à l’hôte B. Quelle est l’adresse de destination de la trame lorsqu’il quitte l’hôte A ?",
+    "options": [
+      "DD:DD:DD:DD:DD:DD",
+      "AA:AA:AA:AA:AA:AA",
+      "CC:CC:CC:CC:CC:CC",
+      "BB:BB:BB:BB:BB:BB",
+      "172.168.10.65",
+      "172.168.10.99",
+      "fragment-free",
+      "cut-through",
+      "store-and-forward",
+      "fast-forward"
+    ],
+    "correctAnswers": [
+      "AA:AA:AA:AA:AA:AA"
+    ],
+    "explanation": "Explique: Lorsqu’un hôte envoie des informations à un réseau distant, l’en-tête de trame de couche 2 contiendra une adresse MAC source et de destination. L’adresse source sera le périphérique hôte d’origine. L’adresse de destination sera l’interface du routeur qui se connecte au même réseau. Dans le cas de l’hôte A envoyant des informations à l’hôte B, l’adresse source est AA:AA:AA:AA:AA:AA et l’adresse de destination est l’adresse MAC attribuée à l’interface Ethernet R2, BB:BB:BB:BB : BB:BB."
+  },
+  {
+    "id": 104,
+    "course": "CCNA 1",
+    "sourceId": 105,
+    "question": "Lorsque la configuration d’un commutateur comprend un seuil d’erreur défini par l’utilisateur pour chaque port, à quelle méthode de commutation le commutateur revient-il si le seuil est atteint ?",
+    "options": [
+      "fragment-free",
+      "cut-through",
+      "store-and-forward",
+      "fast-forward"
+    ],
+    "correctAnswers": []
+  },
+  {
+    "id": 105,
     "course": "CCNA 1",
     "sourceId": 106,
     "question": "Quels sont les deux types de trafic qui utilisent le protocole RTP (Real-Time Transport Protocol)? (Choisissez deux réponses.)",
@@ -1581,7 +1784,7 @@
     "correctAnswers": []
   },
   {
-    "id": 93,
+    "id": 106,
     "course": "CCNA 1",
     "sourceId": 107,
     "question": "Quels sont les deux messages ICMPv6 qui ne sont pas présents dans ICMP pour IPv4? (Choisissez deux réponses.)",
@@ -1596,7 +1799,7 @@
     "correctAnswers": []
   },
   {
-    "id": 94,
+    "id": 107,
     "course": "CCNA 1",
     "sourceId": 108,
     "question": "Quel service est fourni par SMTP?",
@@ -1609,7 +1812,7 @@
     "correctAnswers": []
   },
   {
-    "id": 95,
+    "id": 108,
     "course": "CCNA 1",
     "sourceId": 109,
     "question": "Quels sont les deux types de messages ICMPv6 qui doivent être autorisés par les listes de contrôle d’accès IPv6 pour permettre la résolution des adresses de couche 3 en adresses MAC de couche 2 ? (Choisissez deux réponses.)",
@@ -1624,7 +1827,7 @@
     "correctAnswers": []
   },
   {
-    "id": 96,
+    "id": 109,
     "course": "CCNA 1",
     "sourceId": 110,
     "question": "Un administrateur réseau cherche à préserver la confidentialité de l’ID utilisateur, du mot de passe et du contenu des sessions lorsqu’il configure une connexion distante CLI gérée par un commutateur. Quel est le mode d’accès le plus approprié ?",
@@ -1637,7 +1840,7 @@
     "correctAnswers": []
   },
   {
-    "id": 97,
+    "id": 110,
     "course": "CCNA 1",
     "sourceId": 111,
     "question": "Un serveur reçoit un paquet client. Le numéro de port de destination du paquet est 110. Quelle application de service le client demande-t-il?",
@@ -1650,7 +1853,7 @@
     "correctAnswers": []
   },
   {
-    "id": 98,
+    "id": 111,
     "course": "CCNA 1",
     "sourceId": 112,
     "question": "Reportez-vous à l’illustration. Un ingénieur réseau a reçu l’adresse réseau 192.168.99.0 et un masque de sous-réseau 255.255.255.192 pour le sous-réseau sur les quatre réseaux indiqués. Combien d’adresses hôtes au total sont inutilisées sur les quatre sous-réseaux?",
@@ -1664,16 +1867,15 @@
     "correctAnswers": []
   },
   {
-    "id": 99,
+    "id": 112,
     "course": "CCNA 1",
     "sourceId": 113,
     "question": "Associez les descriptions aux mécanismes TCP correspondants. (Les options ne doivent pas être toutes utilisées.)",
     "options": [],
-    "correctAnswers": [],
-    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2024-10-13_160219.jpg"
+    "correctAnswers": []
   },
   {
-    "id": 100,
+    "id": 113,
     "course": "CCNA 1",
     "sourceId": 114,
     "question": "Quelles sont les deux fonctions exécutées sur la sous-couche LLC de la couche de liaison de données OSI pour faciliter la communication Ethernet ? (Choisissez deux propositions.)",
@@ -1697,15 +1899,49 @@
     "explanation": "Explique: Un spécialiste de la cybersécurité doit connaître les technologies et les mesures utilisées comme contre-mesures pour protéger l’organisation contre les menaces et les vulnérabilités."
   },
   {
-    "id": 101,
+    "id": 114,
     "course": "CCNA 1",
-    "sourceId": 117,
-    "question": "Faire correspondre la fonction du pare-feu au type de protection contre les menaces qu’il fournit au réseau. (Les propositions ne doivent pas être toutes utilisées.)",
+    "sourceId": 115,
+    "question": "Quelles sont les deux méthodes les plus efficaces pour la protection contre les programmes malveillants ? (Choisissez deux réponses.)",
+    "options": [
+      "Installer et mettre à jour un logiciel antivirus",
+      "Implémenter RAID",
+      "Implémenter des mots de passe forts",
+      "Implémenter des pare-feu réseau",
+      "Implémenter un VPN",
+      "Mettre à jour le système d’exploitation et d’autres logiciels d’application"
+    ],
+    "correctAnswers": [
+      "Installer et mettre à jour un logiciel antivirus",
+      "Mettre à jour le système d’exploitation et d’autres logiciels d’application"
+    ],
+    "explanation": "Explique: Un spécialiste de la cybersécurité doit connaître les technologies et les mesures utilisées comme contre-mesures pour protéger l’organisation contre les menaces et les vulnérabilités."
+  },
+  {
+    "id": 115,
+    "course": "CCNA 1",
+    "sourceId": 116,
+    "question": "Associez les protocoles d’application aux protocoles de transport corrects.",
     "options": [],
     "correctAnswers": []
   },
   {
-    "id": 102,
+    "id": 116,
+    "course": "CCNA 1",
+    "sourceId": 117,
+    "question": "Un utilisateur exécute un tracert sur un périphérique distant. À quel moment un routeur, qui se trouve sur le chemin de l’appareil de destination, arrêterait-il de transférer le paquet ?",
+    "options": [
+      "lorsque le routeur reçoit un message ICMP Time Exceeded",
+      "lorsque la valeur RTT atteint zéro",
+      "lorsque l’hôte répond avec un message ICMP Echo Reply",
+      "lorsque la valeur du champ TTL atteint zéro",
+      "lorsque les valeurs des messages de demande d’écho et de réponse d’écho atteignent zéro"
+    ],
+    "correctAnswers": [],
+    "explanation": "Explique: Lorsqu’un routeur reçoit un paquet traceroute, la valeur du champ TTL est décrémentée de 1. Lorsque la valeur du champ atteint zéro, le routeur récepteur ne transmettra pas le paquet et renverra un message ICMP Time Exceeded à la source."
+  },
+  {
+    "id": 117,
     "course": "CCNA 1",
     "sourceId": 118,
     "question": "Un utilisateur envoie une requête HTTP à un serveur Web sur un réseau distant. Pendant l’encapsulation de cette requête, quelles informations sont ajoutées au champ d’adresse d’une trame pour indiquer la destination ?",
@@ -1735,7 +1971,47 @@
     "explanation": "Explique: Vlan1 est le SVI par défaut. Étant donné qu’un SVI a été configuré, le commutateur peut être configuré et géré à distance. FastEthernet0/0 s’affiche et s’affiche, donc un périphérique est connecté."
   },
   {
-    "id": 103,
+    "id": 118,
+    "course": "CCNA 1",
+    "sourceId": 119,
+    "question": "Examinez l’illustration. Quels trois éléments factuels peut-on déduire du résultat de la commande show ip interface brief ? (Choisissez trois propositions.)",
+    "options": [
+      "Le commutateur peut être géré à distance.",
+      "Un terminal est connecté à une interface physique.",
+      "Deux terminaux sont connectés au commutateur.",
+      "Les mots de passe ont été configurés sur le commutateur.",
+      "Deux interfaces physiques ont été configurées.",
+      "L’interface SVI par défaut a été configurée.",
+      "DHCP",
+      "SSH",
+      "FTP",
+      "TFTP"
+    ],
+    "correctAnswers": [
+      "Le commutateur peut être géré à distance.",
+      "Un terminal est connecté à une interface physique.",
+      "L’interface SVI par défaut a été configurée.",
+      "FTP"
+    ],
+    "explanation": "Explique: Vlan1 est le SVI par défaut. Étant donné qu’un SVI a été configuré, le commutateur peut être configuré et géré à distance. FastEthernet0/0 s’affiche et s’affiche, donc un périphérique est connecté."
+  },
+  {
+    "id": 119,
+    "course": "CCNA 1",
+    "sourceId": 120,
+    "question": "Un serveur reçoit un paquet client. Le numéro de port de destination du paquet est 21. Quelle application de service le client demande-t-il?",
+    "options": [
+      "DHCP",
+      "SSH",
+      "FTP",
+      "TFTP"
+    ],
+    "correctAnswers": [
+      "FTP"
+    ]
+  },
+  {
+    "id": 120,
     "course": "CCNA 1",
     "sourceId": 121,
     "question": "Quel service est fourni par POP3 ?",
@@ -1750,7 +2026,7 @@
     ]
   },
   {
-    "id": 104,
+    "id": 121,
     "course": "CCNA 1",
     "sourceId": 122,
     "question": "Quel masque de sous-réseau faut-il utiliser si un réseau IPv4 comporte 40 terminaux nécessitant des adresses IP et que l’on veut éviter de gaspiller l’espace d’adressage ?",
@@ -1764,7 +2040,7 @@
     "correctAnswers": []
   },
   {
-    "id": 105,
+    "id": 122,
     "course": "CCNA 1",
     "sourceId": 123,
     "question": "Un serveur reçoit un paquet client. Le numéro de port de destination du paquet est 80. Quelle application de service le client demande-t-il?",
@@ -1779,7 +2055,7 @@
     ]
   },
   {
-    "id": 106,
+    "id": 123,
     "course": "CCNA 1",
     "sourceId": 124,
     "question": "Un administrateur réseau ajoute un nouveau réseau local à une filiale. Le nouveau réseau local doit prendre en charge 10 périphériques connectés. Quel est le plus petit masque réseau que l’administrateur réseau peut utiliser pour le nouveau réseau?",
@@ -1794,7 +2070,7 @@
     ]
   },
   {
-    "id": 107,
+    "id": 124,
     "course": "CCNA 1",
     "sourceId": 125,
     "question": "Reportez-vous à l’illustration. Quel protocole était responsable de la construction de la table qui est illustrée?",
@@ -1806,11 +2082,10 @@
     ],
     "correctAnswers": [
       "ARP"
-    ],
-    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2024-10-13_160909.jpg"
+    ]
   },
   {
-    "id": 108,
+    "id": 125,
     "course": "CCNA 1",
     "sourceId": 126,
     "question": "Examinez l’illustration. Le PC1 envoie une requête ARP car il doit envoyer un paquet au PC2. Dans ce scénario, que se passe-t-il ensuite ?",
@@ -1824,11 +2099,10 @@
     "correctAnswers": [
       "Le PC2 envoie une réponse ARP contenant son adresse MAC."
     ],
-    "explanation": "Expliquer : Lorsqu’un périphérique réseau souhaite communiquer avec un autre périphérique sur le même réseau, il envoie une requête ARP de diffusion. Dans ce cas, la requête contiendra l’adresse IP du PC2. Le périphérique de destination (PC2) envoie une réponse ARP avec son adresse MAC.",
-    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2024-10-13_160331.jpg"
+    "explanation": "Expliquer : Lorsqu’un périphérique réseau souhaite communiquer avec un autre périphérique sur le même réseau, il envoie une requête ARP de diffusion. Dans ce cas, la requête contiendra l’adresse IP du PC2. Le périphérique de destination (PC2) envoie une réponse ARP avec son adresse MAC."
   },
   {
-    "id": 109,
+    "id": 126,
     "course": "CCNA 1",
     "sourceId": 127,
     "question": "Faites correspondre chaque type de champ de trame à sa fonction. (Les options ne sont pas toutes utilisées.)",
@@ -1836,7 +2110,7 @@
     "correctAnswers": []
   },
   {
-    "id": 110,
+    "id": 127,
     "course": "CCNA 1",
     "sourceId": 128,
     "question": "Quel avantage présente l’utilisation d’un protocole défini par une norme ouverte ?",
@@ -1852,7 +2126,7 @@
     "explanation": "Explique: Un monopole d’une entreprise n’est pas une bonne idée du point de vue de l’utilisateur. Si un protocole ne peut être exécuté que sur une seule marque, il est difficile d’avoir des équipements mixtes dans un réseau. Un protocole propriétaire n’est pas libre d’utilisation. Un protocole standard ouvert sera généralement mis en œuvre par un large éventail de fournisseurs."
   },
   {
-    "id": 111,
+    "id": 128,
     "course": "CCNA 1",
     "sourceId": 129,
     "question": "Quelles sont les deux principales responsabilités de la sous-couche MAC Ethernet? (Choisissez deux réponses.)",
@@ -1869,7 +2143,7 @@
     ]
   },
   {
-    "id": 112,
+    "id": 129,
     "course": "CCNA 1",
     "sourceId": 130,
     "question": "Une imprimante laser filaire est connectée à un ordinateur domestique. Elle a été partagée pour que d’autres ordinateurs appartenant au réseau domestique puissent également l’utiliser. Quel est le modèle de réseau suivi ?",
@@ -1885,7 +2159,7 @@
     "explanation": "Explique: Les réseaux peer-to-peer (P2P) ont deux périphériques réseau ou plus qui peuvent partager des ressources telles que des imprimantes ou des fichiers sans avoir de serveur dédié."
   },
   {
-    "id": 113,
+    "id": 130,
     "course": "CCNA 1",
     "sourceId": 131,
     "question": "Au cours du processus de transfert du trafic, que fait le routeur immédiatement après avoir fait correspondre l’adresse IP de destination à un réseau dans une entrée de table de routage connectée directement ?",
@@ -1900,7 +2174,7 @@
     ]
   },
   {
-    "id": 114,
+    "id": 131,
     "course": "CCNA 1",
     "sourceId": 132,
     "question": "Quelles sont les trois parties d’une adresse de monodiffusion globale IPv6 ? (Choisissez trois réponses.)",
@@ -1918,7 +2192,7 @@
     ]
   },
   {
-    "id": 115,
+    "id": 132,
     "course": "CCNA 1",
     "sourceId": 133,
     "question": "Quelle couche du modèle TCP/IP fournit un chemin pour transférer des messages via un interréseau ?",
@@ -1932,234 +2206,6 @@
       "internet"
     ],
     "explanation": "Explique: La couche réseau du modèle OSI correspond directement à la couche Internet du modèle TCP/IP et est utilisée pour décrire les protocoles qui adressent et acheminent les messages via un interréseau."
-  },
-  {
-    "id": 116,
-    "course": "CCNA 1",
-    "sourceId": 16,
-    "question": "Quelle caractéristique décrit le vol d’identité ?",
-    "options": [
-      "l’utilisation d’identifiants volés pour accéder à des données privées",
-      "logiciel sur un routeur qui filtre le trafic en fonction des adresses IP ou des applications",
-      "logiciel qui identifie les menaces à propagation rapide",
-      "un protocole de tunneling qui fournit aux utilisateurs distants un accès sécurisé au réseau d’une organisation"
-    ],
-    "correctAnswers": []
-  },
-  {
-    "id": 117,
-    "course": "CCNA 1",
-    "sourceId": 24,
-    "question": "Faites correspondre chaque élément au type de diagramme de topologie sur lequel il est généralement identifié. (Toutes les options ne sont pas utilisées.)",
-    "options": [],
-    "correctAnswers": []
-  },
-  {
-    "id": 118,
-    "course": "CCNA 1",
-    "sourceId": 25,
-    "question": "Quelles sont les deux informations affichées dans la sortie de la commande show ip interface brief ? (Choisissez deux réponses.)",
-    "options": [
-      "Adresses IP",
-      "description des interfaces",
-      "Adresses MAC",
-      "adresses de saut suivant",
-      "Statuts de la couche 1",
-      "Paramètres de vitesse et de duplex",
-      "255.255.255.128",
-      "255.255.255.240",
-      "255.255.255.248",
-      "255.255.255.224"
-    ],
-    "correctAnswers": [],
-    "explanation": "Explique: La commande show ip interface brief affiche l’adresse IP de chaque interface, ainsi que l’état opérationnel des interfaces au niveau de la couche 1 et de la couche 2. Afin de voir l’interface descriptions et paramètres de vitesse et de duplex, utilisez la commande show running-config interface. Les adresses de saut suivant sont affichées dans la table de routage avec la commande show ip route, et l’adresse MAC d’une interface peut être vue avec la commande show interfaces."
-  },
-  {
-    "id": 119,
-    "course": "CCNA 1",
-    "sourceId": 58,
-    "question": "Associez le type de menace à la cause. (Toutes les options ne sont pas utilisées.)",
-    "options": [],
-    "correctAnswers": [],
-    "image": "https://reponseccna.com/wp-content/uploads/2021/12/2021-11-13_112035.jpg"
-  },
-  {
-    "id": 120,
-    "course": "CCNA 1",
-    "sourceId": 60,
-    "question": "Quel service est fourni par HTTP ?",
-    "options": [
-      "Utilise le cryptage pour sécuriser l’échange de texte, d’images graphiques, de sons et de vidéos sur le Web.",
-      "Permet les transferts de données entre un client et un serveur de fichiers.",
-      "Une application qui permet de discuter en temps réel entre utilisateurs distants.",
-      "Un ensemble de règles de base pour l’échange de texte, d’images graphiques, de sons, de vidéos et d’autres fichiers multimédias sur le Web."
-    ],
-    "correctAnswers": []
-  },
-  {
-    "id": 121,
-    "course": "CCNA 1",
-    "sourceId": 61,
-    "question": "Un paquet client est reçu par un serveur. Le paquet a un numéro de port de destination de 67. Quel service le client demande-t-il ?",
-    "options": [
-      "FTP",
-      "DHCP",
-      "Telnet",
-      "SSH"
-    ],
-    "correctAnswers": []
-  },
-  {
-    "id": 122,
-    "course": "CCNA 1",
-    "sourceId": 65,
-    "question": "Quelle caractéristique décrit l’antispyware ?",
-    "options": [
-      "applications qui protègent les terminaux contre l’infection par des logiciels malveillants",
-      "un appareil réseau qui filtre l’accès et le trafic entrant dans un réseau",
-      "logiciel sur un routeur qui filtre le trafic en fonction des adresses IP ou des applications",
-      "un protocole de tunneling qui fournit aux utilisateurs distants un accès sécurisé au réseau d’une organisation"
-    ],
-    "correctAnswers": []
-  },
-  {
-    "id": 123,
-    "course": "CCNA 1",
-    "sourceId": 72,
-    "question": "Quelles sont les deux solutions de sécurité les plus susceptibles d’être utilisées uniquement dans un environnement d’entreprise ? (Choisissez deux réponses.)",
-    "options": [
-      "antispyware",
-      "réseaux privés virtuels",
-      "systèmes de prévention des intrusions",
-      "mots de passe forts",
-      "logiciel antivirus"
-    ],
-    "correctAnswers": []
-  },
-  {
-    "id": 124,
-    "course": "CCNA 1",
-    "sourceId": 73,
-    "question": "Quelle caractéristique décrit un logiciel antivirus ?",
-    "options": [
-      "applications qui protègent les terminaux contre l’infection par des logiciels malveillants",
-      "un appareil réseau qui filtre l’accès et le trafic entrant dans un réseau",
-      "un protocole de tunneling qui fournit aux utilisateurs distants un accès sécurisé au réseau d’une organisation",
-      "logiciel sur un routeur qui filtre le trafic en fonction des adresses IP ou des applications"
-    ],
-    "correctAnswers": []
-  },
-  {
-    "id": 125,
-    "course": "CCNA 1",
-    "sourceId": 85,
-    "question": "Quelle caractéristique décrit un logiciel espion ?",
-    "options": [
-      "un appareil réseau qui filtre l’accès et le trafic entrant dans un réseau",
-      "logiciel installé sur l’appareil de l’utilisateur et collectant des informations sur l’utilisateur",
-      "une attaque qui ralentit ou bloque un appareil ou un service réseau",
-      "l’utilisation d’identifiants volés pour accéder à des données privées"
-    ],
-    "correctAnswers": []
-  },
-  {
-    "id": 126,
-    "course": "CCNA 1",
-    "sourceId": 88,
-    "question": "Quel service est fourni par FTP ?",
-    "options": [
-      "Un ensemble de règles de base pour l’échange de texte, d’images graphiques, de sons, de vidéos et d’autres fichiers multimédias sur le Web.",
-      "Une application qui permet de discuter en temps réel entre utilisateurs distants.",
-      "Permet les transferts de données entre un client et un serveur de fichiers.",
-      "Utilise le cryptage pour sécuriser l’échange de texte, d’images graphiques, de sons et de vidéos sur le Web."
-    ],
-    "correctAnswers": []
-  },
-  {
-    "id": 127,
-    "course": "CCNA 1",
-    "sourceId": 90,
-    "question": "Quels sont les deux déclarations qui décrivent avec précision un avantage ou un inconvénient lors du déploiement de la NAT pour IPv4 dans un réseau ? (Choisissez deux réponses.)",
-    "options": [
-      "NAT introduit des problèmes pour certaines applications nécessitant une connectivité de bout en bout.",
-      "NAT fournit une solution pour ralentir l’épuisement des adresses IPv4.",
-      "Le NAT aura un impact négatif sur les performances des commutateurs.",
-      "NAT améliore le traitement des paquets.",
-      "NAT permet aux tables de routage d’inclure plus d’informations.",
-      "NAT ajoute une capacité d’authentification à IPv4."
-    ],
-    "correctAnswers": [
-      "NAT introduit des problèmes pour certaines applications nécessitant une connectivité de bout en bout.",
-      "NAT fournit une solution pour ralentir l’épuisement des adresses IPv4."
-    ],
-    "explanation": "Explique: La traduction d’adresses réseau (NAT) est une technologie qui est implémentée dans les réseaux IPv4. Une application de NAT consiste à utiliser des adresses IP privées à l’intérieur d’un réseau et à utiliser NAT pour partager quelques adresses IP publiques pour de nombreux hôtes internes. De cette façon, il fournit une solution pour ralentir l’épuisement des adresses IPv4. Cependant, étant donné que NAT masque les adresses IP réelles utilisées par les périphériques finaux, cela peut entraîner des problèmes pour certaines applications nécessitant une connectivité de bout en bout."
-  },
-  {
-    "id": 128,
-    "course": "CCNA 1",
-    "sourceId": 93,
-    "question": "Quel service est fourni par BOOTP ?",
-    "options": [
-      "Utilise le cryptage pour sécuriser l’échange de texte, d’images graphiques, de sons et de vidéos sur le Web.",
-      "Permet les transferts de données entre un client et un serveur de fichiers.",
-      "Application héritée qui permet à un poste de travail sans disque de découvrir sa propre adresse IP et de trouver un serveur BOOTP sur le réseau.",
-      "Un ensemble de règles de base pour l’échange de texte, d’images graphiques, de sons, de vidéos et d’autres fichiers multimédias sur le Web."
-    ],
-    "correctAnswers": []
-  },
-  {
-    "id": 129,
-    "course": "CCNA 1",
-    "sourceId": 94,
-    "question": "Quelle caractéristique décrit un logiciel publicitaire ?",
-    "options": [
-      "un appareil réseau qui filtre l’accès et le trafic entrant dans un réseau",
-      "logiciel installé sur l’appareil de l’utilisateur et collectant des informations sur l’utilisateur",
-      "l’utilisation d’identifiants volés pour accéder à des données privées",
-      "une attaque qui ralentit ou bloque un appareil ou un service réseau"
-    ],
-    "correctAnswers": []
-  },
-  {
-    "id": 130,
-    "course": "CCNA 1",
-    "sourceId": 103,
-    "question": "Quelle caractéristique décrit un VPN ?",
-    "options": [
-      "logiciel sur un routeur qui filtre le trafic en fonction des adresses IP ou des applications",
-      "logiciel qui identifie les menaces à propagation rapide",
-      "un protocole de tunnel qui fournit aux utilisateurs distants un accès sécurisé au réseau d’une organisation",
-      "un appareil réseau qui filtre l’accès et le trafic entrant dans un réseau"
-    ],
-    "correctAnswers": []
-  },
-  {
-    "id": 131,
-    "course": "CCNA 1",
-    "sourceId": 111,
-    "question": "Un paquet client est reçu par un serveur. Le paquet a un numéro de port de destination de 143. Quel service le client demande-t-il ?",
-    "options": [
-      "IMAP",
-      "FTP",
-      "SSH",
-      "Telnet"
-    ],
-    "correctAnswers": []
-  },
-  {
-    "id": 132,
-    "course": "CCNA 1",
-    "sourceId": 117,
-    "question": "Un utilisateur exécute un tracert sur un périphérique distant. À quel moment un routeur, qui se trouve sur le chemin de l’appareil de destination, arrêterait-il de transférer le paquet ?",
-    "options": [
-      "lorsque le routeur reçoit un message ICMP Time Exceeded",
-      "lorsque la valeur RTT atteint zéro",
-      "lorsque l’hôte répond avec un message ICMP Echo Reply",
-      "lorsque la valeur du champ TTL atteint zéro",
-      "lorsque les valeurs des messages de demande d’écho et de réponse d’écho atteignent zéro"
-    ],
-    "correctAnswers": [],
-    "explanation": "Explique: Lorsqu’un routeur reçoit un paquet traceroute, la valeur du champ TTL est décrémentée de 1. Lorsque la valeur du champ atteint zéro, le routeur récepteur ne transmettra pas le paquet et renverra un message ICMP Time Exceeded à la source."
   },
   {
     "id": 133,
@@ -2204,6 +2250,19 @@
   {
     "id": 136,
     "course": "CCNA 1",
+    "sourceId": 148,
+    "question": "Quelle caractéristique décrit une attaque DoS ?",
+    "options": [
+      "l’utilisation d’identifiants volés pour accéder à des données privées",
+      "un appareil réseau qui filtre l’accès et le trafic entrant dans un réseau",
+      "logiciel installé sur l’appareil de l’utilisateur et collectant des informations sur l’utilisateur",
+      "une attaque qui ralentit ou bloque un appareil ou un service réseau"
+    ],
+    "correctAnswers": []
+  },
+  {
+    "id": 137,
+    "course": "CCNA 1",
     "sourceId": 151,
     "question": "Associez une instruction au modèle de réseau associé. (Toutes les options ne sont pas utilisées.)",
     "options": [
@@ -2216,7 +2275,20 @@
     "explanation": "Explique: Les réseaux peer-to-peer ne nécessitent pas l’utilisation d’un serveur dédié, et les appareils peuvent assumer simultanément les rôles de client et de serveur sur demande. Parce qu’ils ne nécessitent pas de comptes ou d’autorisations formalisés, ils sont mieux utilisés dans des situations limitées. Les applications peer-to-peer nécessitent une interface utilisateur et un service d’arrière-plan pour s’exécuter, et peuvent être utilisées dans des situations plus diverses."
   },
   {
-    "id": 137,
+    "id": 138,
+    "course": "CCNA 1",
+    "sourceId": 156,
+    "question": "Quelle caractéristique décrit un IPS ?",
+    "options": [
+      "un protocole de tunneling qui fournit aux utilisateurs distants un accès sécurisé au réseau d’une organisation",
+      "un appareil réseau qui filtre l’accès et le trafic entrant dans un réseau",
+      "logiciel qui identifie les menaces à propagation rapide",
+      "logiciel sur un routeur qui filtre le trafic en fonction des adresses IP ou des applications"
+    ],
+    "correctAnswers": []
+  },
+  {
+    "id": 139,
     "course": "CCNA 1",
     "sourceId": 159,
     "question": "Référez-vous à l’exposition. Les commutateurs ont une configuration par défaut. L’hôte A doit communiquer avec l’hôte D, mais l’hôte A n’a pas l’adresse MAC de la passerelle par défaut. Quels périphériques réseau recevront la requête ARP envoyée par l’hôte A ?",
@@ -2228,11 +2300,10 @@
       "uniquement les hôtes A, B et C",
       "uniquement le routeur R1"
     ],
-    "correctAnswers": [],
-    "image": "https://itexamanswers.net/wp-content/uploads/2020/12/i360201v3n1_275353-1608482322.6606.png"
+    "correctAnswers": []
   },
   {
-    "id": 138,
+    "id": 140,
     "course": "CCNA 1",
     "sourceId": 160,
     "question": "Quelle technologie sans fil a des exigences de faible consommation et de faible débit de données, ce qui la rend populaire dans les environnements IoT ?",
@@ -2246,7 +2317,7 @@
     "explanation": "Explique: Zigbee est une spécification utilisée pour les communications à faible débit et faible consommation. Il est destiné aux applications nécessitant une courte portée, des débits de données faibles et une longue durée de vie de la batterie. Zigbee est généralement utilisé pour les environnements industriels et Internet des objets (IoT) tels que les interrupteurs d’éclairage sans fil et la collecte de données sur les appareils médicaux."
   },
   {
-    "id": 139,
+    "id": 141,
     "course": "CCNA 1",
     "sourceId": 161,
     "question": "Quel est l’ID de sous-réseau associé à l’adresse IPv6 2001:DA48:FC5:A4:3D1B::1/64 ?",
@@ -2256,6 +2327,22 @@
       "2001:DA48:FC5:A4::/64​",
       "2001 : :/64"
     ],
+    "correctAnswers": []
+  },
+  {
+    "id": 142,
+    "course": "CCNA 1",
+    "sourceId": 255,
+    "question": "255.255.192",
+    "options": [],
+    "correctAnswers": []
+  },
+  {
+    "id": 143,
+    "course": "CCNA 1",
+    "sourceId": 2001,
+    "question": ":DA48:FC5:A4::/64​",
+    "options": [],
     "correctAnswers": []
   }
 ]

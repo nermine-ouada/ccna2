@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function HomePage() {
-  const [course, setCourse] = useState<"CCNA 1" | "CCNA 2">("CCNA 1");
+  const [course, setCourse] = useState<"CCNA 1" | "CCNA 2">("CCNA 2");
   const encodedCourse = encodeURIComponent(course);
 
   return (

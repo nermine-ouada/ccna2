@@ -3,9 +3,15 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import AnswerList from "@/components/AnswerList";
+import MatchPairAnswerReview from "@/components/MatchPairAnswerReview";
+import OrderingAnswerFlow from "@/components/OrderingAnswerFlow";
 import ProgressBar from "@/components/ProgressBar";
 import QuestionCard from "@/components/QuestionCard";
 import { allQuestions, ccna1Questions, ccna2Questions } from "@/lib/questions";
+import {
+  isOrderingQuestion as questionIsOrdering,
+  isPairMatchQuestion
+} from "@/lib/questionUi";
 
 function shuffleArray<T>(items: T[]): T[] {
   const shuffled = [...items];
@@ -59,7 +65,7 @@ export default function FlashcardsPage() {
         </Link>
       </div>
 
-      <ProgressBar current={index + 1} total={questions.length} />
+      <ProgressBar current={index + 1} total={orderedQuestions.length} />
 
       <div className="flex flex-wrap gap-3">
         <button
@@ -77,7 +83,7 @@ export default function FlashcardsPage() {
         >
           {randomMode ? "In Order" : "Random"}
         </button>
-        {showAnswers ? (
+        {showAnswers && !questionIsOrdering(current) && !isPairMatchQuestion(current) ? (
           <button
             onClick={() => setShowAllOptions((prev) => !prev)}
             className="rounded-lg border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 hover:bg-slate-50"
@@ -90,14 +96,28 @@ export default function FlashcardsPage() {
       <QuestionCard question={current}>
         {showAnswers ? (
           <div className="space-y-4">
-            <p className="font-semibold text-emerald-800">
-              {showAllOptions ? "Options (correct highlighted):" : "Correct answer(s):"}
-            </p>
-            <AnswerList
-              options={visibleOptions}
-              correctAnswers={current.correctAnswers}
-              revealed
-            />
+            {isPairMatchQuestion(current) && current.matchPairs ? (
+              <>
+                <p className="font-semibold text-emerald-800">Appariements (libellé → description)</p>
+                <MatchPairAnswerReview pairs={current.matchPairs} />
+              </>
+            ) : questionIsOrdering(current) ? (
+              <>
+                <p className="font-semibold text-emerald-800">Séquence attendue</p>
+                <OrderingAnswerFlow steps={current.correctAnswers} />
+              </>
+            ) : (
+              <>
+                <p className="font-semibold text-emerald-800">
+                  {showAllOptions ? "Options (correct highlighted):" : "Correct answer(s):"}
+                </p>
+                <AnswerList
+                  options={visibleOptions}
+                  correctAnswers={current.correctAnswers}
+                  revealed
+                />
+              </>
+            )}
             {current.explanation ? (
               <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
                 {current.explanation}

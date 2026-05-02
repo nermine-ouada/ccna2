@@ -2,7 +2,7 @@ import { load } from "cheerio";
 import { promises as fs } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { Question } from "./types";
+import { MatchPair, Question } from "./types";
 import { stripStepPrefix } from "./text";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -33,11 +33,60 @@ function inferCorrectAnswersFromExplanation(options: string[], explanation?: str
   const normalizedExplanation = normalizeForMatch(explanation);
   const inferred = options.filter((option) => {
     const normalizedOption = normalizeForMatch(option);
-    if (normalizedOption.length < 12) return false;
-    return normalizedExplanation.includes(normalizedOption);
+    if (normalizedOption.length < 3) return false;
+    if (normalizedOption.length >= 12) return normalizedExplanation.includes(normalizedOption);
+    // Short options (e.g. SSH, IMAP): match as whole word in explanation
+    const re = new RegExp(`(?:^|[^a-z0-9])${normalizedOption.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?:$|[^a-z0-9])`, "i");
+    return re.test(normalizedExplanation);
   });
 
   return [...new Set(inferred)];
+}
+
+/** Some pages mark correct choices only with inline red styling instead of li.correct_answer */
+function liLooksCorrect($: ReturnType<typeof load>, li: Element): boolean {
+  const el = $(li);
+  if (el.hasClass("correct_answer")) return true;
+  if (el.find(".correct_answer").length > 0) return true;
+  const styled = el.find("[style]").addBack("[style]");
+  for (let i = 0; i < styled.length; i += 1) {
+    const st = (styled.eq(i).attr("style") || "").toLowerCase().replace(/\s/g, "");
+    if (
+      st.includes("#ff0000") ||
+      st.includes("ff0000") ||
+      st.includes("rgb(255,0,0)") ||
+      st.includes("color:red")
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/** Subnet matching questions sometimes only have answers in the explanation text */
+function inferSubnetAnswersFromExplanation(question: string, explanation?: string): string[] {
+  if (!explanation) return [];
+  if (!/associez|adresses?\s+ip|préfix|hôte|réseau\s+[abcd]/i.test(question)) return [];
+  const answers: string[] = [];
+  const re = /(\d+\.\d+\.\d+\.\d+)\s*\/(\d+)/g;
+  let match: RegExpExecArray | null;
+  while ((match = re.exec(explanation)) !== null) {
+    answers.push(`${match[1]} /${match[2]}`);
+  }
+  return [...new Set(answers)];
+}
+
+/** Image-only “Associez / Faites correspondre” items often spell out the mapping in the explanation paragraph */
+function inferAssociezFromExplanation(question: string, explanation?: string): string[] {
+  if (!explanation) return [];
+  if (!/associez|faire correspondre|faites correspondre/i.test(question)) return [];
+  const body = cleanText(explanation.replace(/^(Explique|Explication)\s*:?\s*/i, ""));
+  const sentences = body
+    .split(/\.\s+/)
+    .map((s) => cleanText(s))
+    .filter((s) => s.length > 40);
+  if (sentences.length < 2) return [];
+  return sentences.map((s) => (s.endsWith(".") ? s : `${s}.`));
 }
 
 async function parseQuestionsFromHtml(
@@ -68,6 +117,7 @@ async function parseQuestionsFromHtml(
     if (!idMatch) return;
     const sourceId = Number(idMatch[1]);
     if (!Number.isFinite(sourceId)) return;
+    if (sourceId < 1 || sourceId > 200) return;
     let questionText = initialText.replace(/^\d+\s*[.)]?\s*/, "");
     if (!questionText) return;
 
@@ -78,17 +128,55 @@ async function parseQuestionsFromHtml(
     const optionItems: string[] = [];
     const correctAnswers: string[] = [];
     const tableAnswerRows: string[] = [];
+    let tableMatchPairs: MatchPair[] | undefined;
+    let pairMatchStyle: "ordering" | undefined;
     let image: string | undefined;
     let explanation: string | undefined;
 
+    if (!image) {
+      const imgInQuestion = startNode.find("img").first();
+      if (imgInQuestion.length) {
+        image = cleanText(imgInQuestion.attr("src") ?? "");
+      }
+    }
+
     while (next.length) {
       if (next.is("p")) {
+        if (!image) {
+          const imgInP = next.find("img").first();
+          if (imgInP.length) {
+            image = cleanText(imgInP.attr("src") ?? "");
+          }
+        }
+
         const nextBold = next.find("strong, b").first();
         const candidateText = nextBold.length
           ? cleanText(nextBold.text())
           : cleanText(next.text());
         const numberedMatch = candidateText.match(/^(\d+)\s*[.)]?\s*/);
         if (numberedMatch) break;
+
+        const innerCorrect = next.find(".correct_answer");
+        if (innerCorrect.length) {
+          const choice = stripStepPrefix(cleanText(innerCorrect.first().text()));
+          if (choice) {
+            optionItems.push(choice);
+            correctAnswers.push(choice);
+          }
+          next = next.next();
+          continue;
+        }
+
+        const plain = stripStepPrefix(cleanText(next.text()));
+        if (
+          plain.length > 40 &&
+          !nextBold.length &&
+          /adresse|couch|172\.|192\.|10\.|00-00|00:00/i.test(plain)
+        ) {
+          optionItems.push(plain);
+          next = next.next();
+          continue;
+        }
 
         // Continue the same question when an extra unnumbered bold line follows.
         if (nextBold.length && candidateText) {
@@ -110,27 +198,62 @@ async function parseQuestionsFromHtml(
           const text = stripStepPrefix(cleanText($(li).text()));
           if (!text) return;
           optionItems.push(text);
-          if ($(li).hasClass("correct_answer")) {
+          if (liLooksCorrect($, li)) {
             correctAnswers.push(text);
           }
         });
       }
 
-      // Some questions are represented as table rows instead of list options.
-      // Keep raw row text so these questions are not dropped.
+      // Two-column tables:
+      // - "Étape N" / "Step N" + description = ordered sequence (options = right column), plus matchPairs + pairMatchStyle "ordering" for JSON/export.
+      // - Otherwise exactly 2 columns = label | description pairs (matching), matchPairs + "left - right" options.
+      // - Other tables: one option per row (joined cells).
       if (next.is("table")) {
+        const rows: string[][] = [];
         next.find("tr").each((__, tr) => {
           const cells = $(tr)
             .find("td,th")
             .map((___, cell) => cleanText($(cell).text()))
             .get()
-            .filter(Boolean);
-          if (cells.length) {
-            const rowText = stripStepPrefix(cells.join(" - "));
+            .filter((t) => t.trim().length > 0);
+          if (cells.length) rows.push(cells);
+        });
+        const allTwoColsRaw = rows.length >= 2 && rows.every((cells) => cells.length === 2);
+        const isEtapeSequenceTable =
+          allTwoColsRaw &&
+          rows.every(([left]) =>
+            /^(?:[Ee]tape|[Éé]tape|step)\s*\d+$/iu.test(left.trim())
+          );
+
+        if (isEtapeSequenceTable) {
+          tableMatchPairs = rows.map(([left, right]) => ({
+            left: left.trim(),
+            right: stripStepPrefix(right.trim())
+          }));
+          pairMatchStyle = "ordering";
+          for (const [, right] of rows) {
+            const text = stripStepPrefix(right.trim());
+            optionItems.push(text);
+            tableAnswerRows.push(text);
+          }
+        } else if (allTwoColsRaw) {
+          const pairs: MatchPair[] = rows.map(([left, right]) => ({
+            left: stripStepPrefix(left.trim()) || left.trim(),
+            right: stripStepPrefix(right.trim())
+          }));
+          tableMatchPairs = pairs;
+          for (const { left, right } of pairs) {
+            const rowText = `${left} - ${right}`;
             optionItems.push(rowText);
             tableAnswerRows.push(rowText);
           }
-        });
+        } else {
+          for (const cells of rows) {
+            const rowText = stripStepPrefix(cells.map((c) => c.trim()).join(" - "));
+            optionItems.push(rowText);
+            tableAnswerRows.push(rowText);
+          }
+        }
       }
 
       if (next.is("div.message_box.announce")) {
@@ -149,6 +272,18 @@ async function parseQuestionsFromHtml(
     if (correctAnswers.length === 0) {
       correctAnswers.push(...inferCorrectAnswersFromExplanation(optionItems, explanation));
     }
+    if (correctAnswers.length === 0 && optionItems.length === 0) {
+      const inferredSubs = inferSubnetAnswersFromExplanation(questionText, explanation);
+      optionItems.push(...inferredSubs);
+      correctAnswers.push(...inferredSubs);
+    }
+    if (correctAnswers.length === 0 && optionItems.length === 0) {
+      const assoc = inferAssociezFromExplanation(questionText, explanation);
+      if (assoc.length >= 2) {
+        optionItems.push(...assoc);
+        correctAnswers.push(...assoc);
+      }
+    }
 
     if (!questionText) {
       return;
@@ -161,6 +296,8 @@ async function parseQuestionsFromHtml(
       question: questionText,
       options: optionItems,
       correctAnswers,
+      ...(tableMatchPairs?.length ? { matchPairs: tableMatchPairs } : {}),
+      ...(pairMatchStyle ? { pairMatchStyle } : {}),
       ...(explanation ? { explanation } : {}),
       ...(image ? { image } : {})
     });
@@ -183,10 +320,12 @@ function dedupeBySourceId(questions: Question[]): Question[] {
     const currentScore =
       (current.correctAnswers?.length ?? 0) * 4 +
       (current.options?.length ?? 0) +
+      (current.matchPairs?.length ?? 0) * 10 +
       (current.explanation ? 1 : 0);
     const nextScore =
       (question.correctAnswers?.length ?? 0) * 4 +
       (question.options?.length ?? 0) +
+      (question.matchPairs?.length ?? 0) * 10 +
       (question.explanation ? 1 : 0);
 
     if (nextScore > currentScore) {

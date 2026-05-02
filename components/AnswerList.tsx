@@ -1,3 +1,5 @@
+import MatchOptionContent from "@/components/MatchOptionContent";
+
 type AnswerListProps = {
   options: string[];
   correctAnswers: string[];
@@ -30,7 +32,7 @@ export default function AnswerList({
 
         return (
           <li key={option} className={`rounded-xl border p-3 ${style}`}>
-            {option}
+            <MatchOptionContent option={option} />
           </li>
         );
       })}

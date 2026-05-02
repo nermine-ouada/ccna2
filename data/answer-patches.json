@@ -1,0 +1,15 @@
+{
+  "CCNA 1": {
+    "67": {
+      "options": [
+        "RJ-45",
+        "LC (fibre optique)",
+        "ST (fibre optique)",
+        "BNC (coaxial fin)",
+        "DB-9 (série RS-232)"
+      ],
+      "correctAnswers": ["RJ-45"]
+    }
+  },
+  "CCNA 2": {}
+}

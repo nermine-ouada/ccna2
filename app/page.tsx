@@ -53,14 +53,37 @@ export default function HomePage() {
         </Link>
       </div>
 
-      <a
-        href="https://github.com/nermine-ouada/ccna2"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-sm text-slate-600 underline-offset-4 transition hover:text-slate-900 hover:underline"
-      >
-        GitHub Repository by nermine-ouada
-      </a>
+      <div className="flex flex-col items-center gap-2 text-sm text-slate-600">
+        <p className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+          <a
+            href="/ccna1.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-slate-700 underline-offset-4 transition hover:text-slate-900 hover:underline"
+          >
+            CCNA réponses (CCNA 1)
+          </a>
+          <span className="text-slate-400" aria-hidden>
+            |
+          </span>
+          <a
+            href="/ccna2.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-slate-700 underline-offset-4 transition hover:text-slate-900 hover:underline"
+          >
+            CCNA réponses (CCNA 2)
+          </a>
+        </p>
+        <a
+          href="https://github.com/nermine-ouada/ccna2"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline-offset-4 transition hover:text-slate-900 hover:underline"
+        >
+          GitHub Repository by nermine-ouada
+        </a>
+      </div>
     </div>
   );
 }

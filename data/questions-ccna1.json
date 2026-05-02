@@ -35,7 +35,22 @@
     "correctAnswers": [
       "Des protocoles développés par des entreprises qui contrôlent leur définition et leur fonctionnement"
     ],
-    "explanation": "Explique: Les protocoles propriétaires ont leur définition et leur fonctionnement contrôlés par une entreprise ou un fournisseur. Certains d’entre eux peuvent être utilisés par différentes organisations avec l’autorisation du propriétaire. La suite de protocoles TCP/IP est une norme ouverte et non un protocole propriétaire."
+    "matchPairs": [
+      {
+        "left": "Dimensionnement des messages",
+        "right": "Processus consistant à décomposer un message long en parties distinctes avant de les envoyer sur le réseau"
+      },
+      {
+        "left": "Encapsulation des messages",
+        "right": "Processus consistant à placer un format de message à l’intérieur d’un autre"
+      },
+      {
+        "left": "Codage des messages",
+        "right": "Processus permettant de convertir des informations dans un format acceptable pour la transmission"
+      }
+    ],
+    "explanation": "Explique: Les protocoles propriétaires ont leur définition et leur fonctionnement contrôlés par une entreprise ou un fournisseur. Certains d’entre eux peuvent être utilisés par différentes organisations avec l’autorisation du propriétaire. La suite de protocoles TCP/IP est une norme ouverte et non un protocole propriétaire.",
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2024-10-14_061913.jpg"
   },
   {
     "id": 3,
@@ -51,7 +66,22 @@
       "Dimensionnement des messages - Processus consistant à décomposer un message long en parties distinctes avant de les envoyer sur le réseau",
       "Encapsulation des messages - Processus consistant à placer un format de message à l’intérieur d’un autre",
       "Codage des messages - Processus permettant de convertir des informations dans un format acceptable pour la transmission"
-    ]
+    ],
+    "matchPairs": [
+      {
+        "left": "Dimensionnement des messages",
+        "right": "Processus consistant à décomposer un message long en parties distinctes avant de les envoyer sur le réseau"
+      },
+      {
+        "left": "Encapsulation des messages",
+        "right": "Processus consistant à placer un format de message à l’intérieur d’un autre"
+      },
+      {
+        "left": "Codage des messages",
+        "right": "Processus permettant de convertir des informations dans un format acceptable pour la transmission"
+      }
+    ],
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2024-10-14_061913.jpg"
   },
   {
     "id": 4,
@@ -258,7 +288,10 @@
       "logiciel qui identifie les menaces à propagation rapide",
       "un protocole de tunneling qui fournit aux utilisateurs distants un accès sécurisé au réseau d’une organisation"
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "l’utilisation d’identifiants volés pour accéder à des données privées"
+    ],
+    "image": "https://reponseccna.com/wp-content/uploads/2021/12/24.jpg"
   },
   {
     "id": 17,
@@ -414,8 +447,9 @@
       "255.255.255.224"
     ],
     "correctAnswers": [
-      "adresses de saut suivant",
-      "Paramètres de vitesse et de duplex"
+      "Adresses IP",
+      "Statuts de la couche 1",
+      "255.255.255.128"
     ],
     "explanation": "Explique: La commande show ip interface brief affiche l’adresse IP de chaque interface, ainsi que l’état opérationnel des interfaces au niveau de la couche 1 et de la couche 2. Afin de voir l’interface descriptions et paramètres de vitesse et de duplex, utilisez la commande show running-config interface. Les adresses de saut suivant sont affichées dans la table de routage avec la commande show ip route, et l’adresse MAC d’une interface peut être vue avec la commande show interfaces."
   },
@@ -445,8 +479,18 @@
     "course": "CCNA 1",
     "sourceId": 27,
     "question": "Examinez l’illustration. Associez les réseaux aux adresses IP et aux préfixes capables de répondre aux exigences d’adressage d’hôte utilisable pour chaque réseau. (Les options ne doivent pas être toutes utilisées.)",
-    "options": [],
-    "correctAnswers": [],
+    "options": [
+      "192.168.0.128 /25",
+      "192.168.0.0 /26",
+      "192.168.0.96 /27",
+      "192.168.0.80 /30"
+    ],
+    "correctAnswers": [
+      "192.168.0.128 /25",
+      "192.168.0.0 /26",
+      "192.168.0.96 /27",
+      "192.168.0.80 /30"
+    ],
     "explanation": "Explique: Le réseau A doit utiliser 192.168.0.128 /25, ce qui donne 128 adresses d’hôte. Le réseau B doit utiliser 192.168.0.0 /26, ce qui donne 64 adresses d’hôte. Le réseau C doit utiliser 192.168.0.96 /27, ce qui donne 32 adresses d’hôtes. Le réseau D doit utiliser 192.168.0.80/30, ce qui donne 4 adresses d’hôte.",
     "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-11-11_235633.jpg"
   },
@@ -567,8 +611,18 @@
     "course": "CCNA 1",
     "sourceId": 33,
     "question": "Associez les caractéristiques aux méthodes de transmission correspondantes. (Les options ne doivent pas être toutes utilisées.)",
-    "options": [],
-    "correctAnswers": [],
+    "options": [
+      "Un commutateur store-and-forward stocke toujours la trame entière avant la transmission, et vérifie son CRC et la longueur de la trame.",
+      "Un commutateur direct peut transmettre des trames avant de recevoir le champ d’adresse de destination, présentant ainsi moins de latence qu’un commutateur de stockage et retransmission.",
+      "Étant donné que la trame peut commencer à être transmise avant d’être complètement reçue, le commutateur peut transmettre une trame corrompue ou incomplète.",
+      "Toutes les méthodes de transfert nécessitent un commutateur de couche 2 pour transférer les trames de diffusion."
+    ],
+    "correctAnswers": [
+      "Un commutateur store-and-forward stocke toujours la trame entière avant la transmission, et vérifie son CRC et la longueur de la trame.",
+      "Un commutateur direct peut transmettre des trames avant de recevoir le champ d’adresse de destination, présentant ainsi moins de latence qu’un commutateur de stockage et retransmission.",
+      "Étant donné que la trame peut commencer à être transmise avant d’être complètement reçue, le commutateur peut transmettre une trame corrompue ou incomplète.",
+      "Toutes les méthodes de transfert nécessitent un commutateur de couche 2 pour transférer les trames de diffusion."
+    ],
     "explanation": "Explique: Un commutateur store-and-forward stocke toujours la trame entière avant la transmission, et vérifie son CRC et la longueur de la trame. Un commutateur direct peut transmettre des trames avant de recevoir le champ d’adresse de destination, présentant ainsi moins de latence qu’un commutateur de stockage et retransmission. Étant donné que la trame peut commencer à être transmise avant d’être complètement reçue, le commutateur peut transmettre une trame corrompue ou incomplète. Toutes les méthodes de transfert nécessitent un commutateur de couche 2 pour transférer les trames de diffusion.",
     "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-11-11_235847.jpg"
   },
@@ -716,7 +770,26 @@
       "Adresse expérimentale - 240.2.6.255",
       "À une adresse publique - 198.133.219.2",
       "Adresse link-local - 127.0.0.1"
-    ]
+    ],
+    "matchPairs": [
+      {
+        "left": "Adresse de bouclage",
+        "right": "169.254.1.5"
+      },
+      {
+        "left": "Adresse expérimentale",
+        "right": "240.2.6.255"
+      },
+      {
+        "left": "À une adresse publique",
+        "right": "198.133.219.2"
+      },
+      {
+        "left": "Adresse link-local",
+        "right": "127.0.0.1"
+      }
+    ],
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2024-10-13_160654.jpg"
   },
   {
     "id": 43,
@@ -803,8 +876,15 @@
     "course": "CCNA 1",
     "sourceId": 48,
     "question": "Reportez-vous à l’illustration.Hôte B sur le sous-réseau Enseignants transmet un paquet à l’hôte D sur le sous-réseau Students. Quelles adresses de couche 2 et de couche 3 sont contenues dans les PDU qui sont transmises de l’hôte B au routeur?",
-    "options": [],
-    "correctAnswers": [],
+    "options": [
+      "Adresse de destination de la couche 2 = 00-00-0c-94-36-ab Adresse source de la couche 2 = 00-00-0c-94-36-bb Adresse de destination de la couche 3 = 172.16.20.200 Adresse source de la couche 3 = 172.16.10.200",
+      "Adresse de destination de la couche 2 = 00-00-0c-94-36-cd Adresse source de la couche 2 = 00-00-0c-94-36-bb Adresse de destination de la couche 3 = 172.16.20.99 Adresse source de la couche 3 = 172.16.10.200",
+      "Adresse de destination de la couche 2 = 00-00-0c-94-36-dd Adresse source de la couche 2 = 00-00-0c-94-36-bb Adresse de destination de la couche 3 = 172.16.20.200 Adresse source de la couche 3 = 172.16.10.200",
+      "Adresse de destination de la couche 2 = 00-00-0c-94-36-ab Adresse source de la couche 2 = 00-00-0c-94-36-bb Adresse de destination de la couche 3 = 172.16.20.200 Adresse source de la couche 3 = 172.16.100.200"
+    ],
+    "correctAnswers": [
+      "Adresse de destination de la couche 2 = 00-00-0c-94-36-ab Adresse source de la couche 2 = 00-00-0c-94-36-bb Adresse de destination de la couche 3 = 172.16.20.200 Adresse source de la couche 3 = 172.16.10.200"
+    ],
     "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-11-12_000249.jpg"
   },
   {
@@ -1122,7 +1202,8 @@
       "brochage",
       "longueur des câbles",
       "types de connecteurs"
-    ]
+    ],
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-20_220954.jpg"
   },
   {
     "id": 67,
@@ -1130,7 +1211,8 @@
     "sourceId": 67,
     "question": "Quel connecteur est utilisé avec le câblage à paires torsadées dans un réseau local Ethernet?",
     "options": [],
-    "correctAnswers": []
+    "correctAnswers": [],
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-20_220954.jpg"
   },
   {
     "id": 68,
@@ -1185,7 +1267,8 @@
     ],
     "correctAnswers": [
       "Traduit des noms de domaines (par exemple, cisco.com) en adresses IP"
-    ]
+    ],
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-20_221310.jpg"
   },
   {
     "id": 71,
@@ -1210,7 +1293,8 @@
       "Diriger les paquets de données vers les hôtes de destination sur d’autres réseaux",
       "Fournir des périphériques finaux dotés d’un identificateur de réseau unique"
     ],
-    "explanation": "Explique: Étant donné que l’hôte A n’a pas l’adresse MAC de la passerelle par défaut dans sa table ARP, l’hôte A envoie une diffusion ARP. La diffusion ARP serait envoyée à chaque périphérique du réseau local. Les hôtes B, C et le routeur R1 recevraient la diffusion. Le routeur R1 ne transmettrait pas le message."
+    "explanation": "Explique: Étant donné que l’hôte A n’a pas l’adresse MAC de la passerelle par défaut dans sa table ARP, l’hôte A envoie une diffusion ARP. La diffusion ARP serait envoyée à chaque périphérique du réseau local. Les hôtes B, C et le routeur R1 recevraient la diffusion. Le routeur R1 ne transmettrait pas le message.",
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-20_221310.jpg"
   },
   {
     "id": 72,
@@ -1334,7 +1418,8 @@
     "sourceId": 80,
     "question": "Faites correspondre le champ d’en-tête avec la couche appropriée du modèle OSI. (Toutes les options ne doivent pas être utilisées.)",
     "options": [],
-    "correctAnswers": []
+    "correctAnswers": [],
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-20_221629.jpg"
   },
   {
     "id": 80,
@@ -1350,7 +1435,8 @@
     "correctAnswers": [
       "Les messages sont stockés sur les serveurs de messagerie jusqu’à ce qu’ils soient manuellement supprimés sur le client de messagerie."
     ],
-    "explanation": "Explique: IMAP et POP sont des protocoles utilisés pour récupérer les e-mails. L’avantage d’utiliser IMAP au lieu de POP est que lorsque l’utilisateur se connecte à un serveur compatible IMAP, des copies des messages sont téléchargées vers l’application cliente. IMAP stocke ensuite les messages électroniques sur le serveur jusqu’à ce que l’utilisateur supprime manuellement ces messages."
+    "explanation": "Explique: IMAP et POP sont des protocoles utilisés pour récupérer les e-mails. L’avantage d’utiliser IMAP au lieu de POP est que lorsque l’utilisateur se connecte à un serveur compatible IMAP, des copies des messages sont téléchargées vers l’application cliente. IMAP stocke ensuite les messages électroniques sur le serveur jusqu’à ce que l’utilisateur supprime manuellement ces messages.",
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-20_221916.jpg"
   },
   {
     "id": 81,
@@ -1358,7 +1444,8 @@
     "sourceId": 82,
     "question": "Associez les affirmations suivantes aux modèles de réseau correspondants. (Les options ne sont pas toutes utilisées.)",
     "options": [],
-    "correctAnswers": []
+    "correctAnswers": [],
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-20_221916.jpg"
   },
   {
     "id": 82,
@@ -1381,7 +1468,8 @@
       "Couches application, transport, Internet et accès réseau.",
       "tracert"
     ],
-    "explanation": "Explique: Le modèle TCP/IP contient les couches application, transport, Internet et accès réseau. Un transfert de fichier utilise le protocole de couche application FTP. Les données se déplaceraient de la couche d’application à travers toutes les couches du modèle et à travers le réseau vers le serveur de fichiers."
+    "explanation": "Explique: Le modèle TCP/IP contient les couches application, transport, Internet et accès réseau. Un transfert de fichier utilise le protocole de couche application FTP. Les données se déplaceraient de la couche d’application à travers toutes les couches du modèle et à travers le réseau vers le serveur de fichiers.",
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-20_221916.jpg"
   },
   {
     "id": 83,
@@ -1415,7 +1503,22 @@
     "correctAnswers": [
       "FE80::/10"
     ],
-    "explanation": "Explique: Les adresses lien-local sont comprises entre FE80::/10 et FEBF::/10. La spécification IPv6 d’origine définissait les adresses locales du site et utilisait la plage de préfixes FEC0::/10, mais ces adresses ont été dépréciées par l’IETF en faveur d’adresses locales uniques. FDEE::/7 est une adresse locale unique car elle est comprise entre FC00::/7 et FDFF::/7. Les adresses de multidiffusion IPv6 ont le préfixe FF00::/8."
+    "matchPairs": [
+      {
+        "left": "Cette partie de l’adresse est l’équivalent de la partie hôte d’une adresse IPv4.",
+        "right": "ID d’interface"
+      },
+      {
+        "left": "Cette partie réseau de l’adresse est attribuée par le fournisseur d’accès Internet.",
+        "right": "réfixe de routage global"
+      },
+      {
+        "left": "Cette partie de l’adresse est utilisée par une entreprise pour identifier les sous-réseaux.",
+        "right": "ID de sous-réseau"
+      }
+    ],
+    "explanation": "Explique: Les adresses lien-local sont comprises entre FE80::/10 et FEBF::/10. La spécification IPv6 d’origine définissait les adresses locales du site et utilisait la plage de préfixes FEC0::/10, mais ces adresses ont été dépréciées par l’IETF en faveur d’adresses locales uniques. FDEE::/7 est une adresse locale unique car elle est comprise entre FC00::/7 et FDFF::/7. Les adresses de multidiffusion IPv6 ont le préfixe FF00::/8.",
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2024-10-13_155746.jpg"
   },
   {
     "id": 85,
@@ -1431,7 +1534,22 @@
       "Cette partie de l’adresse est l’équivalent de la partie hôte d’une adresse IPv4. - ID d’interface",
       "Cette partie réseau de l’adresse est attribuée par le fournisseur d’accès Internet. - réfixe de routage global",
       "Cette partie de l’adresse est utilisée par une entreprise pour identifier les sous-réseaux. - ID de sous-réseau"
-    ]
+    ],
+    "matchPairs": [
+      {
+        "left": "Cette partie de l’adresse est l’équivalent de la partie hôte d’une adresse IPv4.",
+        "right": "ID d’interface"
+      },
+      {
+        "left": "Cette partie réseau de l’adresse est attribuée par le fournisseur d’accès Internet.",
+        "right": "réfixe de routage global"
+      },
+      {
+        "left": "Cette partie de l’adresse est utilisée par une entreprise pour identifier les sous-réseaux.",
+        "right": "ID de sous-réseau"
+      }
+    ],
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2024-10-13_155746.jpg"
   },
   {
     "id": 86,
@@ -1671,7 +1789,8 @@
     ],
     "correctAnswers": [
       "Des règles de sécurité sont appliquées à la passerelle par défaut, ce qui l’empêche de traiter les requêtes ping."
-    ]
+    ],
+    "image": "https://ccnareponses.com/wp-content/uploads/2022/01/2022-01-10_213429.jpg"
   },
   {
     "id": 100,
@@ -1688,7 +1807,8 @@
     "correctAnswers": [
       "Adresse IP: 192.168.10.38 masque de sous-réseau: 255.255.255.248, passerelle par défaut: 192.168.10.33"
     ],
-    "explanation": "Explique: L’utilisation d’un préfixe /29 pour le sous-réseau 192.168.10.0 entraîne des sous-réseaux qui s’incrémentent de 8 : 192.168.10.0 (1) 192.168.10.8 (2) 192.168.10.16 (3) 192.168.10.24 (4) 192.168.10.32 (5)"
+    "explanation": "Explique: L’utilisation d’un préfixe /29 pour le sous-réseau 192.168.10.0 entraîne des sous-réseaux qui s’incrémentent de 8 : 192.168.10.0 (1) 192.168.10.8 (2) 192.168.10.16 (3) 192.168.10.24 (4) 192.168.10.32 (5)",
+    "image": "https://ccnareponses.com/wp-content/uploads/2022/01/2022-01-10_213429.jpg"
   },
   {
     "id": 101,
@@ -1730,9 +1850,12 @@
       "fast-forward"
     ],
     "correctAnswers": [
-      "La communication entre le commutateur et les utilisateurs distants est cryptée."
+      "La communication entre le commutateur et les utilisateurs distants est cryptée.",
+      "BB:BB:BB:BB:BB:BB",
+      "store-and-forward"
     ],
-    "explanation": "Explique: Lorsqu’un hôte envoie des informations à un réseau distant, l’en-tête de trame de couche 2 contiendra une adresse MAC source et de destination. L’adresse source sera le périphérique hôte d’origine. L’adresse de destination sera l’interface du routeur qui se connecte au même réseau. Dans le cas de l’hôte A envoyant des informations à l’hôte B, l’adresse source est AA:AA:AA:AA:AA:AA et l’adresse de destination est l’adresse MAC attribuée à l’interface Ethernet R2, BB:BB:BB:BB : BB:BB."
+    "explanation": "Explique: Lorsqu’un hôte envoie des informations à un réseau distant, l’en-tête de trame de couche 2 contiendra une adresse MAC source et de destination. L’adresse source sera le périphérique hôte d’origine. L’adresse de destination sera l’interface du routeur qui se connecte au même réseau. Dans le cas de l’hôte A envoyant des informations à l’hôte B, l’adresse source est AA:AA:AA:AA:AA:AA et l’adresse de destination est l’adresse MAC attribuée à l’interface Ethernet R2, BB:BB:BB:BB : BB:BB.",
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/Q104.2024-10-13_095012.jpg"
   },
   {
     "id": 103,
@@ -1752,9 +1875,11 @@
       "fast-forward"
     ],
     "correctAnswers": [
-      "AA:AA:AA:AA:AA:AA"
+      "BB:BB:BB:BB:BB:BB",
+      "store-and-forward"
     ],
-    "explanation": "Explique: Lorsqu’un hôte envoie des informations à un réseau distant, l’en-tête de trame de couche 2 contiendra une adresse MAC source et de destination. L’adresse source sera le périphérique hôte d’origine. L’adresse de destination sera l’interface du routeur qui se connecte au même réseau. Dans le cas de l’hôte A envoyant des informations à l’hôte B, l’adresse source est AA:AA:AA:AA:AA:AA et l’adresse de destination est l’adresse MAC attribuée à l’interface Ethernet R2, BB:BB:BB:BB : BB:BB."
+    "explanation": "Explique: Lorsqu’un hôte envoie des informations à un réseau distant, l’en-tête de trame de couche 2 contiendra une adresse MAC source et de destination. L’adresse source sera le périphérique hôte d’origine. L’adresse de destination sera l’interface du routeur qui se connecte au même réseau. Dans le cas de l’hôte A envoyant des informations à l’hôte B, l’adresse source est AA:AA:AA:AA:AA:AA et l’adresse de destination est l’adresse MAC attribuée à l’interface Ethernet R2, BB:BB:BB:BB : BB:BB.",
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/Q104.2024-10-13_095012.jpg"
   },
   {
     "id": 104,
@@ -1767,7 +1892,9 @@
       "store-and-forward",
       "fast-forward"
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "store-and-forward"
+    ]
   },
   {
     "id": 105,
@@ -1781,7 +1908,10 @@
       "Web",
       "Vidéo"
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "Voix",
+      "Vidéo"
+    ]
   },
   {
     "id": 106,
@@ -1796,7 +1926,10 @@
       "Annonce de routeur",
       "Dépassement du délai"
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "Sollicitation de voisin",
+      "Annonce de routeur"
+    ]
   },
   {
     "id": 107,
@@ -1809,7 +1942,9 @@
       "Permet aux clients d’envoyer des courriels à un serveur de messagerie et aux serveurs d’envoyer des courriels à d’autres serveurs.",
       "Utilise le chiffrement pour fournir un accès distant sécurisé aux périphériques et serveurs réseau."
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "Permet aux clients d’envoyer des courriels à un serveur de messagerie et aux serveurs d’envoyer des courriels à d’autres serveurs."
+    ]
   },
   {
     "id": 108,
@@ -1824,7 +1959,10 @@
       "Annonce de voisin",
       "Sollicitation de routeur"
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "Sollicitation de voisin",
+      "Annonce de voisin"
+    ]
   },
   {
     "id": 109,
@@ -1837,7 +1975,9 @@
       "Console",
       "Telnet"
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "SSH"
+    ]
   },
   {
     "id": 110,
@@ -1850,7 +1990,10 @@
       "POP3",
       "DNS"
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "POP3"
+    ],
+    "image": "https://itexamanswers.net/wp-content/uploads/2020/06/i304957v1n1_209418-1591171569.7915.png"
   },
   {
     "id": 111,
@@ -1864,7 +2007,10 @@
       "200",
       "224"
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "200"
+    ],
+    "image": "https://itexamanswers.net/wp-content/uploads/2020/06/i304957v1n1_209418-1591171569.7915.png"
   },
   {
     "id": 112,
@@ -1872,7 +2018,8 @@
     "sourceId": 113,
     "question": "Associez les descriptions aux mécanismes TCP correspondants. (Les options ne doivent pas être toutes utilisées.)",
     "options": [],
-    "correctAnswers": []
+    "correctAnswers": [],
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2024-10-13_160219.jpg"
   },
   {
     "id": 113,
@@ -1893,10 +2040,13 @@
       "Mettre à jour le système d’exploitation et d’autres logiciels d’application"
     ],
     "correctAnswers": [
+      "Place les informations dans la trame qui indique le protocole de couche réseau encapsulé pour la trame.",
+      "ajoute des informations de contrôle Ethernet aux données du protocole réseau",
       "Installer et mettre à jour un logiciel antivirus",
       "Mettre à jour le système d’exploitation et d’autres logiciels d’application"
     ],
-    "explanation": "Explique: Un spécialiste de la cybersécurité doit connaître les technologies et les mesures utilisées comme contre-mesures pour protéger l’organisation contre les menaces et les vulnérabilités."
+    "explanation": "Explique: Un spécialiste de la cybersécurité doit connaître les technologies et les mesures utilisées comme contre-mesures pour protéger l’organisation contre les menaces et les vulnérabilités.",
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2023-04-10_103226.jpg"
   },
   {
     "id": 114,
@@ -1915,7 +2065,8 @@
       "Installer et mettre à jour un logiciel antivirus",
       "Mettre à jour le système d’exploitation et d’autres logiciels d’application"
     ],
-    "explanation": "Explique: Un spécialiste de la cybersécurité doit connaître les technologies et les mesures utilisées comme contre-mesures pour protéger l’organisation contre les menaces et les vulnérabilités."
+    "explanation": "Explique: Un spécialiste de la cybersécurité doit connaître les technologies et les mesures utilisées comme contre-mesures pour protéger l’organisation contre les menaces et les vulnérabilités.",
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2023-04-10_103226.jpg"
   },
   {
     "id": 115,
@@ -1923,7 +2074,8 @@
     "sourceId": 116,
     "question": "Associez les protocoles d’application aux protocoles de transport corrects.",
     "options": [],
-    "correctAnswers": []
+    "correctAnswers": [],
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2023-04-10_103226.jpg"
   },
   {
     "id": 116,
@@ -1937,7 +2089,9 @@
       "lorsque la valeur du champ TTL atteint zéro",
       "lorsque les valeurs des messages de demande d’écho et de réponse d’écho atteignent zéro"
     ],
-    "correctAnswers": [],
+    "correctAnswers": [
+      "lorsque la valeur du champ TTL atteint zéro"
+    ],
     "explanation": "Explique: Lorsqu’un routeur reçoit un paquet traceroute, la valeur du champ TTL est décrémentée de 1. Lorsque la valeur du champ atteint zéro, le routeur récepteur ne transmettra pas le paquet et renverra un message ICMP Time Exceeded à la source."
   },
   {
@@ -2037,7 +2191,9 @@
       "255.255.255.192",
       "255.255.255.224"
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "255.255.255.192"
+    ]
   },
   {
     "id": 122,
@@ -2082,7 +2238,8 @@
     ],
     "correctAnswers": [
       "ARP"
-    ]
+    ],
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2024-10-13_160909.jpg"
   },
   {
     "id": 125,
@@ -2099,7 +2256,8 @@
     "correctAnswers": [
       "Le PC2 envoie une réponse ARP contenant son adresse MAC."
     ],
-    "explanation": "Expliquer : Lorsqu’un périphérique réseau souhaite communiquer avec un autre périphérique sur le même réseau, il envoie une requête ARP de diffusion. Dans ce cas, la requête contiendra l’adresse IP du PC2. Le périphérique de destination (PC2) envoie une réponse ARP avec son adresse MAC."
+    "explanation": "Expliquer : Lorsqu’un périphérique réseau souhaite communiquer avec un autre périphérique sur le même réseau, il envoie une requête ARP de diffusion. Dans ce cas, la requête contiendra l’adresse IP du PC2. Le périphérique de destination (PC2) envoie une réponse ARP avec son adresse MAC.",
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2024-10-13_160331.jpg"
   },
   {
     "id": 126,
@@ -2107,7 +2265,8 @@
     "sourceId": 127,
     "question": "Faites correspondre chaque type de champ de trame à sa fonction. (Les options ne sont pas toutes utilisées.)",
     "options": [],
-    "correctAnswers": []
+    "correctAnswers": [],
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2023-04-21_155353.jpg"
   },
   {
     "id": 127,
@@ -2218,7 +2377,9 @@
       "POP3",
       "IMAP"
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "DNS"
+    ]
   },
   {
     "id": 134,
@@ -2231,7 +2392,10 @@
       "255.255.255.224",
       "255.255.255.240"
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "255.255.255.224"
+    ],
+    "image": "https://itexamanswers.net/wp-content/uploads/2016/03/i207918v1n1_207918-1-1.jpg"
   },
   {
     "id": 135,
@@ -2244,8 +2408,11 @@
       "logiciel installé sur l’appareil de l’utilisateur et collectant des informations sur l’utilisateur",
       "une attaque qui ralentit ou bloque un appareil ou un service réseau"
     ],
-    "correctAnswers": [],
-    "explanation": "Explique: Le réseau A doit utiliser 192.168.0.0 /25, ce qui donne 128 adresses d’hôtes. Le réseau B doit utiliser 192.168.0.128 /26, ce qui donne 64 adresses d’hôtes. Le réseau C doit utiliser 192.168.0.192 /27, ce qui donne 32 adresses d’hôte. Le réseau D doit utiliser 192.168.0.224 /30, ce qui donne 4 adresses d’hôte."
+    "correctAnswers": [
+      "une attaque qui ralentit ou bloque un appareil ou un service réseau"
+    ],
+    "explanation": "Explique: Le réseau A doit utiliser 192.168.0.0 /25, ce qui donne 128 adresses d’hôtes. Le réseau B doit utiliser 192.168.0.128 /26, ce qui donne 64 adresses d’hôtes. Le réseau C doit utiliser 192.168.0.192 /27, ce qui donne 32 adresses d’hôte. Le réseau D doit utiliser 192.168.0.224 /30, ce qui donne 4 adresses d’hôte.",
+    "image": "https://itexamanswers.net/wp-content/uploads/2016/03/i207918v1n1_207918-1-1.jpg"
   },
   {
     "id": 136,
@@ -2258,7 +2425,10 @@
       "logiciel installé sur l’appareil de l’utilisateur et collectant des informations sur l’utilisateur",
       "une attaque qui ralentit ou bloque un appareil ou un service réseau"
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "une attaque qui ralentit ou bloque un appareil ou un service réseau"
+    ],
+    "image": "https://itexamanswers.net/wp-content/uploads/2016/03/2017-05-23_151007.png"
   },
   {
     "id": 137,
@@ -2271,8 +2441,11 @@
       "logiciel qui identifie les menaces à propagation rapide",
       "logiciel sur un routeur qui filtre le trafic en fonction des adresses IP ou des applications"
     ],
-    "correctAnswers": [],
-    "explanation": "Explique: Les réseaux peer-to-peer ne nécessitent pas l’utilisation d’un serveur dédié, et les appareils peuvent assumer simultanément les rôles de client et de serveur sur demande. Parce qu’ils ne nécessitent pas de comptes ou d’autorisations formalisés, ils sont mieux utilisés dans des situations limitées. Les applications peer-to-peer nécessitent une interface utilisateur et un service d’arrière-plan pour s’exécuter, et peuvent être utilisées dans des situations plus diverses."
+    "correctAnswers": [
+      "logiciel qui identifie les menaces à propagation rapide"
+    ],
+    "explanation": "Explique: Les réseaux peer-to-peer ne nécessitent pas l’utilisation d’un serveur dédié, et les appareils peuvent assumer simultanément les rôles de client et de serveur sur demande. Parce qu’ils ne nécessitent pas de comptes ou d’autorisations formalisés, ils sont mieux utilisés dans des situations limitées. Les applications peer-to-peer nécessitent une interface utilisateur et un service d’arrière-plan pour s’exécuter, et peuvent être utilisées dans des situations plus diverses.",
+    "image": "https://itexamanswers.net/wp-content/uploads/2016/03/2017-05-23_151007.png"
   },
   {
     "id": 138,
@@ -2285,7 +2458,9 @@
       "logiciel qui identifie les menaces à propagation rapide",
       "logiciel sur un routeur qui filtre le trafic en fonction des adresses IP ou des applications"
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "logiciel qui identifie les menaces à propagation rapide"
+    ]
   },
   {
     "id": 139,
@@ -2300,7 +2475,10 @@
       "uniquement les hôtes A, B et C",
       "uniquement le routeur R1"
     ],
-    "correctAnswers": []
+    "correctAnswers": [
+      "uniquement les hôtes B, C et le routeur R1"
+    ],
+    "image": "https://itexamanswers.net/wp-content/uploads/2020/12/i360201v3n1_275353-1608482322.6606.png"
   },
   {
     "id": 140,
@@ -2313,7 +2491,9 @@
       "WiMAX",
       "Wi-Fi"
     ],
-    "correctAnswers": [],
+    "correctAnswers": [
+      "Zigbee"
+    ],
     "explanation": "Explique: Zigbee est une spécification utilisée pour les communications à faible débit et faible consommation. Il est destiné aux applications nécessitant une courte portée, des débits de données faibles et une longue durée de vie de la batterie. Zigbee est généralement utilisé pour les environnements industriels et Internet des objets (IoT) tels que les interrupteurs d’éclairage sans fil et la collecte de données sur les appareils médicaux."
   },
   {
@@ -2327,22 +2507,8 @@
       "2001:DA48:FC5:A4::/64​",
       "2001 : :/64"
     ],
-    "correctAnswers": []
-  },
-  {
-    "id": 142,
-    "course": "CCNA 1",
-    "sourceId": 255,
-    "question": "255.255.192",
-    "options": [],
-    "correctAnswers": []
-  },
-  {
-    "id": 143,
-    "course": "CCNA 1",
-    "sourceId": 2001,
-    "question": ":DA48:FC5:A4::/64​",
-    "options": [],
-    "correctAnswers": []
+    "correctAnswers": [
+      "2001:DA48:FC5:A4::/64​"
+    ]
   }
 ]

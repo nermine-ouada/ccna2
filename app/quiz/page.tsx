@@ -239,6 +239,28 @@ export default function QuizPage() {
     setIndex(pi);
   };
 
+  const redoAll = () => {
+    if (
+      !window.confirm(
+        "Clear every answer in this quiz, reset the score to 0, and go back to the first question?"
+      )
+    ) {
+      return;
+    }
+    answersMapRef.current = {};
+    setAnswersMap({});
+    setScore(0);
+    setIndex(0);
+    setSelected([]);
+    setPairPicks({});
+    setRevealed(false);
+    setScored(false);
+    setShowAnswers(false);
+    setShuffleNonce({});
+    const first = orderedQuestions[0];
+    if (first) bumpShuffle(first.id);
+  };
+
   const redoQuestion = () => {
     if (!current) return;
     bumpShuffle(current.id);
@@ -358,6 +380,13 @@ export default function QuizPage() {
           className="rounded-lg bg-slate-900 px-4 py-2 font-medium text-white hover:bg-slate-700"
         >
           {randomMode ? "In Order" : "Random"}
+        </button>
+        <button
+          type="button"
+          onClick={redoAll}
+          className="rounded-lg border border-rose-400 bg-rose-50 px-4 py-2 font-medium text-rose-950 hover:bg-rose-100 dark:border-rose-600 dark:bg-rose-950/40 dark:text-rose-100 dark:hover:bg-rose-900/50"
+        >
+          Redo all
         </button>
       </div>
 

@@ -46,16 +46,18 @@ export default function FlashcardsPage() {
   }, [current, showAllOptions, index]);
 
   if (!current) {
-    return <p>No questions available. Run `npm run parse` first.</p>;
+    return (
+      <p className="text-slate-700 dark:text-slate-300">No questions available. Run `npm run parse` first.</p>
+    );
   }
 
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
           Flashcards{selectedCourse ? ` - ${selectedCourse}` : ""}
         </h1>
-        <Link href="/" className="text-sm text-blue-700 hover:underline">
+        <Link href="/" className="text-sm text-blue-700 hover:underline dark:text-blue-400">
           Back Home
         </Link>
       </div>
@@ -81,7 +83,7 @@ export default function FlashcardsPage() {
         {showAnswers && !questionIsOrdering(current) && !isPairMatchQuestion(current) ? (
           <button
             onClick={() => setShowAllOptions((prev) => !prev)}
-            className="rounded-lg border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 hover:bg-slate-50"
+            className="rounded-lg border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 hover:bg-slate-50 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
           >
             {showAllOptions ? "Hide false answers" : "Show all options"}
           </button>
@@ -93,17 +95,19 @@ export default function FlashcardsPage() {
           <div className="space-y-4">
             {isPairMatchQuestion(current) && current.matchPairs ? (
               <>
-                <p className="font-semibold text-emerald-800">Appariements (libellé → description)</p>
+                <p className="font-semibold text-emerald-800 dark:text-emerald-300">
+                  Appariements (libellé → description)
+                </p>
                 <MatchPairAnswerReview pairs={current.matchPairs} />
               </>
             ) : questionIsOrdering(current) ? (
               <>
-                <p className="font-semibold text-emerald-800">Séquence attendue</p>
+                <p className="font-semibold text-emerald-800 dark:text-emerald-300">Séquence attendue</p>
                 <OrderingAnswerFlow steps={current.correctAnswers} />
               </>
             ) : (
               <>
-                <p className="font-semibold text-emerald-800">
+                <p className="font-semibold text-emerald-800 dark:text-emerald-300">
                   {showAllOptions ? "Options (correct highlighted):" : "Correct answer(s):"}
                 </p>
                 <AnswerList
@@ -114,7 +118,7 @@ export default function FlashcardsPage() {
               </>
             )}
             {current.explanation ? (
-              <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
+              <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm leading-relaxed text-slate-700 dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-300">
                 {current.explanation}
               </div>
             ) : null}
@@ -126,7 +130,7 @@ export default function FlashcardsPage() {
         <button
           onClick={() => setIndex((prev) => Math.max(prev - 1, 0))}
           disabled={index === 0}
-          className="rounded-lg border border-slate-300 bg-white px-4 py-2 disabled:opacity-40"
+          className="rounded-lg border border-slate-300 bg-white px-4 py-2 disabled:opacity-40 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
         >
           Previous
         </button>

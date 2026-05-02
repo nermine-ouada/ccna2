@@ -103,7 +103,7 @@ export default function MatchPairPicker({
     if (!disabled) {
       for (const left of leftOrder) {
         const r = picks[left];
-        if (r) addLine(left, r, "#0f172a", `u-${left}-${r}`);
+        if (r) addLine(left, r, "#94a3b8", `u-${left}-${r}`);
       }
     } else {
       for (const { left, right } of pairs) {
@@ -191,13 +191,14 @@ export default function MatchPairPicker({
 
   return (
     <div className="space-y-4">
-      <p className="text-sm text-slate-600">
-        Cliquez un <span className="font-medium text-slate-800">libellé</span> (colonne de gauche), puis la{" "}
-        <span className="font-medium text-slate-800">description</span> qui correspond. Les traits relient les
-        paires. Utilisez la petite croix sur un libellé pour effacer son appariement.
+      <p className="text-sm text-slate-600 dark:text-slate-400">
+        Cliquez un <span className="font-medium text-slate-800 dark:text-slate-200">libellé</span> (colonne de
+        gauche), puis la <span className="font-medium text-slate-800 dark:text-slate-200">description</span> qui
+        correspond. Les traits relient les paires. Utilisez la petite croix sur un libellé pour effacer son
+        appariement.
       </p>
 
-      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white [-webkit-overflow-scrolling:touch]">
+      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white [-webkit-overflow-scrolling:touch] dark:border-slate-700 dark:bg-slate-900">
         <div ref={rootRef} className="relative min-w-[520px] p-4 sm:min-w-[560px]">
           <svg
             className="pointer-events-none absolute inset-0 h-full w-full overflow-visible rounded-xl"
@@ -235,22 +236,22 @@ export default function MatchPairPicker({
                   aria-label={`Libellé ${letter}. ${left}`}
                   onClick={() => handleLeftActivate(left)}
                   onKeyDown={(e) => onLeftKeyDown(e, left)}
-                  className={`flex cursor-pointer items-stretch rounded-xl border bg-white text-left shadow-sm transition outline-none ${
+                  className={`flex cursor-pointer items-stretch rounded-xl border bg-white text-left shadow-sm transition outline-none dark:bg-slate-900 ${
                     disabled
-                      ? `cursor-default ${revealLeft || "border-slate-200"}`
+                      ? `cursor-default ${revealLeft || "border-slate-200 dark:border-slate-600"}`
                       : selected
-                        ? "border-blue-500 ring-2 ring-blue-200"
-                        : "border-slate-200 hover:border-slate-300"
+                        ? "border-blue-500 ring-2 ring-blue-200 dark:ring-blue-800"
+                        : "border-slate-200 hover:border-slate-300 dark:border-slate-600 dark:hover:border-slate-500"
                   }`}
                 >
                   <div className="min-w-0 flex-1 p-3">
                     <div className="flex items-start justify-between gap-2">
-                      <p className="text-sm font-medium leading-snug text-slate-900">{left}</p>
+                      <p className="text-sm font-medium leading-snug text-slate-900 dark:text-slate-100">{left}</p>
                       {hasPick && !disabled ? (
                         <button
                           type="button"
                           onClick={(e) => clearPair(e, left)}
-                          className="shrink-0 rounded-md px-1.5 py-0.5 text-xs font-semibold text-rose-600 hover:bg-rose-50"
+                          className="shrink-0 rounded-md px-1.5 py-0.5 text-xs font-semibold text-rose-600 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-950/50"
                           aria-label="Effacer cet appariement"
                         >
                           ×
@@ -258,7 +259,7 @@ export default function MatchPairPicker({
                       ) : null}
                     </div>
                   </div>
-                  <div className="flex w-11 shrink-0 items-center justify-center border-l border-slate-100 bg-slate-50/80">
+                  <div className="flex w-11 shrink-0 items-center justify-center border-l border-slate-100 bg-slate-50/80 dark:border-slate-700 dark:bg-slate-800/80">
                     <div
                       ref={setLeftAnchor(left)}
                       className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold ${pal.node}`}
@@ -294,28 +295,28 @@ export default function MatchPairPicker({
                   aria-label={owner ? `Description liée à ${letter}. ${right}` : `Description. ${right}`}
                   onClick={() => handleRightPick(right)}
                   onKeyDown={(e) => onRightKeyDown(e, right)}
-                  className={`flex items-stretch rounded-xl border bg-white text-left shadow-sm transition outline-none ${
+                  className={`flex items-stretch rounded-xl border bg-white text-left shadow-sm transition outline-none dark:bg-slate-900 ${
                     disabled
-                      ? `cursor-default ${revealRight || "border-slate-200"}`
+                      ? `cursor-default ${revealRight || "border-slate-200 dark:border-slate-600"}`
                       : canClick
-                        ? "cursor-pointer border-blue-300 hover:border-blue-400 hover:bg-blue-50/40"
-                        : "cursor-default border-slate-200"
+                        ? "cursor-pointer border-blue-300 hover:border-blue-400 hover:bg-blue-50/40 dark:border-blue-600 dark:hover:border-blue-500 dark:hover:bg-blue-950/30"
+                        : "cursor-default border-slate-200 dark:border-slate-600"
                   }`}
                 >
-                  <div className="flex w-11 shrink-0 items-center justify-center border-r border-slate-100 bg-slate-50/80">
+                  <div className="flex w-11 shrink-0 items-center justify-center border-r border-slate-100 bg-slate-50/80 dark:border-slate-700 dark:bg-slate-800/80">
                     <div
                       ref={setRightAnchor(right)}
                       className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold ${
                         pal
                           ? pal.node
-                          : "border-slate-200 bg-white text-slate-300"
+                          : "border-slate-200 bg-white text-slate-300 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-500"
                       }`}
                     >
                       {letter || "·"}
                     </div>
                   </div>
                   <div className="min-w-0 flex-1 p-3">
-                    <p className="text-sm leading-snug text-slate-800">{right}</p>
+                    <p className="text-sm leading-snug text-slate-800 dark:text-slate-200">{right}</p>
                   </div>
                 </div>
               );
@@ -326,16 +327,16 @@ export default function MatchPairPicker({
       </div>
 
       {!disabled && !allChosen ? (
-        <p className="text-xs text-slate-500">Reliez chaque libellé à une description pour valider.</p>
+        <p className="text-xs text-slate-500 dark:text-slate-400">Reliez chaque libellé à une description pour valider.</p>
       ) : null}
       {disabled ? (
-        <div className="space-y-3 text-xs text-slate-600">
+        <div className="space-y-3 text-xs text-slate-600 dark:text-slate-400">
           <p>
-            <span className="font-medium text-emerald-700">Vert</span> : bon appariement.{" "}
-            <span className="font-medium text-rose-700">Rouge</span> : incorrect.{" "}
-            <span className="font-medium text-amber-800">Ambre</span> : aucune description choisie.
+            <span className="font-medium text-emerald-700 dark:text-emerald-400">Vert</span> : bon appariement.{" "}
+            <span className="font-medium text-rose-700 dark:text-rose-400">Rouge</span> : incorrect.{" "}
+            <span className="font-medium text-amber-800 dark:text-amber-300">Ambre</span> : aucune description choisie.
           </p>
-          <ul className="space-y-2 rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-800">
+          <ul className="space-y-2 rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-800 dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-200">
             {leftOrder.map((left) => {
               const r = pickResultsByLeft.get(left);
               if (!r) return null;
@@ -344,17 +345,19 @@ export default function MatchPairPicker({
                 <li
                   key={left}
                   className={`rounded-md border px-2 py-1.5 ${
-                    r.ok ? "border-emerald-200 bg-emerald-50/90" : "border-rose-200 bg-rose-50/90"
+                    r.ok
+                      ? "border-emerald-200 bg-emerald-50/90 dark:border-emerald-700 dark:bg-emerald-950/50"
+                      : "border-rose-200 bg-rose-50/90 dark:border-rose-700 dark:bg-rose-950/50"
                   }`}
                 >
-                  <span className="font-mono text-[11px] font-bold text-slate-600">{letter}</span>
+                  <span className="font-mono text-[11px] font-bold text-slate-600 dark:text-slate-400">{letter}</span>
                   {" · "}
                   <span className="font-medium">{r.left}</span>
                   {" — "}
                   {r.ok ? (
-                    <span className="text-emerald-800">Correct.</span>
+                    <span className="text-emerald-800 dark:text-emerald-300">Correct.</span>
                   ) : (
-                    <span className="text-rose-900">
+                    <span className="text-rose-900 dark:text-rose-200">
                       Incorrect. Attendu : <span className="font-medium">{r.expectedRight}</span>
                       {r.chosenRight ? (
                         <>

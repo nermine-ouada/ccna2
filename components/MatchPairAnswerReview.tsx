@@ -93,13 +93,18 @@ export default function MatchPairAnswerReview({
 
   return (
     <div
-      className="rounded-xl border border-emerald-200 bg-emerald-50/95 p-4 text-emerald-950"
+      className="rounded-xl border border-emerald-200 bg-emerald-50/95 p-4 text-emerald-950 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-100"
       role="region"
       aria-label={title}
     >
-      <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-emerald-900">{title}</p>
+      <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-emerald-900 dark:text-emerald-300">
+        {title}
+      </p>
 
-      <div ref={rootRef} className="relative space-y-3 rounded-lg border border-emerald-100 bg-white/90 p-3">
+      <div
+        ref={rootRef}
+        className="relative space-y-3 rounded-lg border border-emerald-100 bg-white/90 p-3 dark:border-emerald-800 dark:bg-slate-900/90"
+      >
         <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible rounded-lg" aria-hidden>
           {lines.map(({ x1, y1, x2, y2, key }) => (
             <line
@@ -124,11 +129,11 @@ export default function MatchPairAnswerReview({
                 key={`${left}-${right}-${i}`}
                 className="flex flex-col items-stretch gap-3 sm:flex-row sm:gap-4"
               >
-                <div className="flex min-w-0 flex-1 items-stretch rounded-xl border border-emerald-100 bg-white shadow-sm">
+                <div className="flex min-w-0 flex-1 items-stretch rounded-xl border border-emerald-100 bg-white shadow-sm dark:border-emerald-800 dark:bg-slate-900">
                   <div className="min-w-0 flex-1 p-3">
-                    <p className="text-sm font-medium leading-snug text-emerald-950">{left}</p>
+                    <p className="text-sm font-medium leading-snug text-emerald-950 dark:text-emerald-100">{left}</p>
                   </div>
-                  <div className="flex w-11 shrink-0 items-center justify-center border-l border-emerald-50 bg-emerald-50/50">
+                  <div className="flex w-11 shrink-0 items-center justify-center border-l border-emerald-50 bg-emerald-50/50 dark:border-emerald-800 dark:bg-emerald-950/50">
                     <div
                       ref={setLeftAnchor(i)}
                       className={`flex h-8 w-8 items-center justify-center rounded-full border-2 text-xs font-bold ${pal}`}
@@ -138,8 +143,8 @@ export default function MatchPairAnswerReview({
                   </div>
                 </div>
 
-                <div className="flex min-w-0 flex-1 items-stretch rounded-xl border border-emerald-100 bg-white shadow-sm">
-                  <div className="flex w-11 shrink-0 items-center justify-center border-r border-emerald-50 bg-emerald-50/50">
+                <div className="flex min-w-0 flex-1 items-stretch rounded-xl border border-emerald-100 bg-white shadow-sm dark:border-emerald-800 dark:bg-slate-900">
+                  <div className="flex w-11 shrink-0 items-center justify-center border-r border-emerald-50 bg-emerald-50/50 dark:border-emerald-800 dark:bg-emerald-950/50">
                     <div
                       ref={setRightAnchor(i)}
                       className={`flex h-8 w-8 items-center justify-center rounded-full border-2 text-xs font-bold ${pal}`}
@@ -148,7 +153,7 @@ export default function MatchPairAnswerReview({
                     </div>
                   </div>
                   <div className="min-w-0 flex-1 p-3">
-                    <p className="text-sm leading-snug text-emerald-900">{right}</p>
+                    <p className="text-sm leading-snug text-emerald-900 dark:text-emerald-200">{right}</p>
                   </div>
                 </div>
               </div>

@@ -9,13 +9,13 @@ export default function ProgressBar({ current, total }: ProgressBarProps) {
 
   return (
     <div className="w-full">
-      <div className="mb-2 flex items-center justify-between text-sm text-slate-600">
+      <div className="mb-2 flex items-center justify-between text-sm text-slate-600 dark:text-slate-400">
         <span>Progress</span>
         <span>
           {Math.min(current, total)}/{total}
         </span>
       </div>
-      <div className="h-2 w-full rounded-full bg-slate-200">
+      <div className="h-2 w-full rounded-full bg-slate-200 dark:bg-slate-700">
         <div
           className="h-2 rounded-full bg-blue-600 transition-all"
           style={{ width: `${percent}%` }}

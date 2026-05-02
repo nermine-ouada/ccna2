@@ -55,7 +55,7 @@ function normalizeQuestions(raw: Question[]): Question[] {
       if (question.pairMatchStyle === "ordering") {
         outCorrect = matchPairs.map((p) => stripStepPrefix(p.right));
         outMerged = hadStructuredPairs ? [...outCorrect] : unique([...options, ...outCorrect]);
-      } else if (question.pairMatchStyle !== "ordering") {
+      } else {
         const joined = matchPairs.map((p) => `${p.left} - ${p.right}`);
         outCorrect = joined;
         outMerged = hadStructuredPairs ? [...joined] : unique([...options, ...joined]);

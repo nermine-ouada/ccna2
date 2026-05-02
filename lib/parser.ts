@@ -1,4 +1,5 @@
 import { load } from "cheerio";
+import type { Element as DomhandlerElement } from "domhandler";
 import { promises as fs } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -44,7 +45,7 @@ function inferCorrectAnswersFromExplanation(options: string[], explanation?: str
 }
 
 /** Some pages mark correct choices only with inline red styling instead of li.correct_answer */
-function liLooksCorrect($: ReturnType<typeof load>, li: Element): boolean {
+function liLooksCorrect($: ReturnType<typeof load>, li: DomhandlerElement): boolean {
   const el = $(li);
   if (el.hasClass("correct_answer")) return true;
   if (el.find(".correct_answer").length > 0) return true;

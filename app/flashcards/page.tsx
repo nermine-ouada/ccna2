@@ -12,15 +12,7 @@ import {
   isOrderingQuestion as questionIsOrdering,
   isPairMatchQuestion
 } from "@/lib/questionUi";
-
-function shuffleArray<T>(items: T[]): T[] {
-  const shuffled = [...items];
-  for (let i = shuffled.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-}
+import { shuffleDeterministic } from "@/lib/shuffle";
 
 export default function FlashcardsPage() {
   const [selectedCourse, setSelectedCourse] = useState<"CCNA 1" | "CCNA 2">("CCNA 2");
@@ -41,14 +33,17 @@ export default function FlashcardsPage() {
 
   const orderedQuestions = useMemo(() => {
     if (!randomMode) return questions;
-    return shuffleArray(questions);
+    return shuffleDeterministic(
+      questions,
+      `fc-deck|${randomMode}|${questions.map((q) => q.id).join(",")}`
+    );
   }, [questions, randomMode]);
   const current = orderedQuestions[index];
   const visibleOptions = useMemo(() => {
     if (!current) return [];
     if (!showAllOptions) return current.correctAnswers;
-    return shuffleArray(current.options);
-  }, [current, showAllOptions]);
+    return shuffleDeterministic(current.options, `fc-opt|${current.id}|${index}`);
+  }, [current, showAllOptions, index]);
 
   if (!current) {
     return <p>No questions available. Run `npm run parse` first.</p>;

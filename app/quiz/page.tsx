@@ -16,15 +16,7 @@ import {
   isStructuredMatchTableQuestion,
   optionsUseMatchArrows
 } from "@/lib/questionUi";
-
-function shuffleArray<T>(items: T[]): T[] {
-  const shuffled = [...items];
-  for (let i = shuffled.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-}
+import { shuffleDeterministic } from "@/lib/shuffle";
 
 export default function QuizPage() {
   const [selectedCourse, setSelectedCourse] = useState<"CCNA 1" | "CCNA 2">("CCNA 2");
@@ -48,24 +40,36 @@ export default function QuizPage() {
 
   const orderedQuestions = useMemo(() => {
     if (!randomMode) return questions;
-    return shuffleArray(questions);
+    return shuffleDeterministic(
+      questions,
+      `quiz-deck|${randomMode}|${questions.map((q) => q.id).join(",")}`
+    );
   }, [questions, randomMode]);
   const current = orderedQuestions[index];
   const orderedOptions = useMemo(
-    () => (current && !isPairMatchQuestion(current) ? shuffleArray(current.options) : []),
-    [current]
+    () =>
+      current && !isPairMatchQuestion(current)
+        ? shuffleDeterministic(current.options, `quiz-opt|${current.id}|${index}`)
+        : [],
+    [current, index]
   );
 
   const pairMatch = Boolean(current && isPairMatchQuestion(current));
   const matchPairs = current?.matchPairs ?? [];
   const leftOrder = useMemo(() => {
     if (!current || !pairMatch) return [];
-    return shuffleArray((current.matchPairs ?? []).map((p) => p.left));
-  }, [current, pairMatch]);
+    return shuffleDeterministic(
+      (current.matchPairs ?? []).map((p) => p.left),
+      `quiz-left|${current.id}|${index}`
+    );
+  }, [current, pairMatch, index]);
   const rightChoices = useMemo(() => {
     if (!current || !pairMatch) return [];
-    return shuffleArray((current.matchPairs ?? []).map((p) => p.right));
-  }, [current, pairMatch]);
+    return shuffleDeterministic(
+      (current.matchPairs ?? []).map((p) => p.right),
+      `quiz-right|${current.id}|${index}`
+    );
+  }, [current, pairMatch, index]);
 
   useEffect(() => {
     if (current) setPairPicks({});

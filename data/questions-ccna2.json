@@ -1827,7 +1827,8 @@
       "Ils prennent en charge les sous-interfaces, notamment les interfaces sur les routeurs Cisco IOS."
     ],
     "correctAnswers": [
-      "Ils ne sont associés à aucun VLAN particulier."
+      "Ils ne sont associés à aucun VLAN particulier.",
+      "Dans un réseau commuté, elles sont principalement configurées entre les commutateurs, sur les couches principale et de distribution."
     ]
   },
   {

@@ -103,7 +103,8 @@ function main() {
       continue;
     }
     if (N === 98) {
-      pushCloneFromId(243, 1098, 314);
+      // Appendix Q98 (Famine DHCP wording); main Q102 is id 243 (crédit-bail / Insuffisance de ressources DHCP).
+      pushAppendix(byId.get(314), 1098);
       continue;
     }
     const numId = NUMBERED_APPENDIX_IDS[N];

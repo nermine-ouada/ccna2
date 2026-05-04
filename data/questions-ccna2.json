@@ -1735,15 +1735,15 @@
     "id": 243,
     "course": "CCNA 2",
     "sourceId": 102,
-    "question": "98. Quelle attaque réseau cherche à créer un DoS pour les clients en les empêchant d’obtenir un bail DHCP ?",
+    "question": "Quelle attaque a pour but de créer un DOS pour les clients en les empêchant d’obtenir un crédit-bail DHCP ?",
     "options": [
+      "Attaque par dépassement de table CAM",
+      "Insuffisance de ressources DHCP",
       "Usurpation d’adresse IP",
-      "Famine DHCP",
-      "Attaque de table CAM",
-      "Spoofing DHCP"
+      "Usurpation DHCP (ou spoofing)"
     ],
     "correctAnswers": [
-      "Famine DHCP"
+      "Insuffisance de ressources DHCP"
     ],
     "explanation": "Explication : Les attaques de famine DHCP sont lancées par un attaquant avec l’intention de créer un DoS pour les clients DHCP. Pour atteindre cet objectif, l’attaquant utilise un outil qui envoie de nombreux messages DHCPDISCOVER afin de louer l’intégralité du pool d’adresses IP disponibles, les refusant ainsi aux hôtes légitimes."
   },

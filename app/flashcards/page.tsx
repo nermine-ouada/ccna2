@@ -26,18 +26,17 @@ export default function FlashcardsPage() {
     if (selectedCourse === "CCNA 2") return ccna2Questions;
     return allQuestions;
   }, [selectedCourse]);
+  const deckKey = useMemo(() => questions.map((q) => q.id).join(","), [questions]);
   const [index, setIndex] = useState(0);
   const [showAnswers, setShowAnswers] = useState(false);
   const [showAllOptions, setShowAllOptions] = useState(true);
   const [randomMode, setRandomMode] = useState(false);
+  const [randomDeckNonce, setRandomDeckNonce] = useState(0);
 
   const orderedQuestions = useMemo(() => {
     if (!randomMode) return questions;
-    return shuffleDeterministic(
-      questions,
-      `fc-deck|${randomMode}|${questions.map((q) => q.id).join(",")}`
-    );
-  }, [questions, randomMode]);
+    return shuffleDeterministic(questions, `fc-deck|${randomDeckNonce}|${deckKey}`);
+  }, [questions, randomMode, deckKey, randomDeckNonce]);
   const current = orderedQuestions[index];
   const visibleOptions = useMemo(() => {
     if (!current) return [];
@@ -50,6 +49,12 @@ export default function FlashcardsPage() {
       <p className="text-slate-700 dark:text-slate-300">No questions available. Run `npm run parse` first.</p>
     );
   }
+
+  const canStartFromEnd = orderedQuestions.length > 1;
+  const startFromEnd = () => {
+    if (orderedQuestions.length === 0) return;
+    setIndex(orderedQuestions.length - 1);
+  };
 
   return (
     <div className="space-y-5">
@@ -80,12 +85,25 @@ export default function FlashcardsPage() {
         </button>
         <button
           onClick={() => {
-            setRandomMode((prev) => !prev);
+            setRandomMode((prev) => {
+              const next = !prev;
+              if (next) setRandomDeckNonce((n) => n + 1);
+              return next;
+            });
             setIndex(0);
           }}
           className="rounded-lg bg-slate-900 px-4 py-2 font-medium text-white hover:bg-slate-700"
         >
           {randomMode ? "In Order" : "Random"}
+        </button>
+        <button
+          type="button"
+          onClick={startFromEnd}
+          disabled={!canStartFromEnd}
+          className="rounded-lg border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
+          aria-label="Jump to the last card, then use Previous to move backward"
+        >
+          Start from end
         </button>
         {showAnswers && !questionIsOrdering(current) && !isPairMatchQuestion(current) ? (
           <button

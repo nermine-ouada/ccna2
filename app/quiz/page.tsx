@@ -45,6 +45,7 @@ export default function QuizPage() {
 
   const [index, setIndex] = useState(0);
   const [randomMode, setRandomMode] = useState(false);
+  const [randomDeckNonce, setRandomDeckNonce] = useState(0);
   const [score, setScore] = useState(0);
   const [answersMap, setAnswersMap] = useState<Record<number, QuizQuestionPersist>>({});
   const [shuffleNonce, setShuffleNonce] = useState<Record<number, number>>({});
@@ -68,10 +69,10 @@ export default function QuizPage() {
   const lastSessionKey = useRef("");
   useEffect(() => {
     if (!questions.length) return;
-    const key = `${selectedCourse}|${randomMode}|${deckKey}`;
+    const key = `${selectedCourse}|${randomMode}|${deckKey}|${randomMode ? randomDeckNonce : 0}`;
     if (key === lastSessionKey.current) return;
     lastSessionKey.current = key;
-    const s = loadQuizSession(selectedCourse, randomMode, deckKey);
+    const s = loadQuizSession(selectedCourse, randomMode, deckKey, randomMode ? randomDeckNonce : 0);
     if (!s) return;
     const map: Record<number, QuizQuestionPersist> = {};
     for (const [k, v] of Object.entries(s.answers)) {
@@ -81,15 +82,12 @@ export default function QuizPage() {
     answersMapRef.current = map;
     setScore(s.score);
     setIndex(Math.min(Math.max(0, s.index), questions.length - 1));
-  }, [selectedCourse, randomMode, deckKey, questions.length]);
+  }, [selectedCourse, randomMode, deckKey, questions.length, randomDeckNonce]);
 
   const orderedQuestions = useMemo(() => {
     if (!randomMode) return questions;
-    return shuffleDeterministic(
-      questions,
-      `quiz-deck|${randomMode}|${questions.map((q) => q.id).join(",")}`
-    );
-  }, [questions, randomMode]);
+    return shuffleDeterministic(questions, `quiz-deck|${randomDeckNonce}|${deckKey}`);
+  }, [questions, randomMode, deckKey, randomDeckNonce]);
 
   const current = orderedQuestions[index];
 
@@ -173,13 +171,14 @@ export default function QuizPage() {
         course: selectedCourse,
         randomMode,
         deckKey,
+        randomDeckNonce: randomMode ? randomDeckNonce : 0,
         index,
         score,
         answers: answersOut
       });
     }, 280);
     return () => window.clearTimeout(t);
-  }, [answersMap, score, index, selectedCourse, randomMode, deckKey, questions.length]);
+  }, [answersMap, score, index, selectedCourse, randomMode, randomDeckNonce, deckKey, questions.length]);
 
   if (!current) {
     return (
@@ -238,6 +237,15 @@ export default function QuizPage() {
     const prevQ = orderedQuestions[pi];
     if (prevQ) bumpShuffle(prevQ.id);
     setIndex(pi);
+  };
+
+  const startFromEnd = () => {
+    const lastIdx = Math.max(0, orderedQuestions.length - 1);
+    if (orderedQuestions.length === 0) return;
+    persistCurrentToMap();
+    const lastQ = orderedQuestions[lastIdx];
+    if (lastQ) bumpShuffle(lastQ.id);
+    setIndex(lastIdx);
   };
 
   const redoAll = () => {
@@ -318,6 +326,7 @@ export default function QuizPage() {
 
   const canGoPrev = index > 0;
   const canGoNext = index < orderedQuestions.length - 1;
+  const canStartFromEnd = orderedQuestions.length > 1;
 
   return (
     <div className="space-y-5">
@@ -379,7 +388,11 @@ export default function QuizPage() {
         <button
           onClick={() => {
             lastSessionKey.current = "";
-            setRandomMode((prev) => !prev);
+            setRandomMode((prev) => {
+              const next = !prev;
+              if (next) setRandomDeckNonce((n) => n + 1);
+              return next;
+            });
             setIndex(0);
             setSelected([]);
             setPairPicks({});
@@ -399,6 +412,15 @@ export default function QuizPage() {
           className="rounded-lg border border-rose-400 bg-rose-50 px-4 py-2 font-medium text-rose-950 hover:bg-rose-100 dark:border-rose-600 dark:bg-rose-950/40 dark:text-rose-100 dark:hover:bg-rose-900/50"
         >
           Redo all
+        </button>
+        <button
+          type="button"
+          onClick={startFromEnd}
+          disabled={!canStartFromEnd}
+          className="rounded-lg border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
+          aria-label="Jump to the last question, then use Previous to move backward through the deck"
+        >
+          Start from end
         </button>
       </div>
 

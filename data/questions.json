@@ -4701,22 +4701,17 @@
     "id": 263,
     "course": "CCNA 2",
     "sourceId": 122,
-    "question": "Un nouveau commutateur de couche 3 est connecté à un routeur et est en cours de configuration pour le routage interVLAN. Quelles sont trois des cinq étapes requises pour la configuration ? (Choisissez trois réponses.)\n\nCas 1 :",
+    "question": "Quelle action se déroule lorsqu’une trame entrant dans un commutateur a une adresse MAC de destination multidiffusion ?",
     "options": [
-      "modifier le VLAN par défaut",
-      "installer une route statique",
-      "ajustement de la métrique d’itinéraire",
-      "création de VLAN",
-      "attribution de ports aux VLAN",
-      "création d’interfaces SVI",
-      "implémenter un protocole de routage"
+      "Le commutateur transmet le cadre hors du port spécifié.",
+      "Le commutateur ajoute un mappage d’entrée de table d’adresses MAC pour l’adresse MAC de destination et le port d’entrée.",
+      "Le commutateur remplace l’ancienne entrée et utilise le port le plus courant.",
+      "Le commutateur transmet la trame à tous les ports, sauf au port d’arrivée."
     ],
     "correctAnswers": [
-      "création de VLAN",
-      "attribution de ports aux VLAN",
-      "création d’interfaces SVI"
+      "Le commutateur transmet la trame à tous les ports, sauf au port d’arrivée."
     ],
-    "explanation": "Explication : Étape 1. Créez les VLAN. Étape 2. Créez les interfaces SVI VLAN. Étape 3. Configurez les ports d’accès. Attribuez-les à leurs VLAN respectifs. Étape 4. Activez le routage IP."
+    "explanation": "Explication : Si l’adresse MAC de destination est une diffusion ou une multidiffusion, la trame est également diffusée sur tous les ports, à l’exception du port entrant."
   },
   {
     "id": 300,

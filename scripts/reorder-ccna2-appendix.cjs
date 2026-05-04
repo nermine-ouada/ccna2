@@ -83,7 +83,8 @@ function main() {
 
   for (const N of APPENDIX_ORDER) {
     if (N === 122) {
-      pushCloneFromId(263, 1122, 315);
+      // Cas 1–3 for appendix Q122; Cas 1 is id 315 (main Q122 is a different exam item at id 263).
+      pushAppendix(byId.get(315), 1122);
       pushAppendix(byId.get(309), 1123);
       pushAppendix(byId.get(310), 1124);
       continue;

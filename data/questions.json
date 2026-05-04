@@ -3491,6 +3491,42 @@
     ]
   },
   {
+    "id": 297,
+    "course": "CCNA 2",
+    "sourceId": 245,
+    "question": "Associez la caractéristique de transmission à son type. (Les options ne sont pas toutes utilisées.)",
+    "options": [],
+    "correctAnswers": [],
+    "matchPairs": [
+      {
+        "left": "Convient aux applications informatiques hautement performantes.",
+        "right": "Cut-Through"
+      },
+      {
+        "left": "Contrôle les erreurs avant la transmission.",
+        "right": "Store-and-Forward"
+      },
+      {
+        "left": "Le processus de transmission peut démarrer dès la réception de l’adresse de destination.",
+        "right": "Cut-Through"
+      },
+      {
+        "left": "Le processus de transmission peut démarrer uniquement après avoir reçu la totalité de la trame.",
+        "right": "Store-and-Forward"
+      },
+      {
+        "left": "Les trames non valides peuvent être transmises.",
+        "right": "Cut-Through"
+      },
+      {
+        "left": "Seules les trames valides sont transmises.",
+        "right": "Store-and-Forward"
+      }
+    ],
+    "explanation": "Explication : En cut-through, le commutateur commence à transmettre après avoir lu l’adresse de destination (latence faible, adapté au trafic sensible au délai), sans vérifier le FCS — des trames invalides peuvent donc être transmises. En store-and-forward, la trame entière est reçue et contrôlée avant retransmission : les erreurs sont détectées avant envoi et seules les trames valides sont transmises, au prix d’une latence plus élevée.",
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-03_224759.jpg"
+  },
+  {
     "id": 196,
     "course": "CCNA 2",
     "sourceId": 55,
@@ -4164,13 +4200,29 @@
     "correctAnswers": [
       "Le domaine de diffusion s’étend sur tous les commutateurs."
     ],
-    "explanation": "Explique: Dans les commutateurs LAN Cisco, la microsegmentation permet à chaque port de représenter un segment distinct et ainsi chaque port de commutateur représente un domaine de collision distinct. Ce fait ne changera pas lorsque plusieurs commutateurs sont interconnectés. Cependant, les commutateurs LAN ne filtrent pas les trames de diffusion. Une trame de diffusion est inondée vers tous les ports. Les commutateurs interconnectés forment un grand domaine de diffusion.",
-    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-23_163717.png"
+    "explanation": "Explique: Dans les commutateurs LAN Cisco, la microsegmentation permet à chaque port de représenter un segment distinct et ainsi chaque port de commutateur représente un domaine de collision distinct. Ce fait ne changera pas lorsque plusieurs commutateurs sont interconnectés. Cependant, les commutateurs LAN ne filtrent pas les trames de diffusion. Une trame de diffusion est inondée vers tous les ports. Les commutateurs interconnectés forment un grand domaine de diffusion."
   },
   {
     "id": 235,
     "course": "CCNA 2",
     "sourceId": 94,
+    "question": "Reportez-vous à l’illustration. Un administrateur réseau configure le routeur R1 pour l’attribution d’adresse IPv6. Sur la base de la configuration partielle, quel système d’attribution d’adresses IPv6 global monodiffusion l’administrateur a-t-il l’intention de mettre en œuvre ?",
+    "options": [
+      "configuration manuelle",
+      "SLAAC",
+      "avec état (stateful)",
+      "Sans état"
+    ],
+    "correctAnswers": [
+      "avec état (stateful)"
+    ],
+    "explanation": "Explication : Le routeur active le routage IPv6 (`ipv6 unicast-routing`), définit un pool DHCPv6 (`ipv6 dhcp pool`) et l’applique sur l’interface (`ipv6 dhcp server CORP_LAN`). La commande `ipv6 nd managed-config-flag` positionne le drapeau M dans les RA : les clients doivent utiliser DHCPv6 pour obtenir une adresse ou d’autres paramètres, ce qui correspond à une attribution avec état (stateful DHCPv6), et non au SLAAC seul ni au mode sans état.",
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-23_163717.png"
+  },
+  {
+    "id": 298,
+    "course": "CCNA 2",
+    "sourceId": 246,
     "question": "Quel protocole ajoute de la sécurité aux connexions à distance ?",
     "options": [
       "FTP",
@@ -4188,6 +4240,23 @@
     "id": 236,
     "course": "CCNA 2",
     "sourceId": 95,
+    "question": "Examinez l’illustration. Un administrateur réseau vérifie la configuration du commutateur S1. Quel protocole a été implémenté pour regrouper plusieurs ports physiques en une liaison logique ?",
+    "options": [
+      "DTP",
+      "STP",
+      "PAgP",
+      "LACP"
+    ],
+    "correctAnswers": [
+      "PAgP"
+    ],
+    "explanation": "Explication : Les commandes `channel-group 1 mode auto` sur les interfaces physiques indiquent que l’agrégation est négociée via PAgP (Port Aggregation Protocol). Avec LACP, les modes seraient `active` ou `passive`. DTP gère les trunks ; STP évite les boucles, ce ne sont pas des protocoles d’EtherChannel.",
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-23_163739.png"
+  },
+  {
+    "id": 299,
+    "course": "CCNA 2",
+    "sourceId": 247,
     "question": "Examinez l’illustration. Un administrateur réseau vérifie la configuration du routage inter-VLAN. Les utilisateurs se plaignent que PC2 ne peut pas communiquer avec PC1. Sur la base de la sortie, quelle est la cause possible du problème ?",
     "options": [
       "Gi0/0 n’est pas configuré comme port de jonction.",

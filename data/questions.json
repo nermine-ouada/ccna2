@@ -4701,7 +4701,7 @@
     "id": 263,
     "course": "CCNA 2",
     "sourceId": 122,
-    "question": "Un nouveau commutateur de couche 3 est connecté à un routeur et est en cours de configuration pour le routage interVLAN. Quelles sont trois des cinq étapes requises pour la configuration ? (Choisissez trois réponses.) Cas 2 : Cas 3 :",
+    "question": "Un nouveau commutateur de couche 3 est connecté à un routeur et est en cours de configuration pour le routage interVLAN. Quelles sont trois des cinq étapes requises pour la configuration ? (Choisissez trois réponses.)\n\nCas 1 :",
     "options": [
       "modifier le VLAN par défaut",
       "installer une route statique",
@@ -4709,14 +4709,42 @@
       "création de VLAN",
       "attribution de ports aux VLAN",
       "création d’interfaces SVI",
-      "implémenter un protocole de routage",
+      "implémenter un protocole de routage"
+    ],
+    "correctAnswers": [
+      "création de VLAN",
+      "attribution de ports aux VLAN",
+      "création d’interfaces SVI"
+    ],
+    "explanation": "Explication : Étape 1. Créez les VLAN. Étape 2. Créez les interfaces SVI VLAN. Étape 3. Configurez les ports d’accès. Attribuez-les à leurs VLAN respectifs. Étape 4. Activez le routage IP."
+  },
+  {
+    "id": 300,
+    "course": "CCNA 2",
+    "sourceId": 1220,
+    "question": "Un nouveau commutateur de couche 3 est connecté à un routeur et est en cours de configuration pour le routage interVLAN. Quelles sont trois des cinq étapes requises pour la configuration ? (Choisissez trois réponses.)\n\nCas 2 :",
+    "options": [
       "activation du routage IP",
       "en saisissant « pas de port de commutation » sur le port connecté au routeur",
       "ajustement de la métrique d’itinéraire",
       "installer une route statique",
       "attribution des ports au VLAN natif",
       "modifier le VLAN par défaut",
-      "attribution de ports aux VLAN",
+      "attribution de ports aux VLAN"
+    ],
+    "correctAnswers": [
+      "activation du routage IP",
+      "en saisissant « pas de port de commutation » sur le port connecté au routeur",
+      "attribution de ports aux VLAN"
+    ],
+    "explanation": "Explication : Étape 1. Créez les VLAN. Étape 2. Créez les interfaces SVI VLAN. Étape 3. Configurez les ports d’accès. Attribuez-les à leurs VLAN respectifs. Étape 4. Activez le routage IP."
+  },
+  {
+    "id": 301,
+    "course": "CCNA 2",
+    "sourceId": 1221,
+    "question": "Un nouveau commutateur de couche 3 est connecté à un routeur et est en cours de configuration pour le routage interVLAN. Quelles sont trois des cinq étapes requises pour la configuration ? (Choisissez trois réponses.)\n\nCas 3 :",
+    "options": [
       "activation du routage IP",
       "modifier le VLAN par défaut",
       "en saisissant « pas de port de commutation » sur le port connecté au routeur",
@@ -4726,12 +4754,6 @@
       "attribution des ports au VLAN natif"
     ],
     "correctAnswers": [
-      "création de VLAN",
-      "attribution de ports aux VLAN",
-      "création d’interfaces SVI",
-      "activation du routage IP",
-      "en saisissant « pas de port de commutation » sur le port connecté au routeur",
-      "attribution de ports aux VLAN",
       "activation du routage IP",
       "en saisissant « pas de port de commutation » sur le port connecté au routeur",
       "établissement de contiguïtés"

@@ -344,7 +344,18 @@ export default function QuizPage() {
           &lt;
         </button>
         <div className="min-w-0 flex-1 px-2">
-          <ProgressBar current={index + 1} total={orderedQuestions.length} />
+          <ProgressBar
+            current={index + 1}
+            total={orderedQuestions.length}
+            onSeek={(q) => {
+              const nextIdx = Math.min(Math.max(1, q), orderedQuestions.length) - 1;
+              if (nextIdx === index) return;
+              persistCurrentToMap();
+              const nextQ = orderedQuestions[nextIdx];
+              if (nextQ) bumpShuffle(nextQ.id);
+              setIndex(nextIdx);
+            }}
+          />
         </div>
         <button
           type="button"

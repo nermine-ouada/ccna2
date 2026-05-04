@@ -62,7 +62,14 @@ export default function FlashcardsPage() {
         </Link>
       </div>
 
-      <ProgressBar current={index + 1} total={orderedQuestions.length} />
+      <ProgressBar
+        current={index + 1}
+        total={orderedQuestions.length}
+        onSeek={(q) => {
+          const nextIdx = Math.min(Math.max(1, q), orderedQuestions.length) - 1;
+          if (nextIdx !== index) setIndex(nextIdx);
+        }}
+      />
 
       <div className="flex flex-wrap gap-3">
         <button

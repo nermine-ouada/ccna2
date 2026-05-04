@@ -9,6 +9,13 @@ export function isPairMatchQuestion(q: Question): boolean {
   return !!q.matchPairs && q.matchPairs.length >= 2 && q.pairMatchStyle !== "ordering";
 }
 
+/** Several rows map to the same right label (e.g. multiple traits → Cut-Through). */
+export function matchPairsUseSharedRightTargets(pairs: MatchPair[]): boolean {
+  if (pairs.length < 2) return false;
+  const rights = pairs.map((p) => p.right);
+  return new Set(rights).size < rights.length;
+}
+
 /** Table-based match / ordering items (HSRP, VLAN, liaison, DHCP, boot) — illustration often shows the solution */
 export function isStructuredMatchTableQuestion(q: Question): boolean {
   return (

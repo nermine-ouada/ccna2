@@ -10,7 +10,11 @@ import {
   type MouseEvent
 } from "react";
 import type { MatchPair } from "@/lib/types";
-import { evaluateMatchPairPicks, type MatchPairPickResult } from "@/lib/questionUi";
+import {
+  evaluateMatchPairPicks,
+  matchPairsUseSharedRightTargets,
+  type MatchPairPickResult
+} from "@/lib/questionUi";
 
 const NODE_PALETTE = [
   { node: "border-violet-400 bg-violet-200 text-violet-900", stroke: "#6d28d9" },
@@ -72,6 +76,21 @@ export default function MatchPairPicker({
     leftOrder.forEach((l, i) => m.set(l, i));
     return m;
   }, [leftOrder]);
+
+  const sharedRightTargets = useMemo(() => matchPairsUseSharedRightTargets(pairs), [pairs]);
+
+  const displayRightChoices = useMemo(() => {
+    if (!sharedRightTargets) return rightChoices;
+    const seen = new Set<string>();
+    const out: string[] = [];
+    for (const r of rightChoices) {
+      if (!seen.has(r)) {
+        seen.add(r);
+        out.push(r);
+      }
+    }
+    return out;
+  }, [sharedRightTargets, rightChoices]);
 
   const correctRightByLeft = useMemo(() => {
     const m = new Map<string, string>();
@@ -173,12 +192,8 @@ export default function MatchPairPicker({
 
   const allChosen = leftOrder.every((left) => Boolean(picks[left]));
 
-  const assignedLeftForRight = (right: string): string | undefined => {
-    for (const left of leftOrder) {
-      if (picks[left] === right) return left;
-    }
-    return undefined;
-  };
+  const leftOwnersForRight = (right: string): string[] =>
+    leftOrder.filter((left) => picks[left] === right);
 
   const pickResultsByLeft = useMemo(() => {
     const m = new Map<string, MatchPairPickResult>();
@@ -193,9 +208,15 @@ export default function MatchPairPicker({
     <div className="space-y-4">
       <p className="text-sm text-slate-600 dark:text-slate-400">
         Cliquez un <span className="font-medium text-slate-800 dark:text-slate-200">libellé</span> (colonne de
-        gauche), puis la <span className="font-medium text-slate-800 dark:text-slate-200">description</span> qui
+        gauche), puis la <span className="font-medium text-slate-800 dark:text-slate-200">cible</span> qui
         correspond. Les traits relient les paires. Utilisez la petite croix sur un libellé pour effacer son
         appariement.
+        {sharedRightTargets ? (
+          <span className="mt-1 block text-slate-600 dark:text-slate-400">
+            Plusieurs libellés peuvent être reliés à la même cible lorsque plusieurs réponses partagent la même
+            catégorie à droite.
+          </span>
+        ) : null}
       </p>
 
       <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white [-webkit-overflow-scrolling:touch] dark:border-slate-700 dark:bg-slate-900">
@@ -272,19 +293,29 @@ export default function MatchPairPicker({
             })}
           </div>
 
-          <div className="min-w-0 flex-1 space-y-3" role="list" aria-label="Descriptions">
-            {rightChoices.map((right) => {
-              const owner = assignedLeftForRight(right);
-              const ownerIdx = owner !== undefined ? (leftIndex.get(owner) ?? 0) : -1;
+          <div className="min-w-0 flex-1 space-y-3" role="list" aria-label="Cibles">
+            {displayRightChoices.map((right) => {
+              const owners = leftOwnersForRight(right);
+              const primaryOwner = owners[0];
+              const ownerIdx = primaryOwner !== undefined ? (leftIndex.get(primaryOwner) ?? 0) : -1;
               const pal = ownerIdx >= 0 ? NODE_PALETTE[ownerIdx % NODE_PALETTE.length] : null;
-              const letter = ownerIdx >= 0 ? letterForIndex(ownerIdx) : "";
+              const letters =
+                owners.length > 0
+                  ? owners.map((l) => letterForIndex(leftIndex.get(l) ?? 0)).join("")
+                  : "";
               const canClick = Boolean(activeLeft) && !disabled;
-              const ownerPick = owner ? pickResultsByLeft.get(owner) : undefined;
               const revealRight =
-                disabled && ownerPick && ownerPick.chosenRight === right
-                  ? ownerPick.ok
-                    ? "ring-2 ring-emerald-400/80 border-emerald-400"
-                    : "ring-2 ring-rose-400/80 border-rose-400"
+                disabled && owners.length > 0
+                  ? (() => {
+                      const prs = owners
+                        .map((o) => pickResultsByLeft.get(o))
+                        .filter((x): x is MatchPairPickResult => Boolean(x));
+                      const anyWrong = prs.some((pr) => pr.chosenRight === right && !pr.ok);
+                      const allOk = prs.every((pr) => pr.chosenRight === right && pr.ok);
+                      if (anyWrong) return "ring-2 ring-rose-400/80 border-rose-400";
+                      if (allOk) return "ring-2 ring-emerald-400/80 border-emerald-400";
+                      return "ring-2 ring-amber-200 border-amber-400";
+                    })()
                   : "";
 
               return (
@@ -292,7 +323,11 @@ export default function MatchPairPicker({
                   key={right}
                   role="button"
                   tabIndex={canClick ? 0 : -1}
-                  aria-label={owner ? `Description liée à ${letter}. ${right}` : `Description. ${right}`}
+                  aria-label={
+                    owners.length > 0
+                      ? `Cible « ${right} », reliée aux libellés : ${owners.join(" ; ")}`
+                      : `Cible. ${right}`
+                  }
                   onClick={() => handleRightPick(right)}
                   onKeyDown={(e) => onRightKeyDown(e, right)}
                   className={`flex items-stretch rounded-xl border bg-white text-left shadow-sm transition outline-none dark:bg-slate-900 ${
@@ -306,13 +341,13 @@ export default function MatchPairPicker({
                   <div className="flex w-11 shrink-0 items-center justify-center border-r border-slate-100 bg-slate-50/80 dark:border-slate-700 dark:bg-slate-800/80">
                     <div
                       ref={setRightAnchor(right)}
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold ${
+                      className={`flex min-h-8 min-w-8 max-w-[4.5rem] shrink-0 flex-wrap items-center justify-center gap-0.5 rounded-full border-2 px-1 py-0.5 text-[10px] font-bold leading-none ${
                         pal
                           ? pal.node
                           : "border-slate-200 bg-white text-slate-300 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-500"
                       }`}
                     >
-                      {letter || "·"}
+                      {letters || "·"}
                     </div>
                   </div>
                   <div className="min-w-0 flex-1 p-3">

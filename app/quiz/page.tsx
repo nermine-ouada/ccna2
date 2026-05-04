@@ -15,6 +15,7 @@ import {
   isOrderingQuestion as questionIsOrdering,
   isPairMatchQuestion,
   isStructuredMatchTableQuestion,
+  matchPairsUseSharedRightTargets,
   optionsUseMatchArrows
 } from "@/lib/questionUi";
 import { shuffleDeterministic } from "@/lib/shuffle";
@@ -422,8 +423,10 @@ export default function QuizPage() {
                   return next;
                 }
                 const next = { ...prev };
-                for (const k of Object.keys(next)) {
-                  if (next[k] === right) delete next[k];
+                if (!matchPairsUseSharedRightTargets(matchPairs)) {
+                  for (const k of Object.keys(next)) {
+                    if (next[k] === right) delete next[k];
+                  }
                 }
                 next[left] = right;
                 return next;

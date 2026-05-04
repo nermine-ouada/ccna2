@@ -600,17 +600,17 @@
     "id": 175,
     "course": "CCNA 2",
     "sourceId": 34,
-    "question": "Quel est le préfixe IPv6 utilisé pour les adresses lien-local ?",
+    "question": "Quel protocole doit être désactivé pour pallier les attaques de VLAN ?",
     "options": [
-      "FF01::/8",
-      "2001 : :/3",
-      "FC00 : :/7",
-      "FE80::/10"
+      "CDP",
+      "STP",
+      "DTP",
+      "ARP"
     ],
     "correctAnswers": [
-      "FE80::/10"
+      "DTP"
     ],
-    "explanation": "Explication : Le préfixe lien-local IPv6 est FE80::/10 et est utilisé pour créer une adresse IPv6 lien-local sur une interface."
+    "explanation": "Explication : Le protocole DTP (Dynamic Trunking Protocol) négocie automatiquement les liaisons de jonction ; le désactiver ou forcer le mode des ports manuellement réduit le risque d’attaques de saut de VLAN (VLAN hopping)."
   },
   {
     "id": 176,
@@ -941,42 +941,6 @@
     ]
   },
   {
-    "id": 297,
-    "course": "CCNA 2",
-    "sourceId": 245,
-    "question": "Associez la caractéristique de transmission à son type. (Les options ne sont pas toutes utilisées.)",
-    "options": [],
-    "correctAnswers": [],
-    "matchPairs": [
-      {
-        "left": "Convient aux applications informatiques hautement performantes.",
-        "right": "Cut-Through"
-      },
-      {
-        "left": "Contrôle les erreurs avant la transmission.",
-        "right": "Store-and-Forward"
-      },
-      {
-        "left": "Le processus de transmission peut démarrer dès la réception de l’adresse de destination.",
-        "right": "Cut-Through"
-      },
-      {
-        "left": "Le processus de transmission peut démarrer uniquement après avoir reçu la totalité de la trame.",
-        "right": "Store-and-Forward"
-      },
-      {
-        "left": "Les trames non valides peuvent être transmises.",
-        "right": "Cut-Through"
-      },
-      {
-        "left": "Seules les trames valides sont transmises.",
-        "right": "Store-and-Forward"
-      }
-    ],
-    "explanation": "Explication : En cut-through, le commutateur commence à transmettre après avoir lu l’adresse de destination (latence faible, adapté au trafic sensible au délai), sans vérifier le FCS — des trames invalides peuvent donc être transmises. En store-and-forward, la trame entière est reçue et contrôlée avant retransmission : les erreurs sont détectées avant envoi et seules les trames valides sont transmises, au prix d’une latence plus élevée.",
-    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-03_224759.jpg"
-  },
-  {
     "id": 196,
     "course": "CCNA 2",
     "sourceId": 55,
@@ -1116,7 +1080,7 @@
     "id": 204,
     "course": "CCNA 2",
     "sourceId": 63,
-    "question": "Associez l’étape à la description de la séquence d’amorçage du commutateur correspondante. (Les options ne doivent pas être toutes utilisées.)",
+    "question": "63. Associez l’étape à la description de la séquence d’amorçage du commutateur correspondante. (Les options ne doivent pas être toutes utilisées.)",
     "options": [],
     "correctAnswers": [],
     "matchPairs": [
@@ -1656,23 +1620,6 @@
     "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-23_163717.png"
   },
   {
-    "id": 298,
-    "course": "CCNA 2",
-    "sourceId": 246,
-    "question": "Quel protocole ajoute de la sécurité aux connexions à distance ?",
-    "options": [
-      "FTP",
-      "HTTP",
-      "NetBEUI",
-      "POP",
-      "SSH"
-    ],
-    "correctAnswers": [
-      "SSH"
-    ],
-    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/CCNA2-v7-Modules-1-4-Switching-Concepts-VLANs-and-InterVLAN-Routing-Exam-Answers-44.png"
-  },
-  {
     "id": 236,
     "course": "CCNA 2",
     "sourceId": 95,
@@ -1688,23 +1635,6 @@
     ],
     "explanation": "Explication : Les commandes `channel-group 1 mode auto` sur les interfaces physiques indiquent que l’agrégation est négociée via PAgP (Port Aggregation Protocol). Avec LACP, les modes seraient `active` ou `passive`. DTP gère les trunks ; STP évite les boucles, ce ne sont pas des protocoles d’EtherChannel.",
     "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-23_163739.png"
-  },
-  {
-    "id": 299,
-    "course": "CCNA 2",
-    "sourceId": 247,
-    "question": "Examinez l’illustration. Un administrateur réseau vérifie la configuration du routage inter-VLAN. Les utilisateurs se plaignent que PC2 ne peut pas communiquer avec PC1. Sur la base de la sortie, quelle est la cause possible du problème ?",
-    "options": [
-      "Gi0/0 n’est pas configuré comme port de jonction.",
-      "L’interface de commande GigabitEthernet0/0.5 a été saisie de manière incorrecte.",
-      "Aucune adresse IP n’est configurée sur l’interface Gi0/0.",
-      "La commande no shutdown n’est pas entrée sur les sous-interfaces.",
-      "Le eLa commande ncapsulation dot1Q 5 contient le mauvais VLAN."
-    ],
-    "correctAnswers": [
-      "Le eLa commande ncapsulation dot1Q 5 contient le mauvais VLAN."
-    ],
-    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/CCNA2-v7-Modules-1-4-Switching-Concepts-VLANs-and-InterVLAN-Routing-Exam-Answers-44.png"
   },
   {
     "id": 237,
@@ -1805,15 +1735,15 @@
     "id": 243,
     "course": "CCNA 2",
     "sourceId": 102,
-    "question": "Quelle attaque a pour but de créer un DOS pour les clients en les empêchant d’obtenir un crédit-bail DHCP ?",
+    "question": "98. Quelle attaque réseau cherche à créer un DoS pour les clients en les empêchant d’obtenir un bail DHCP ?",
     "options": [
-      "Attaque par dépassement de table CAM",
-      "Insuffisance de ressources DHCP",
       "Usurpation d’adresse IP",
-      "Usurpation DHCP (ou spoofing)"
+      "Famine DHCP",
+      "Attaque de table CAM",
+      "Spoofing DHCP"
     ],
     "correctAnswers": [
-      "Insuffisance de ressources DHCP"
+      "Famine DHCP"
     ],
     "explanation": "Explication : Les attaques de famine DHCP sont lancées par un attaquant avec l’intention de créer un DoS pour les clients DHCP. Pour atteindre cet objectif, l’attaquant utilise un outil qui envoie de nombreux messages DHCPDISCOVER afin de louer l’intégralité du pool d’adresses IP disponibles, les refusant ainsi aux hôtes légitimes."
   },
@@ -2155,48 +2085,6 @@
     "explanation": "Explication : Étape 1. Créez les VLAN. Étape 2. Créez les interfaces SVI VLAN. Étape 3. Configurez les ports d’accès. Attribuez-les à leurs VLAN respectifs. Étape 4. Activez le routage IP."
   },
   {
-    "id": 300,
-    "course": "CCNA 2",
-    "sourceId": 1220,
-    "question": "Un nouveau commutateur de couche 3 est connecté à un routeur et est en cours de configuration pour le routage interVLAN. Quelles sont trois des cinq étapes requises pour la configuration ? (Choisissez trois réponses.)\n\nCas 2 :",
-    "options": [
-      "activation du routage IP",
-      "en saisissant « pas de port de commutation » sur le port connecté au routeur",
-      "ajustement de la métrique d’itinéraire",
-      "installer une route statique",
-      "attribution des ports au VLAN natif",
-      "modifier le VLAN par défaut",
-      "attribution de ports aux VLAN"
-    ],
-    "correctAnswers": [
-      "activation du routage IP",
-      "en saisissant « pas de port de commutation » sur le port connecté au routeur",
-      "attribution de ports aux VLAN"
-    ],
-    "explanation": "Explication : Étape 1. Créez les VLAN. Étape 2. Créez les interfaces SVI VLAN. Étape 3. Configurez les ports d’accès. Attribuez-les à leurs VLAN respectifs. Étape 4. Activez le routage IP."
-  },
-  {
-    "id": 301,
-    "course": "CCNA 2",
-    "sourceId": 1221,
-    "question": "Un nouveau commutateur de couche 3 est connecté à un routeur et est en cours de configuration pour le routage interVLAN. Quelles sont trois des cinq étapes requises pour la configuration ? (Choisissez trois réponses.)\n\nCas 3 :",
-    "options": [
-      "activation du routage IP",
-      "modifier le VLAN par défaut",
-      "en saisissant « pas de port de commutation » sur le port connecté au routeur",
-      "établissement de contiguïtés",
-      "attribution de ports aux VLAN",
-      "ajustement de la métrique d’itinéraire",
-      "attribution des ports au VLAN natif"
-    ],
-    "correctAnswers": [
-      "activation du routage IP",
-      "en saisissant « pas de port de commutation » sur le port connecté au routeur",
-      "établissement de contiguïtés"
-    ],
-    "explanation": "Explication : Étape 1. Créez les VLAN. Étape 2. Créez les interfaces SVI VLAN. Étape 3. Configurez les ports d’accès. Attribuez-les à leurs VLAN respectifs. Étape 4. Activez le routage IP."
-  },
-  {
     "id": 264,
     "course": "CCNA 2",
     "sourceId": 123,
@@ -2304,9 +2192,336 @@
     ]
   },
   {
+    "id": 297,
+    "course": "CCNA 2",
+    "sourceId": 1033,
+    "question": "33. Quel est l’effet de la saisie de la commande de configuration spanning-tree portfast sur un commutateur ?",
+    "options": [
+      "Cela désactive un port inutilisé.",
+      "Cela désactive tous les ports de jonction.",
+      "Il active le portfast sur une interface de commutateur spécifique.",
+      "Il vérifie l’adresse L2 source dans l’en-tête Ethernet par rapport à l’adresse L2 de l’expéditeur dans le corps ARP."
+    ],
+    "correctAnswers": [
+      "Il active le portfast sur une interface de commutateur spécifique."
+    ]
+  },
+  {
+    "id": 311,
+    "course": "CCNA 2",
+    "sourceId": 1034,
+    "question": "Quel est le préfixe IPv6 utilisé pour les adresses lien-local ?",
+    "options": [
+      "FF01::/8",
+      "2001 : :/3",
+      "FC00 : :/7",
+      "FE80::/10"
+    ],
+    "correctAnswers": [
+      "FE80::/10"
+    ],
+    "explanation": "Explication : Le préfixe lien-local IPv6 est FE80::/10 et est utilisé pour créer une adresse IPv6 lien-local sur une interface."
+  },
+  {
+    "id": 298,
+    "course": "CCNA 2",
+    "sourceId": 1049,
+    "question": "49. Quelles sont les deux fonctions exécutées par un WLC lors de l’utilisation du contrôle d’accès aux médias (MAC) ? (Choisissez deux réponses.)",
+    "options": [
+      "accusés de réception et retransmissions de paquets",
+      "Mise en file d’attente des trames et priorisation des paquets",
+      "balises et réponses des sondes",
+      "traduction du cadre vers d’autres protocoles",
+      "association et réassociation de clients itinérants"
+    ],
+    "correctAnswers": [
+      "balises et réponses des sondes",
+      "association et réassociation de clients itinérants"
+    ]
+  },
+  {
+    "id": 312,
+    "course": "CCNA 2",
+    "sourceId": 1055,
+    "question": "Un administrateur réseau configure un nouveau commutateur Cisco pour l’accès à la gestion à distance. Quels sont les trois éléments à configurer sur le commutateur pour la tâche ? (Choisissez trois réponses.)",
+    "options": [
+      "Adresse IP",
+      "Domaine VTP",
+      "lignes vty",
+      "VLAN par défaut",
+      "passerelle par défaut",
+      "adresse de bouclage"
+    ],
+    "correctAnswers": [
+      "Adresse IP",
+      "lignes vty",
+      "passerelle par défaut"
+    ],
+    "explanation": "Expliquez : Pour activer l’accès de gestion à distance, le commutateur Cisco doit être configuré avec une adresse IP et une passerelle par défaut. De plus, les lignes vty doivent être configurées pour activer les connexions Telnet ou SSH. Une adresse de bouclage, un VLAN par défaut et des configurations de domaine VTP ne sont pas nécessaires pour la gestion des commutateurs à distance."
+  },
+  {
+    "id": 299,
+    "course": "CCNA 2",
+    "sourceId": 1059,
+    "question": "59. Une entreprise vient de passer à un nouveau FAI. Le FAI a terminé et vérifié la connexion de son site à l’entreprise. Cependant, les employés de l’entreprise ne peuvent pas accéder à Internet. Que faut-il faire ou vérifier ?",
+    "options": [
+      "Vérifiez que la route statique vers le serveur est présente dans la table de routage.",
+      "Vérifiez la configuration sur la route statique flottante et ajustez l’AD.",
+      "Assurez-vous que l’ancienne route par défaut a été supprimée des routeurs périphériques de l’entreprise.",
+      "Créez une route statique flottante vers ce réseau."
+    ],
+    "correctAnswers": [
+      "Assurez-vous que l’ancienne route par défaut a été supprimée des routeurs périphériques de l’entreprise."
+    ]
+  },
+  {
+    "id": 300,
+    "course": "CCNA 2",
+    "sourceId": 1083,
+    "question": "83. Un technicien configure un routeur pour une petite entreprise avec plusieurs WLAN et n’a pas besoin de la complexité d’un protocole de routage dynamique. Qu’est-ce qui doit être fait ou vérifié ?",
+    "options": [
+      "Vérifiez qu’il n’y a pas de route par défaut dans les tables de routage du routeur Edge.",
+      "Créez des routes statiques vers tous les réseaux internes et une route par défaut vers Internet.",
+      "Créez des routes statiques supplémentaires vers le même emplacement avec un AD de 1.",
+      "Vérifiez les statistiques sur la route par défaut pour la sursaturation."
+    ],
+    "correctAnswers": [
+      "Créez des routes statiques vers tous les réseaux internes et une route par défaut vers Internet."
+    ]
+  },
+  {
+    "id": 313,
+    "course": "CCNA 2",
+    "sourceId": 1088,
+    "question": "Quel plan d’atténuation est le meilleur pour contrecarrer une attaque DoS qui crée un débordement de table d’adresses MAC ?",
+    "options": [
+      "Désactiver la DTP.",
+      "Désactiver STP.",
+      "Activer la sécurité des ports.",
+      "Placez les ports inutilisés dans un VLAN inutilisé."
+    ],
+    "correctAnswers": [
+      "Activer la sécurité des ports."
+    ],
+    "explanation": "Explique: Une attaque par débordement de table d’adresse MAC (CAM), un débordement de tampon et une usurpation d’adresse MAC peuvent tous être atténués en configurant la sécurité des ports. Un administrateur réseau ne souhaite généralement pas désactiver STP car il empêche les boucles de couche 2. Le DTP est désactivé pour empêcher le saut de VLAN. Placer des ports inutilisés dans un VLAN inutilisé empêche la connectivité filaire non autorisée."
+  },
+  {
+    "id": 301,
+    "course": "CCNA 2",
+    "sourceId": 1090,
+    "question": "90. Quel message DHCPv4 un client enverra-t-il pour accepter une adresse IPv4 proposée par un serveur DHCP ?",
+    "options": [
+      "diffusion DHCPACK",
+      "diffusion DHCPREQUEST",
+      "DHCPACK monodiffusion",
+      "DHCPREQUEST en monodiffusion"
+    ],
+    "correctAnswers": [
+      "diffusion DHCPREQUEST"
+    ]
+  },
+  {
+    "id": 302,
+    "course": "CCNA 2",
+    "sourceId": 1093,
+    "question": "93. Faites correspondre le but avec son type de message DHCP. (Toutes les options ne sont pas utilisées.)",
+    "options": [],
+    "correctAnswers": [],
+    "matchPairs": [
+      {
+        "left": "un message utilisé pour localiser tout serveur DHCP disponible sur un réseau",
+        "right": "DHCPDISCOVER"
+      },
+      {
+        "left": "un message utilisé pour identifier le serveur explicite et l’offre de bail à accepter",
+        "right": "DHCPREQUEST"
+      },
+      {
+        "left": "un message utilisé pour accuser réception du succès du bail",
+        "right": "DHCPACK"
+      },
+      {
+        "left": "un message utilisé pour suggérer un bail à un client",
+        "right": "DHCPOFFER"
+      }
+    ],
+    "explanation": "Explication : DHCPNAK peut être utilisé par le serveur pour refuser une demande ; dans cet exercice il n’est relié à aucune description."
+  },
+  {
+    "id": 307,
+    "course": "CCNA 2",
+    "sourceId": 1094,
+    "question": "Quel protocole ajoute de la sécurité aux connexions à distance ?",
+    "options": [
+      "FTP",
+      "HTTP",
+      "NetBEUI",
+      "POP",
+      "SSH"
+    ],
+    "correctAnswers": [
+      "SSH"
+    ],
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/CCNA2-v7-Modules-1-4-Switching-Concepts-VLANs-and-InterVLAN-Routing-Exam-Answers-44.png"
+  },
+  {
+    "id": 308,
+    "course": "CCNA 2",
+    "sourceId": 1095,
+    "question": "Examinez l’illustration. Un administrateur réseau vérifie la configuration du routage inter-VLAN. Les utilisateurs se plaignent que PC2 ne peut pas communiquer avec PC1. Sur la base de la sortie, quelle est la cause possible du problème ?",
+    "options": [
+      "Gi0/0 n’est pas configuré comme port de jonction.",
+      "L’interface de commande GigabitEthernet0/0.5 a été saisie de manière incorrecte.",
+      "Aucune adresse IP n’est configurée sur l’interface Gi0/0.",
+      "La commande no shutdown n’est pas entrée sur les sous-interfaces.",
+      "Le eLa commande ncapsulation dot1Q 5 contient le mauvais VLAN."
+    ],
+    "correctAnswers": [
+      "Le eLa commande ncapsulation dot1Q 5 contient le mauvais VLAN."
+    ],
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/CCNA2-v7-Modules-1-4-Switching-Concepts-VLANs-and-InterVLAN-Routing-Exam-Answers-44.png"
+  },
+  {
+    "id": 303,
+    "course": "CCNA 2",
+    "sourceId": 1097,
+    "question": "97. Faites correspondre chaque type de message DHCP avec sa description. (Toutes les options ne sont pas utilisées.)",
+    "options": [],
+    "correctAnswers": [],
+    "matchPairs": [
+      {
+        "left": "DHCPDISCOVER",
+        "right": "un client qui initie un message pour trouver un serveur DHCP"
+      },
+      {
+        "left": "DHCPOFFER",
+        "right": "un serveur DHCP répondant à la demande initiale d’un client"
+      },
+      {
+        "left": "DHCPREQUEST",
+        "right": "le client acceptant l’adresse IP fournie par le serveur DHCP"
+      },
+      {
+        "left": "DHCPACK",
+        "right": "le serveur DHCP confirmant que le bail de l’adresse a été accepté"
+      }
+    ],
+    "explanation": "Explication : DHCPNAK (souvent noté DHCPNACK dans certains supports) n’est pas utilisé ici : il sert le cas où le serveur refuse une demande de bail."
+  },
+  {
+    "id": 314,
+    "course": "CCNA 2",
+    "sourceId": 1098,
+    "question": "98. Quelle attaque réseau cherche à créer un DoS pour les clients en les empêchant d’obtenir un bail DHCP ?",
+    "options": [
+      "Usurpation d’adresse IP",
+      "Famine DHCP",
+      "Attaque de table CAM",
+      "Spoofing DHCP"
+    ],
+    "correctAnswers": [
+      "Famine DHCP"
+    ],
+    "explanation": "Explication : Les attaques de famine DHCP sont lancées par un attaquant avec l’intention de créer un DoS pour les clients DHCP. Pour atteindre cet objectif, l’attaquant utilise un outil qui envoie de nombreux messages DHCPDISCOVER afin de louer l’intégralité du pool d’adresses IP disponibles, les refusant ainsi aux hôtes légitimes."
+  },
+  {
+    "id": 304,
+    "course": "CCNA 2",
+    "sourceId": 1105,
+    "question": "105. Quelle commande permettra à un routeur de commencer à envoyer des messages lui permettant de configurer une adresse lien-local sans utiliser de serveur DHCP IPv6 ?",
+    "options": [
+      "un itinéraire statique",
+      "la commande ipv6 route ::/0",
+      "la commande ipv6 unicast-routing",
+      "la commande de routage ip"
+    ],
+    "correctAnswers": [
+      "la commande ipv6 unicast-routing"
+    ],
+    "explanation": "Explication : Pour activer IPv6 sur un routeur, vous devez utiliser la commande de configuration globale ipv6 unicast-routing ou utiliser la commande de configuration d’interface ipv6 enable. Cela équivaut à saisir le routage IP pour activer le routage IPv4 sur un routeur lorsqu’il a été désactivé. Gardez à l’esprit qu’IPv4 est activé sur un routeur par défaut. IPv6 n’est pas activé par défaut."
+  },
+  {
+    "id": 305,
+    "course": "CCNA 2",
+    "sourceId": 1119,
+    "question": "119. Les utilisateurs se plaignent d’un accès sporadique à Internet chaque après-midi. Que faut-il faire ou vérifier ?",
+    "options": [
+      "Créez des routes statiques vers tous les réseaux internes et une route par défaut vers Internet.",
+      "Vérifiez qu’il n’y a pas de route par défaut dans les tables de routage du routeur Edge.",
+      "Créez une route statique flottante vers ce réseau.",
+      "Vérifiez les statistiques sur la route par défaut pour la sursaturation."
+    ],
+    "correctAnswers": [
+      "Vérifiez les statistiques sur la route par défaut pour la sursaturation."
+    ]
+  },
+  {
+    "id": 315,
+    "course": "CCNA 2",
+    "sourceId": 1122,
+    "question": "Un nouveau commutateur de couche 3 est connecté à un routeur et est en cours de configuration pour le routage interVLAN. Quelles sont trois des cinq étapes requises pour la configuration ? (Choisissez trois réponses.)\n\nCas 1 :",
+    "options": [
+      "modifier le VLAN par défaut",
+      "installer une route statique",
+      "ajustement de la métrique d’itinéraire",
+      "création de VLAN",
+      "attribution de ports aux VLAN",
+      "création d’interfaces SVI",
+      "implémenter un protocole de routage"
+    ],
+    "correctAnswers": [
+      "création de VLAN",
+      "attribution de ports aux VLAN",
+      "création d’interfaces SVI"
+    ],
+    "explanation": "Explication : Étape 1. Créez les VLAN. Étape 2. Créez les interfaces SVI VLAN. Étape 3. Configurez les ports d’accès. Attribuez-les à leurs VLAN respectifs. Étape 4. Activez le routage IP."
+  },
+  {
+    "id": 309,
+    "course": "CCNA 2",
+    "sourceId": 1123,
+    "question": "Un nouveau commutateur de couche 3 est connecté à un routeur et est en cours de configuration pour le routage interVLAN. Quelles sont trois des cinq étapes requises pour la configuration ? (Choisissez trois réponses.)\n\nCas 2 :",
+    "options": [
+      "activation du routage IP",
+      "en saisissant « pas de port de commutation » sur le port connecté au routeur",
+      "ajustement de la métrique d’itinéraire",
+      "installer une route statique",
+      "attribution des ports au VLAN natif",
+      "modifier le VLAN par défaut",
+      "attribution de ports aux VLAN"
+    ],
+    "correctAnswers": [
+      "activation du routage IP",
+      "en saisissant « pas de port de commutation » sur le port connecté au routeur",
+      "attribution de ports aux VLAN"
+    ],
+    "explanation": "Explication : Étape 1. Créez les VLAN. Étape 2. Créez les interfaces SVI VLAN. Étape 3. Configurez les ports d’accès. Attribuez-les à leurs VLAN respectifs. Étape 4. Activez le routage IP."
+  },
+  {
+    "id": 310,
+    "course": "CCNA 2",
+    "sourceId": 1124,
+    "question": "Un nouveau commutateur de couche 3 est connecté à un routeur et est en cours de configuration pour le routage interVLAN. Quelles sont trois des cinq étapes requises pour la configuration ? (Choisissez trois réponses.)\n\nCas 3 :",
+    "options": [
+      "activation du routage IP",
+      "modifier le VLAN par défaut",
+      "en saisissant « pas de port de commutation » sur le port connecté au routeur",
+      "établissement de contiguïtés",
+      "attribution de ports aux VLAN",
+      "ajustement de la métrique d’itinéraire",
+      "attribution des ports au VLAN natif"
+    ],
+    "correctAnswers": [
+      "activation du routage IP",
+      "en saisissant « pas de port de commutation » sur le port connecté au routeur",
+      "établissement de contiguïtés"
+    ],
+    "explanation": "Explication : Étape 1. Créez les VLAN. Étape 2. Créez les interfaces SVI VLAN. Étape 3. Configurez les ports d’accès. Attribuez-les à leurs VLAN respectifs. Étape 4. Activez le routage IP."
+  },
+  {
     "id": 271,
     "course": "CCNA 2",
-    "sourceId": 132,
+    "sourceId": 1132,
     "question": "Les employés ne peuvent pas se connecter aux serveurs sur l’un des réseaux internes. Que faut-il faire ou vérifier ?",
     "options": [
       "Utilisez la commande « show ip interface brief » pour voir si une interface est en panne.",
@@ -2321,7 +2536,7 @@
   {
     "id": 272,
     "course": "CCNA 2",
-    "sourceId": 134,
+    "sourceId": 1134,
     "question": "Un administrateur remarque qu’un grand nombre de paquets sont supprimés sur l’un des routeurs de succursale. Que faut-il faire ou vérifier ?",
     "options": [
       "Créez des routes statiques vers tous les réseaux internes et une route par défaut vers Internet.",
@@ -2336,7 +2551,7 @@
   {
     "id": 273,
     "course": "CCNA 2",
-    "sourceId": 135,
+    "sourceId": 1135,
     "question": "Quelles sont les deux caractéristiques du commutateur qui pourraient aider à réduire la congestion du réseau ? (Choisissez deux réponses.)",
     "options": [
       "commutation interne rapide",
@@ -2354,7 +2569,7 @@
   {
     "id": 274,
     "course": "CCNA 2",
-    "sourceId": 136,
+    "sourceId": 1136,
     "question": "Quel est le résultat de la connexion de deux ou plusieurs commutateurs ensemble ?",
     "options": [
       "Le nombre de domaines de diffusion est augmenté.",
@@ -2370,7 +2585,7 @@
   {
     "id": 275,
     "course": "CCNA 2",
-    "sourceId": 139,
+    "sourceId": 1139,
     "question": "Quel est l’effet de la saisie de la commande de configuration switchport port-security sur un commutateur ?",
     "options": [
       "Il apprend dynamiquement l’adresse L2 et la copie dans la configuration en cours.",
@@ -2385,7 +2600,7 @@
   {
     "id": 276,
     "course": "CCNA 2",
-    "sourceId": 140,
+    "sourceId": 1140,
     "question": "Un administrateur réseau configure un WLAN. Pourquoi l’administrateur utiliserait-il plusieurs points d’accès légers ?",
     "options": [
       "pour centraliser la gestion de plusieurs WLAN",
@@ -2401,7 +2616,7 @@
   {
     "id": 277,
     "course": "CCNA 2",
-    "sourceId": 141,
+    "sourceId": 1141,
     "question": "Examinez l’illustration. PC-A et PC-B sont tous deux dans le VLAN 60. PC-A est incapable de communiquer avec PC-B. Quel est le problème ?",
     "options": [
       "Le VLAN natif doit être le VLAN 60.",
@@ -2418,7 +2633,7 @@
   {
     "id": 278,
     "course": "CCNA 2",
-    "sourceId": 144,
+    "sourceId": 1144,
     "question": "Un administrateur réseau a configuré un routeur pour un fonctionnement DHCPv6 sans état. Cependant, les utilisateurs signalent que les postes de travail ne reçoivent pas les informations du serveur DNS. Quelles lignes de configuration de routeur doivent être vérifiées pour s’assurer que le service DHCPv6 sans état est correctement configuré ? (Choisissez deux réponses.)",
     "options": [
       "La ligne de nom de domaine est incluse dans la section ipv6 dhcp pool.",
@@ -2436,7 +2651,7 @@
   {
     "id": 279,
     "course": "CCNA 2",
-    "sourceId": 147,
+    "sourceId": 1147,
     "question": "Quelle action a lieu lorsqu’une trame entrant dans un commutateur a une adresse MAC de destination de monodiffusion qui ne figure pas dans la table d’adresses MAC ?",
     "options": [
       "Le commutateur met à jour la minuterie d’actualisation de l’entrée.",
@@ -2451,7 +2666,7 @@
   {
     "id": 280,
     "course": "CCNA 2",
-    "sourceId": 150,
+    "sourceId": 1150,
     "question": "Quel protocole ou quelle technologie gère les négociations de jonction entre les commutateurs ?",
     "options": [
       "VTP",
@@ -2466,7 +2681,7 @@
   {
     "id": 281,
     "course": "CCNA 2",
-    "sourceId": 154,
+    "sourceId": 1154,
     "question": "Quel est l’effet de la saisie de la commande de configuration ip dhcp snooping limit rate 6 sur un commutateur ?",
     "options": [
       "Il affiche les associations d’adresses IP-MAC pour les interfaces de commutateur.",
@@ -2481,7 +2696,7 @@
   {
     "id": 282,
     "course": "CCNA 2",
-    "sourceId": 156,
+    "sourceId": 1156,
     "question": "Quel est l’effet de la saisie de la commande de configuration ip arp inspection validate src-mac sur un commutateur ?",
     "options": [
       "Il vérifie l’adresse L2 source dans l’en-tête Ethernet par rapport à l’adresse L2 de l’expéditeur dans le corps ARP.",
@@ -2496,7 +2711,7 @@
   {
     "id": 283,
     "course": "CCNA 2",
-    "sourceId": 158,
+    "sourceId": 1158,
     "question": "Quelle longueur d’adresse et de préfixe est utilisée lors de la configuration d’une route statique IPv6 par défaut ?",
     "options": [
       "::/0",
@@ -2511,7 +2726,7 @@
   {
     "id": 284,
     "course": "CCNA 2",
-    "sourceId": 159,
+    "sourceId": 1159,
     "question": "Quelles sont les deux caractéristiques de Cisco Express Forwarding (CEF) ? (choisitet deux.)",
     "options": [
       "Lorsqu’un paquet arrive sur une interface de routeur, il est transmis au plan de contrôle où le processeur fait correspondre l’adresse de destination avec une entrée de table de routage correspondante.",
@@ -2528,7 +2743,7 @@
   {
     "id": 285,
     "course": "CCNA 2",
-    "sourceId": 160,
+    "sourceId": 1160,
     "question": "Quel terme décrit le rôle d’un commutateur Cisco dans le contrôle d’accès basé sur les ports 802.1X ?",
     "options": [
       "agent",
@@ -2543,7 +2758,7 @@
   {
     "id": 286,
     "course": "CCNA 2",
-    "sourceId": 161,
+    "sourceId": 1161,
     "question": "Quelle solution Cisco permet d’éviter les attaques d’usurpation d’identité ARP et d’empoisonnement ARP ?",
     "options": [
       "Inspection ARP dynamique",
@@ -2558,7 +2773,7 @@
   {
     "id": 287,
     "course": "CCNA 2",
-    "sourceId": 162,
+    "sourceId": 1162,
     "question": "Quel est l’avantage de PVST+ ?",
     "options": [
       "PVST+ optimise les performances sur le réseau grâce à la sélection automatique du pont racine.",
@@ -2574,7 +2789,7 @@
   {
     "id": 288,
     "course": "CCNA 2",
-    "sourceId": 163,
+    "sourceId": 1163,
     "question": "Quel protocole ou quelle technologie utilise un routeur de secours pour assumer la responsabilité du transfert de paquets si le routeur actif tombe en panne ?",
     "options": [
       "EtherChannel",
@@ -2589,7 +2804,7 @@
   {
     "id": 289,
     "course": "CCNA 2",
-    "sourceId": 165,
+    "sourceId": 1165,
     "question": "Quelle action a lieu lorsque l’adresse MAC source d’une trame entrant dans un commutateur est dans la table d’adresses MAC ?",
     "options": [
       "Le commutateur transfère la trame hors du port spécifié.",
@@ -2604,7 +2819,7 @@
   {
     "id": 290,
     "course": "CCNA 2",
-    "sourceId": 166,
+    "sourceId": 1166,
     "question": "Une petite maison d’édition a une conception de réseau telle que lorsqu’une diffusion est envoyée sur le réseau local, 200 appareils reçoivent la diffusion transmise. Comment l’administrateur réseau peut-il réduire le nombre d’appareils recevant du trafic de diffusion ?",
     "options": [
       "Ajoutez plus de commutateurs afin que moins d’appareils soient sur un commutateur particulier.",
@@ -2620,7 +2835,7 @@
   {
     "id": 291,
     "course": "CCNA 2",
-    "sourceId": 167,
+    "sourceId": 1167,
     "question": "Qu’est-ce qui définit une route hôte sur un routeur Cisco ?",
     "options": [
       "L’adresse lien-local est ajoutée automatiquement à la table de routage en tant que route hôte IPv6.",
@@ -2635,7 +2850,7 @@
   {
     "id": 292,
     "course": "CCNA 2",
-    "sourceId": 168,
+    "sourceId": 1168,
     "question": "Quoi d’autre est requis lors de la configuration d’une route statique IPv6 à l’aide d’une adresse lien-local de prochain saut ?",
     "options": [
       "distance administrative",
@@ -2650,7 +2865,7 @@
   {
     "id": 293,
     "course": "CCNA 2",
-    "sourceId": 169,
+    "sourceId": 1169,
     "question": "Un technicien configure un réseau sans fil pour une petite entreprise à l’aide d’un routeur sans fil SOHO. Quelles sont les deux méthodes d’authentification utilisées si le routeur est configuré avec WPA2 ? (Choisissez deux réponses.)",
     "options": [
       "personnel",
@@ -2667,7 +2882,7 @@
   {
     "id": 294,
     "course": "CCNA 2",
-    "sourceId": 171,
+    "sourceId": 1171,
     "question": "Un PC a envoyé un message RS à un routeur IPv6 connecté au même réseau. Quelles sont les deux informations que le routeur enverra au client ? (Choisissez deux réponses.)",
     "options": [
       "longueur du préfixe",
@@ -2686,7 +2901,7 @@
   {
     "id": 295,
     "course": "CCNA 2",
-    "sourceId": 172,
+    "sourceId": 1172,
     "question": "Lorsqu’ils assistent à une conférence, les participants utilisent des ordinateurs portables pour la connectivité réseau. Lorsqu’un orateur invité tente de se connecter au réseau, l’ordinateur portable ne parvient pas à afficher les réseaux sans fil disponibles. Le point d’accès doit fonctionner dans quel mode ?",
     "options": [
       "mixte",
@@ -2702,7 +2917,7 @@
   {
     "id": 296,
     "course": "CCNA 2",
-    "sourceId": 173,
+    "sourceId": 1173,
     "question": "Quels sont les trois composants combinés pour former un identifiant de pont ?",
     "options": [
       "ID système étendu",
@@ -2718,5 +2933,41 @@
       "Adresse MAC"
     ],
     "explanation": "Explication : Les trois composants qui sont combinés pour former un ID de pont sont la priorité du pont, l’ID système étendu et l’adresse MAC."
+  },
+  {
+    "id": 306,
+    "course": "CCNA 2",
+    "sourceId": 1245,
+    "question": "Associez la caractéristique de transmission à son type. (Les options ne sont pas toutes utilisées.)",
+    "options": [],
+    "correctAnswers": [],
+    "matchPairs": [
+      {
+        "left": "Convient aux applications informatiques hautement performantes.",
+        "right": "Cut-Through"
+      },
+      {
+        "left": "Contrôle les erreurs avant la transmission.",
+        "right": "Store-and-Forward"
+      },
+      {
+        "left": "Le processus de transmission peut démarrer dès la réception de l’adresse de destination.",
+        "right": "Cut-Through"
+      },
+      {
+        "left": "Le processus de transmission peut démarrer uniquement après avoir reçu la totalité de la trame.",
+        "right": "Store-and-Forward"
+      },
+      {
+        "left": "Les trames non valides peuvent être transmises.",
+        "right": "Cut-Through"
+      },
+      {
+        "left": "Seules les trames valides sont transmises.",
+        "right": "Store-and-Forward"
+      }
+    ],
+    "explanation": "Explication : En cut-through, le commutateur commence à transmettre après avoir lu l’adresse de destination (latence faible, adapté au trafic sensible au délai), sans vérifier le FCS — des trames invalides peuvent donc être transmises. En store-and-forward, la trame entière est reçue et contrôlée avant retransmission : les erreurs sont détectées avant envoi et seules les trames valides sont transmises, au prix d’une latence plus élevée.",
+    "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-03_224759.jpg"
   }
 ]

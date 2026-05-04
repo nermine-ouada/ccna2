@@ -32,6 +32,8 @@ export default function FlashcardsPage() {
   const [showAllOptions, setShowAllOptions] = useState(true);
   const [randomMode, setRandomMode] = useState(false);
   const [randomDeckNonce, setRandomDeckNonce] = useState(0);
+  /** After "Start from end": Next moves toward the first card, Previous toward the end. */
+  const [reverseTraversal, setReverseTraversal] = useState(false);
 
   const orderedQuestions = useMemo(() => {
     if (!randomMode) return questions;
@@ -50,9 +52,25 @@ export default function FlashcardsPage() {
     );
   }
 
-  const canStartFromEnd = orderedQuestions.length > 1;
+  const total = orderedQuestions.length;
+  const canStartFromEnd = total > 1;
+  const canGoPrev = reverseTraversal ? index < total - 1 : index > 0;
+  const canGoNext = reverseTraversal ? index > 0 : index < total - 1;
+  const progressStep = reverseTraversal && total > 0 ? total - index : index + 1;
+
+  const goNext = () => {
+    const delta = reverseTraversal ? -1 : 1;
+    setIndex((prev) => Math.min(Math.max(0, prev + delta), total - 1));
+  };
+
+  const goPrev = () => {
+    const delta = reverseTraversal ? 1 : -1;
+    setIndex((prev) => Math.min(Math.max(0, prev + delta), total - 1));
+  };
+
   const startFromEnd = () => {
     if (orderedQuestions.length === 0) return;
+    setReverseTraversal(true);
     setIndex(orderedQuestions.length - 1);
   };
 
@@ -68,11 +86,16 @@ export default function FlashcardsPage() {
       </div>
 
       <ProgressBar
-        current={index + 1}
-        total={orderedQuestions.length}
+        current={progressStep}
+        total={total}
         onSeek={(q) => {
-          const nextIdx = Math.min(Math.max(1, q), orderedQuestions.length) - 1;
-          if (nextIdx !== index) setIndex(nextIdx);
+          const nextIdx = reverseTraversal
+            ? Math.min(Math.max(0, total - q), total - 1)
+            : Math.min(Math.max(1, q), total) - 1;
+          if (nextIdx !== index) {
+            setReverseTraversal(false);
+            setIndex(nextIdx);
+          }
         }}
       />
 
@@ -90,6 +113,7 @@ export default function FlashcardsPage() {
               if (next) setRandomDeckNonce((n) => n + 1);
               return next;
             });
+            setReverseTraversal(false);
             setIndex(0);
           }}
           className="rounded-lg bg-slate-900 px-4 py-2 font-medium text-white hover:bg-slate-700"
@@ -101,7 +125,7 @@ export default function FlashcardsPage() {
           onClick={startFromEnd}
           disabled={!canStartFromEnd}
           className="rounded-lg border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
-          aria-label="Jump to the last card, then use Previous to move backward"
+          aria-label="Jump to the last card; Next then moves toward the first card"
         >
           Start from end
         </button>
@@ -153,15 +177,19 @@ export default function FlashcardsPage() {
 
       <div className="flex gap-3">
         <button
-          onClick={() => setIndex((prev) => Math.max(prev - 1, 0))}
-          disabled={index === 0}
+          type="button"
+          onClick={goPrev}
+          disabled={!canGoPrev}
+          aria-label={reverseTraversal ? "Vers la fin du deck" : "Carte précédente"}
           className="rounded-lg border border-slate-300 bg-white px-4 py-2 disabled:opacity-40 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
         >
           Previous
         </button>
         <button
-          onClick={() => setIndex((prev) => Math.min(prev + 1, orderedQuestions.length - 1))}
-          disabled={index === orderedQuestions.length - 1}
+          type="button"
+          onClick={goNext}
+          disabled={!canGoNext}
+          aria-label={reverseTraversal ? "Vers le début du deck" : "Carte suivante"}
           className="rounded-lg bg-slate-900 px-4 py-2 text-white disabled:opacity-40"
         >
           Next

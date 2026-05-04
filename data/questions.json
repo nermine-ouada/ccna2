@@ -3150,17 +3150,17 @@
     "id": 175,
     "course": "CCNA 2",
     "sourceId": 34,
-    "question": "Quel est le préfixe IPv6 utilisé pour les adresses lien-local ?",
+    "question": "Quel protocole doit être désactivé pour pallier les attaques de VLAN ?",
     "options": [
-      "FF01::/8",
-      "2001 : :/3",
-      "FC00 : :/7",
-      "FE80::/10"
+      "CDP",
+      "STP",
+      "DTP",
+      "ARP"
     ],
     "correctAnswers": [
-      "FE80::/10"
+      "DTP"
     ],
-    "explanation": "Explication : Le préfixe lien-local IPv6 est FE80::/10 et est utilisé pour créer une adresse IPv6 lien-local sur une interface."
+    "explanation": "Explication : Le protocole DTP (Dynamic Trunking Protocol) négocie automatiquement les liaisons de jonction ; le désactiver ou forcer le mode des ports manuellement réduit le risque d’attaques de saut de VLAN (VLAN hopping)."
   },
   {
     "id": 176,
@@ -3666,7 +3666,7 @@
     "id": 204,
     "course": "CCNA 2",
     "sourceId": 63,
-    "question": "Associez l’étape à la description de la séquence d’amorçage du commutateur correspondante. (Les options ne doivent pas être toutes utilisées.)",
+    "question": "63. Associez l’étape à la description de la séquence d’amorçage du commutateur correspondante. (Les options ne doivent pas être toutes utilisées.)",
     "options": [
       "Exécution du POST",
       "Chargement du programme d’amorçage à partir de la mémoire morte (ROM)",

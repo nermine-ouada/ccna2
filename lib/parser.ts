@@ -124,6 +124,9 @@ async function parseQuestionsFromHtml(
 
     const pNode = node.closest("p");
     const startNode = tagName === "p" ? node : pNode.length ? pNode : node;
+    const paragraphId = (startNode.closest("p").attr("id") || "").trim();
+    const fromAppendix =
+      course === "CCNA 2" && /^ftoc-appendix-/i.test(paragraphId);
 
     let next = startNode.next();
     const optionItems: string[] = [];
@@ -300,8 +303,9 @@ async function parseQuestionsFromHtml(
       ...(tableMatchPairs?.length ? { matchPairs: tableMatchPairs } : {}),
       ...(pairMatchStyle ? { pairMatchStyle } : {}),
       ...(explanation ? { explanation } : {}),
-      ...(image ? { image } : {})
-    });
+      ...(image ? { image } : {}),
+      ...(fromAppendix ? { fromAppendix: true as const } : {})
+    } as Question);
     generatedId += 1;
   });
 
@@ -316,6 +320,17 @@ function dedupeBySourceId(questions: Question[]): Question[] {
     if (!current) {
       bySourceId.set(question.sourceId, question);
       continue;
+    }
+
+    // CCNA 2: same exam number can appear in the main exam and again after the === appendix — keep the main body.
+    if (question.course === "CCNA 2" && current.course === "CCNA 2") {
+      const curApp = !!current.fromAppendix;
+      const nextApp = !!question.fromAppendix;
+      if (!curApp && nextApp) continue;
+      if (curApp && !nextApp) {
+        bySourceId.set(question.sourceId, question);
+        continue;
+      }
     }
 
     const currentScore =
@@ -337,6 +352,11 @@ function dedupeBySourceId(questions: Question[]): Question[] {
   return [...bySourceId.values()].sort((a, b) => (a.sourceId ?? 0) - (b.sourceId ?? 0));
 }
 
+function stripParseMeta(question: Question): Question {
+  const { fromAppendix: _fa, ...rest } = question;
+  return rest;
+}
+
 async function main() {
   const parsed: Question[] = [];
   const parsedByCourse: Record<"CCNA 1" | "CCNA 2", Question[]> = {
@@ -350,10 +370,12 @@ async function main() {
     try {
       await fs.access(sourcePath);
       const batchRaw = await parseQuestionsFromHtml(sourcePath, source.course, nextId);
-      const batch = dedupeBySourceId(batchRaw).map((question, i) => ({
-        ...question,
-        id: nextId + i
-      }));
+      const batch = dedupeBySourceId(batchRaw).map((question, i) =>
+        stripParseMeta({
+          ...question,
+          id: nextId + i
+        })
+      );
       parsed.push(...batch);
       parsedByCourse[source.course].push(...batch);
       nextId += batch.length;

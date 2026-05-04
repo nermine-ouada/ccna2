@@ -16,4 +16,6 @@ export type Question = {
   pairMatchStyle?: "pair" | "ordering";
   explanation?: string;
   image?: string;
+  /** Parser-only: set when the heading is in the HTML appendix (ftoc-appendix-*); stripped before JSON export */
+  fromAppendix?: boolean;
 };

@@ -56,6 +56,8 @@ export default function QuizPage() {
   const [revealed, setRevealed] = useState(false);
   const [scored, setScored] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
+  /** After "Start from end": Next moves toward question 1, Previous toward the end. */
+  const [reverseTraversal, setReverseTraversal] = useState(false);
 
   const answersMapRef = useRef(answersMap);
   useEffect(() => {
@@ -72,6 +74,7 @@ export default function QuizPage() {
     const key = `${selectedCourse}|${randomMode}|${deckKey}|${randomMode ? randomDeckNonce : 0}`;
     if (key === lastSessionKey.current) return;
     lastSessionKey.current = key;
+    setReverseTraversal(false);
     const s = loadQuizSession(selectedCourse, randomMode, deckKey, randomMode ? randomDeckNonce : 0);
     if (!s) return;
     const map: Record<number, QuizQuestionPersist> = {};
@@ -225,17 +228,19 @@ export default function QuizPage() {
 
   const goNext = () => {
     persistCurrentToMap();
-    const ni = Math.min(index + 1, orderedQuestions.length - 1);
+    const delta = reverseTraversal ? -1 : 1;
+    const ni = Math.min(Math.max(0, index + delta), orderedQuestions.length - 1);
     const nextQ = orderedQuestions[ni];
-    if (nextQ) bumpShuffle(nextQ.id);
+    if (nextQ && ni !== index) bumpShuffle(nextQ.id);
     setIndex(ni);
   };
 
   const goPrev = () => {
     persistCurrentToMap();
-    const pi = Math.max(index - 1, 0);
+    const delta = reverseTraversal ? 1 : -1;
+    const pi = Math.min(Math.max(0, index + delta), orderedQuestions.length - 1);
     const prevQ = orderedQuestions[pi];
-    if (prevQ) bumpShuffle(prevQ.id);
+    if (prevQ && pi !== index) bumpShuffle(prevQ.id);
     setIndex(pi);
   };
 
@@ -245,6 +250,7 @@ export default function QuizPage() {
     persistCurrentToMap();
     const lastQ = orderedQuestions[lastIdx];
     if (lastQ) bumpShuffle(lastQ.id);
+    setReverseTraversal(true);
     setIndex(lastIdx);
   };
 
@@ -266,6 +272,7 @@ export default function QuizPage() {
     setScored(false);
     setShowAnswers(false);
     setShuffleNonce({});
+    setReverseTraversal(false);
     const first = orderedQuestions[0];
     if (first) bumpShuffle(first.id);
   };
@@ -324,9 +331,13 @@ export default function QuizPage() {
     setRevealed(true);
   };
 
-  const canGoPrev = index > 0;
-  const canGoNext = index < orderedQuestions.length - 1;
+  const canGoPrev = reverseTraversal ? index < orderedQuestions.length - 1 : index > 0;
+  const canGoNext = reverseTraversal ? index > 0 : index < orderedQuestions.length - 1;
   const canStartFromEnd = orderedQuestions.length > 1;
+  const progressStep =
+    reverseTraversal && orderedQuestions.length > 0
+      ? orderedQuestions.length - index
+      : index + 1;
 
   return (
     <div className="space-y-5">
@@ -346,7 +357,7 @@ export default function QuizPage() {
       <div className="flex items-center justify-center gap-2">
         <button
           type="button"
-          aria-label="Question précédente"
+          aria-label={reverseTraversal ? "Vers la fin du deck" : "Question précédente"}
           onClick={goPrev}
           disabled={!canGoPrev}
           className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white text-lg font-semibold text-slate-800 shadow-sm hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-35 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
@@ -355,12 +366,16 @@ export default function QuizPage() {
         </button>
         <div className="min-w-0 flex-1 px-2">
           <ProgressBar
-            current={index + 1}
+            current={progressStep}
             total={orderedQuestions.length}
             onSeek={(q) => {
-              const nextIdx = Math.min(Math.max(1, q), orderedQuestions.length) - 1;
+              const total = orderedQuestions.length;
+              const nextIdx = reverseTraversal
+                ? Math.min(Math.max(0, total - q), total - 1)
+                : Math.min(Math.max(1, q), total) - 1;
               if (nextIdx === index) return;
               persistCurrentToMap();
+              setReverseTraversal(false);
               const nextQ = orderedQuestions[nextIdx];
               if (nextQ) bumpShuffle(nextQ.id);
               setIndex(nextIdx);
@@ -369,7 +384,7 @@ export default function QuizPage() {
         </div>
         <button
           type="button"
-          aria-label="Question suivante"
+          aria-label={reverseTraversal ? "Vers le début du deck" : "Question suivante"}
           onClick={goNext}
           disabled={!canGoNext}
           className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white text-lg font-semibold text-slate-800 shadow-sm hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-35 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
@@ -401,6 +416,7 @@ export default function QuizPage() {
             setScore(0);
             setAnswersMap({});
             setShuffleNonce({});
+            setReverseTraversal(false);
           }}
           className="rounded-lg bg-slate-900 px-4 py-2 font-medium text-white hover:bg-slate-700"
         >
@@ -418,7 +434,7 @@ export default function QuizPage() {
           onClick={startFromEnd}
           disabled={!canStartFromEnd}
           className="rounded-lg border border-slate-300 bg-white px-4 py-2 font-medium text-slate-800 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
-          aria-label="Jump to the last question, then use Previous to move backward through the deck"
+          aria-label="Jump to the last question; Next then moves toward the first question"
         >
           Start from end
         </button>

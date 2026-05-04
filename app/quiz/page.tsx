@@ -496,7 +496,7 @@ export default function QuizPage() {
                         ●
                       </span>
                     )}
-                    <span className="min-w-0 flex-1 text-left">
+                    <span className="min-w-0 flex-1 whitespace-pre-line text-left">
                       {useMatchArrows ? <MatchOptionContent option={option} /> : option}
                     </span>
                   </span>

@@ -5,7 +5,7 @@ import { splitMatchArrowOption } from "@/lib/questionUi";
 export default function MatchOptionContent({ option }: { option: string }) {
   const pair = splitMatchArrowOption(option);
   if (!pair) {
-    return <span className="leading-relaxed">{option}</span>;
+    return <span className="whitespace-pre-line leading-relaxed">{option}</span>;
   }
 
   return (
